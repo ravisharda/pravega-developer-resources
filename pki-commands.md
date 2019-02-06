@@ -39,8 +39,10 @@
 Assumption: the key is in a password-protected ``key.pem`` file and the certificate is in ``cert.pem`` fil. 
 
 1. Remove password from ``key.pem`` file: ``openssl rsa -in key.pem -out keyout.pem``
-2. Create a PKCS12 file: ``openssl pkcs12 -export -out key.pfx -inkey keyout.pem -in cert.pem`` 
-3. Convert the pfx file to jks file: ``keytool -importkeystore -deststorepass 1111_aaaa -destkeystore my-keystore.jks -srckeystore key.p12 -srcstoretype PKCS12``
+2. Create a PKCS12 file: ``openssl pkcs12 -export -out key.pfx -inkey keyout.pem -in cert.pem`` (Enter an appropriate export password, when prompted.) 
+3. Convert the pfx file to jks file: ``keytool -importkeystore -deststorepass 1111_aaaa -destkeystore my-keystore.jks -srckeystore key.pfx -srcstoretype PKCS12``
+
+(Note: PKCS12 files tend to have extensions .pfx or .p12)
 
 ## Certificate Related
 
