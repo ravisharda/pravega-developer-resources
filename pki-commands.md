@@ -19,9 +19,21 @@
    Example:
    openssl pkcs8 -inform PEM -in key.pem -topk8 (then enter password on the prompt)
    ```
+   
+ * Displaying the common name (CN) of a certificate: ``openssl x509 -noout -subject -in cert.pem``
+ 
+   ``` 
+   Sample output:
+   subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = localhost
+   ```
+ 
 ## Importing the provided CA certificate into local JVM's truststore
 
 1. Change directory to config directory: ``cd /path/to/pravega/config`` 
 2. Convert the provided 'cert.pem' file to DER format: ``openssl x509 -in cert.pem -inform pem -out cert.der -outform der``
 3. Import the certificate into the local JVM's trust store: 
    ```sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -file cert.der``` (default password is "changeit")
+
+## Certificate Related
+
+``openssl x509 -noout -subject -in cert.pem
