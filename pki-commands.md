@@ -5,26 +5,30 @@
 * Displaying the contents of certificates using OpenSSL
   * A .pem file: ``openssl x509 -in /path/to/cert.pem -text``
   * A .crt file: ``openssl x509 -in /path/to/ca-certificates.crt -text``
+  * A DER file: ``openssl x509 -in MYCERT.der -inform der -text``
+
+* Displaying the contents of certificates, using Keytool
+  * ``keytool -printcert -v -file mydomain.crt``
+  * ``keytool -printcert -v -file cert.pem``
   
- * Displaying the contents of keystores/truststores using Java Keytool command
-   ```
-   keytool -list -v -keystore <file-name.jks>, then enter keystore password on the prompt
+* Displaying the contents of keystores/truststores using Java Keytool command
+  ```
+  keytool -list -v -keystore <file-name.jks>, then enter keystore password on the prompt
    
-   Example:
-   keytool -list -v -keystore bookie.truststore.jks
-   ```
+  Example:
+  keytool -list -v -keystore bookie.truststore.jks
+  ```
    
- * Displaying the contents of a file containing private key using OpenSSL
-   ```
-   Example:
-   openssl pkcs8 -inform PEM -in key.pem -topk8 (then enter password on the prompt)
-   ```
+* Displaying the contents of a file containing private key using OpenSSL
+  ```
+  Example:
+  openssl pkcs8 -inform PEM -in key.pem -topk8 (then enter password on the prompt)
+  ```
    
- * Displaying the common name (CN) of a certificate: ``openssl x509 -noout -subject -in cert.pem``
- 
-   ``` 
-   Sample output:
-   subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = localhost
+* Displaying the common name (CN) of a certificate: ``openssl x509 -noout -subject -in cert.pem``
+  ``` 
+  Sample output:
+  subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = localhost
    ```
  
 ## Importing the provided CA certificate into local JVM's truststore
@@ -77,7 +81,17 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
 
+## Hitting a TLS-Protected REST Service 
+
+```
+curl -v -k https://localhost:9091/v1/scopes (-k == --insecure)
+
+# Use TLS 1.1
+curl -v -k -tlsv1.1 -cacert cert.pem https://localhost:9091/v1/scopes
+```
 ## Further Reading
-* [Most Common OpenSSL Commands - SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
+* [Most Common OpenSSL Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
+* [Most Common Keytool Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html)
 * Creating certificates and keys for a omponent:
   * [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
+
