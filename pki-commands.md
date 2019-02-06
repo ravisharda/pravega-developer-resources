@@ -79,3 +79,5 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 
 ## Further Reading
 * [Most Common OpenSSL Commands - SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
+* Creating certificates and keys for a omponent:
+  * [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
