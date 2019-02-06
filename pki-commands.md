@@ -33,6 +33,14 @@
 2. Convert the provided 'cert.pem' file to DER format: ``openssl x509 -in cert.pem -inform pem -out cert.der -outform der``
 3. Import the certificate into the local JVM's trust store: 
    ```sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -file cert.der``` (default password is "changeit")
+   
+## Adding an existing server certificate and key into a keystore file
+
+Assumption: the key is in a password-protected ``key.pem`` file and the certificate is in ``cert.pem`` fil. 
+
+1. Remove password from ``key.pem`` file: ``openssl rsa -in key.pem -out keyout.pem``
+2. Create a PKCS12 file: ``openssl pkcs12 -export -out key.pfx -inkey keyout.pem -in cert.pem`` 
+3. Convert the pfx file to jks file: ``keytool -importkeystore -deststorepass 1111_aaaa -destkeystore my-keystore.jks -srckeystore key.p12 -srcstoretype PKCS12``
 
 ## Certificate Related
 
