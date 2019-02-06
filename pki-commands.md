@@ -63,6 +63,16 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 * Extract all the certs, including the CA Chain: ``openssl crl2pkcs7 -nocrl -certfile key.pem | openssl pkcs7 -print_certs -out key.cert``
 * Extracting the key: ``openssl rsa -in foo.pem -out foo.key``
 
+## Keystore/Trustore-Specific
+
+* Change an alias of an entry in the JKS store:
+
+  ```
+  keytool -changealias -alias "caroot" -destalias "<new_alias>" -keystore <keystore_name>
+  ```
+
+* Delete an entry with a given alias: ``keytool -delete -alias caroot -keystore standalone.keystore.jks``
+ 
 
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
