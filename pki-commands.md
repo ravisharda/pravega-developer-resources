@@ -36,4 +36,12 @@
 
 ## Certificate Related
 
-``openssl x509 -noout -subject -in cert.pem
+``openssl x509 -noout -subject -in cert.pem``
+
+## Keys Related
+
+* Remove the pass phrase on an RSA privat key: ``openssl rsa -in key.pem -out keyout.pem``, then inspect the file.
+* Convert a private key from PEM to DER format: ``openssl rsa -in key.pem -outform DER -out keyout.der``
+* Print out the components of a private key to standard output: ``openssl rsa -in key.pem -text -noout``
+* Just output the public part of a private key: ``openssl rsa -in key.pem -pubout -out pubkey.pem``
+* Output the public part of a private key in RSAPublicKey format: ``openssl rsa -in key.pem -RSAPublicKey_out -out pubkey.pem``
