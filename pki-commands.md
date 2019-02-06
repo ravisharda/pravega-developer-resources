@@ -45,3 +45,9 @@
 * Print out the components of a private key to standard output: ``openssl rsa -in key.pem -text -noout``
 * Just output the public part of a private key: ``openssl rsa -in key.pem -pubout -out pubkey.pem``
 * Output the public part of a private key in RSAPublicKey format: ``openssl rsa -in key.pem -RSAPublicKey_out -out pubkey.pem``
+* Extract all the certs, including the CA Chain: ``openssl crl2pkcs7 -nocrl -certfile key.pem | openssl pkcs7 -print_certs -out key.cert``
+* Extracting the key: ``openssl rsa -in foo.pem -out foo.key``
+
+
+*Further Reading:*
+* https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
