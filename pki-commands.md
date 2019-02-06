@@ -13,3 +13,9 @@
    Example:
    keytool -list -v -keystore bookie.truststore.jks
    ```
+   
+ * Displaying the contents of a file containing private key using OpenSSL
+   ```
+   Example:
+   openssl pkcs8 -inform PEM -in key.pem -topk8 (then enter password on the prompt)
+   ```
