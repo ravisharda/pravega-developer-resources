@@ -76,19 +76,44 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
   ```
 
 * Delete an entry with a given alias: ``keytool -delete -alias caroot -keystore standalone.keystore.jks``
- 
+* Checking which certificates are in Java Keystore: ``keytool -list -v -keystore bookie.truststore.jks``
+* Check a particular keystore entry using an alias: ``keytool -list -v -keystore bookie.truststore.jks -alias caroot``
+* List trusted CA Certs: 
+  ```
+  keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
+  keytool -list -v -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts
+  
+  # List details about a particular CA cert in the Trusted CA Certs list by alias:
+  keytool -list -v -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -alias local-CA
+  ```
+* 
 
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
 
-## Hitting a TLS-Protected REST Service 
+## Hitting a TLS-Protected Service using cURL or OpenSSL
 
 ```
 curl -v -k https://localhost:9091/v1/scopes (-k == --insecure)
 
+
 # Use TLS 1.1
 curl -v -k -tlsv1.1 -cacert cert.pem https://localhost:9091/v1/scopes
+
+# Check an SSL connection. All the certificates (including Intermediates) should be displayed
+openssl s_client -connect www.paypal.com:443
+
+openssl s_client -showcerts -connect localhost:9091
+
+openssl s_client -help
 ```
+
+## General OpenSSL Commands
+
+* Checking OpenSSL Version: ``openssl version -a``
+* 
+
+
 ## Further Reading
 * [Most Common OpenSSL Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
 * [Most Common Keytool Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html)
