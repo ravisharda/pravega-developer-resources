@@ -51,3 +51,6 @@
 
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
+
+## Further Reading
+* [Most Common OpenSSL Commands - SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
