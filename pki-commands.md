@@ -41,8 +41,8 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 |S.No.|Command|Description|
 |:--:|:-------|:---------|
 |1.| ``openssl rsa -in key.pem -out keyout.pem`` | Remove password from ``key.pem`` file. |
-|2.| ``openssl pkcs12 -export -out key.pfx -inkey keyout.pem -in cert.pem`` (Enter an appropriate export password, when prompted.) |  Create a PKCS12 file containing the key. |
-|3.| ``keytool -importkeystore -deststorepass 1111_aaaa -destkeystore my-keystore.jks -srckeystore key.pfx -srcstoretype PKCS12`` | Convert the pfx file to jks file. |
+|2.| ``openssl pkcs12 -export -out key.pfx -inkey keyout.pem -in cert.pem -name localhost`` (Enter an appropriate export password, when prompted.) |  Create a PKCS12 file containing the key. |
+|3.| ``keytool -importkeystore -deststorepass 1111_aaaa -destkeystore standalone.keystore..jks -srckeystore key.pfx -srcstoretype PKCS12`` | Convert the pfx file to jks file. |
 
 (Note: PKCS12 files tend to have extensions .pfx or .p12)
 
