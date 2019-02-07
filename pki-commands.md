@@ -40,12 +40,13 @@
    
 ## Adding an existing server certificate into a truststore file
 
-AssumptionL the certificate is in ``cert.pem`` file. 
+Assumption: the certificate is in ``cert.pem`` file. 
 
 |S.No.|Command|Description|
 |:----:|:-------|:--------|
 |1.|``openssl x509 -outform der -in cert.pem -out cert.der``| Convert the PEM certificate into a DER file. |
-|2.|``keytool -import -v -trustcacerts -alias caroot -file cert.der -keystore standalone.truststore.jks``| Create the standalone.truststore.jks truststore file and add the server certificate to the truststore.|
+|2.|``keytool -import -v -trustcacerts -alias caroot -file cert.der -keystore standalone.truststore.jks``| Create the standalone.truststore.jks truststore file and add the server certificate to the truststore. Enter password 1111_aaaa at the "Enter Keystore Password" prompt.|
+|3.| ``keytool -list -v -keystore standalone.keystore.jks``| List the truststore's content to verify everything is in order.|
    
 ## Adding an existing server certificate and key into a keystore file
 
