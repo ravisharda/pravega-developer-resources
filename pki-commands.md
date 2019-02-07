@@ -127,7 +127,9 @@ openssl s_client -help
 ## Further Reading
 * [Most Common OpenSSL Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
 * [Most Common Keytool Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html)
-* [Glassfish - Generate a Certificate Using Keytool](https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html)
-* Creating certificates and keys for a omponent:
-  * [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
+* Creating certs and keystore/truststores
+  * [Glassfish - Generate a Certificate Using Keytool](https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html)
+  * [Confluent Platform - Encryption and Authentication with SSL](https://docs.confluent.io/current/kafka/authentication_ssl.html)
+  * Creating certificates and keys for a omponent: [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
+  * https://stackoverflow.com/questions/47434877/how-to-generate-keystore-and-truststore
 
