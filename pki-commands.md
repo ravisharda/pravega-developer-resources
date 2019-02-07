@@ -38,9 +38,18 @@
 3. Import the certificate into the local JVM's trust store: 
    ```sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -file cert.der``` (default password is "changeit")
    
+## Adding an existing server certificate into a truststore file
+
+AssumptionL the certificate is in ``cert.pem`` file. 
+
+|S.No.|Command|Description|
+|:----:|:-------|:--------|
+|1.|``openssl x509 -outform der -in cert.pem -out cert.der``| Convert the PEM certificate into a DER file. |
+|2.|``keytool -import -v -trustcacerts -alias caroot -file cert.der -keystore standalone.truststore.jks``| Create the standalone.truststore.jks truststore file and add the server certificate to the truststore.|
+   
 ## Adding an existing server certificate and key into a keystore file
 
-Assumption: the key is in a password-protected ``key.pem`` file and the certificate is in ``cert.pem`` fil. 
+Assumption: the key is in a password-protected ``key.pem`` file and the certificate is in ``cert.pem`` file. 
 
 |S.No.|Command|Description|
 |:--:|:-------|:---------|
