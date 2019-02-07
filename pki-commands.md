@@ -46,7 +46,7 @@ Assumption: the certificate is in ``cert.pem`` file.
 |:----:|:-------|:--------|
 |1.|``openssl x509 -outform der -in cert.pem -out cert.der``| Convert the PEM certificate into a DER file. |
 |2.|``keytool -import -v -trustcacerts -alias caroot -file cert.der -keystore standalone.truststore.jks``| Create the standalone.truststore.jks truststore file and add the server certificate to the truststore. Enter password 1111_aaaa at the "Enter Keystore Password" prompt.|
-|3.| ``keytool -list -v -keystore standalone.keystore.jks``| List the truststore's content to verify everything is in order.|
+|3.| ``keytool -list -v -keystore standalone.keystore.jks``| List the truststore's contents to verify everything is in order.|
    
 ## Adding an existing server certificate and key into a keystore file
 
@@ -127,6 +127,7 @@ openssl s_client -help
 ## Further Reading
 * [Most Common OpenSSL Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
 * [Most Common Keytool Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html)
+* [Glassfish - Generate a Certificate Using Keytool](https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html)
 * Creating certificates and keys for a omponent:
   * [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
 
