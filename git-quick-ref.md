@@ -61,6 +61,18 @@ git checkout -b issue-3227-auth-logic
 git push origin issue-3227-auth-logic
 ```
 
+## Merging a PR to a branch to test out the changes
+
+```
+# git fetch origin pull/ID/head:BRANCHNAME
+# Assumptions:
+# PR no. = 3356, branch in which to test out is: r0.4
+#
+git clone https://github.com/pravega/pravega.git
+git fetch origin pull/3356/head:r0.4
+git checkout r0.4
+```
+
 ## Updating your Branch on Your Fork with Latest Code From Master on Main Repo
 1. Download the forked copy from GitHub: ``git clone https://github.com/ravisharda/pravega.git``
 2. Add an upstream remote branch, which will facilitate pulling down new commits from the main repo: ``git remote add upstream https://github.com/pravega/pravega.git``. (Verify using ``git remote -v``)
