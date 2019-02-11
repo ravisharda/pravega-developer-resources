@@ -144,14 +144,15 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    # a) Export the certificate from the keystore:
    keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file exported-cert-file \
         -storepass 1111_aaaa
+   Optionally, to view the contents of the generated file, execute: 
    
    # b) Sign the exported certificate by the CA.
    openssl x509 -req -CA ca-cert -CAkey ca-key -in exported-cert-file -out server-cert-signed \
         -days 3650 -CAcreateserial -passin pass:1111_aaaa
         
-   #c) Import the CA certificate and the server's signed certificate into the server's keystore:     
-   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa -noprompt
+   #c) Import the CA certificate and the server's signed certificate into the server's keystore:  
    
+   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa -noprompt
    keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed -storepass 1111_aaaa -noprompt
    
    # Now, check the server keystore to see everything is in order: 
@@ -176,6 +177,11 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl pkcs8 -inform PEM -in key.pem -topk8
      
    # c) Export the server's certificate from the server keystore. 
+   
+   Maybe do this:
+   keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file cert.pem \
+        -storepass 1111_aaaa
+   
    # Note: .crt or .cer files are DER formatted file.
    openssl x509 -outform der -in key.pem -out cert.crt -passin pass:1111_aaaa
    
