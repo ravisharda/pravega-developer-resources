@@ -101,6 +101,17 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
 
+## Creating PKI Infrastructure for a Cluster
+
+|S.No|Command|Description|
+|:----:|:-----|:-----------|
+|1.|-|-|
+
+
+*Further Reading:*
+* https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-keys-certs
+* https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html
+
 ## Hitting a TLS-Protected Service using cURL or OpenSSL
 
 ```
