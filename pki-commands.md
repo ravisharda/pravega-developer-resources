@@ -176,7 +176,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    # Note: .crt or .cer files are DER formatted file.
    openssl x509 -outform der -in key.pem -out cert.crt -passin pass:1111_aaaa
    
-   Optionally verify the certificate using: openssl x509 -text -inform DER -in cert.pem
+   Optionally verify the certificate using: openssl x509 -text -inform DER -in cert.crt
    
    # Convert the der file into a pem file
    openssl x509 -inform der -in cert.crt -out cert.pem
