@@ -158,8 +158,11 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
         
    #c) Import the CA certificate and the server's signed certificate into the server's keystore:  
    
-   keytool -keystore standalone.server.keystore.jks -alias CARoot -noprompt -import -file ca-cert -storepass 1111_aaaa
-   keytool -keystore standalone.server.keystore.jks -alias localhost -noprompt -import -file server-cert-signed.pem -storepass 1111_aaaa
+   keytool -keystore standalone.server.keystore.jks -alias CARoot -noprompt \
+              -import -file ca-cert -storepass 1111_aaaa
+              
+   keytool -keystore standalone.server.keystore.jks -alias localhost -noprompt \
+              -import -file server-cert-signed.pem -storepass 1111_aaaa
    
    # Now, check the server keystore to see everything is in order. Expect two entries at this point: 
    #     1) Alias name = caroot, entry type = trustedCertEntry
@@ -177,8 +180,9 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
                            -srcstorepass 1111_aaaa -deststorepass 1111_aaaa
                            
    # b) Export the Private Key into a key.pem PEM file. Here we are creating a pem file with no password   
-   # If you use "openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -passout pass:1111_aaaa",
-   # the key.pem file will have a pem password as well apart from key encryption password. We use -nodes flag to avoid that. 
+   # If you use "openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa 
+   # -passout pass:1111_aaaa", the key.pem file will have a pem password as well apart from key encryption 
+   # password. We use -nodes flag to avoid that. 
    openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -nodes
    
    # Check the key using: 
