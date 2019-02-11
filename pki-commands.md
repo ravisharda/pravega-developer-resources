@@ -114,11 +114,18 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    
    For example,
    keytool -keystore standalone.server.keystore.jks -alias localhost -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"
-   
-   Open SSL Way: "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" 
-  
    ```
-
+2.  List the truststore's contents to verify everything is in order.
+    ```
+    keytool -list -v -keystore standalone.server.keystore.jks
+    ```
+3. Create a Certificate Authority (CA). 
+   ```
+   1. Generate a CA, which in turn is public-private key pair and certificate. The CA will be used to sign other certificates. 
+   openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650  -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" -passin pass:1111_aaaa -passout pass:1111_aaaa
+   ```
+4.    
+  
 
 *Further Reading:*
 * https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-keys-certs
