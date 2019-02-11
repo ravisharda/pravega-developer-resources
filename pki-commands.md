@@ -107,7 +107,9 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.server.keystore.jks -alias localhost -genkey
    
    # Without user prompts
-   keytool -keystore standalone.server.keystore.jks -alias localhost -validity <validity> -genkey -storepass <keystore-pass> -keypass <key-pass> -dname <distinguished-name> -ext SAN=DNS:<hostname>
+   keytool -keystore standalone.server.keystore.jks -alias localhost -validity <validity> -genkey \ 
+         -storepass <keystore-pass> -keypass <key-pass> \
+         -dname <distinguished-name> -ext SAN=DNS:<hostname>
    
    Where:
    - <validity> is the length of time (in days) that the certificate will be valid. For example, 3650
@@ -128,9 +130,14 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
                -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" \
                -passin pass:1111_aaaa -passout pass:1111_aaaa
    
-   2. Add the generated CA to a new truststore that the client can use as a trusted CA.
-   keytool -keystore standalone.client.truststore.jks -alias CARoot -import -file ca-cert
-               
+   2. Add the generated CA to a new truststore for use by the clients.
+   keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
+        -storepass 1111_aaaa
+   
+  
+   3. Add the generated CA certificate to a new certificate for use by the server components. 
+   keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
+       -storepass 1111_aaaa        
    ```
 4.    
   
