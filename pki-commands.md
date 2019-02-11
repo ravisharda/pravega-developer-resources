@@ -179,36 +179,20 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    # b) Export the Private Key into a key.pem PEM file. Here we are creating a pem file with no password   
    # If you use "openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -passout pass:1111_aaaa",
    # the key.pem file will have a pem password as well apart from key encryption password. We use -nodes flag to avoid that. 
-
    openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -nodes
    
    # Check the key using: 
    openssl pkcs8 -inform PEM -in key.pem -topk8 -passin pass:1111_aaaa
-     
- 5. Export the server's certificate from the server keystore. 
-    
-    openssl pkcs12 -in standalone.server.keystore.p12 -nokeys -out cert.pem -passin pass:1111_aaaa
-  
-    (Alternative way:
-
-     Maybe do this:
-     keytool -keystore standalone.server.keystore.jks -alias localhost -file cert.pem \
-        -storepass 1111_aaaa
-        
-   # Note: .crt or .cer files are DER formatted file.
-   openssl x509 -outform der -in key.pem -out cert.crt -passin pass:1111_aaaa
-   
-   Optionally verify the certificate using: openssl x509 -text -inform DER -in cert.crt
-   
-   # Convert the der file into a pem file
-   openssl x509 -inform der -in cert.crt -out cert.pem
-   )
-   
-   # Check the certificate using:
-   keytool -printcert -v -file cert.pem
-                          
    ```
-6. Do a final verification. Run the following commands and compare the modulus, which should be the same value. 
+     
+ 5. Export the server's certificate from the server keystore. Actually, you don't really need to this, as you already have it
+    in the form of ``server-cert-signed.pem``. Just rename it to cert.pem. 
+    ```
+    mv server-cert-signed.pem cert.pem
+    ```
+                          
+6. Do a final verification. Run the following commands and compare the modulus. If the modulus of the all three command 
+   matches, you should be good to go.  
 
    ```
    # For the key:
@@ -218,7 +202,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl x509 -noout -modulus -in cert.pem
    
    # For the certificate signing request
-   openssl req -noout -modulus -in exported-cert-file
+   openssl req -noout -modulus -in signing-request.csr
    ```
 
 
