@@ -96,16 +96,28 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
   # List details about a particular CA cert in the Trusted CA Certs list by alias:
   keytool -list -v -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -alias local-CA
   ```
-* 
 
 *Further Reading:*
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
 
 ## Creating PKI Infrastructure for a Cluster
-
-|S.No|Command|Description|
-|:----:|:-----|:-----------|
-|1.|-|-|
+1. Generate the key and the certificate for each component in the cluster - in this case just the standalone server. Note that the server certificate is used by server and verified by client for server identity. You can export the key from the keystore file later and sign it later with CA.
+   ```
+   # With user prompts
+   keytool -keystore standalone.server.keystore.jks -alias localhost -genkey
+   
+   # Without user prompts
+   keytool -keystore kafka.server.keystore.jks -alias localhost -validity <validity> -genkey -storepass <keystore-pass> -keypass <key-pass> -dname <distinguished-name> -ext SAN=DNS:<hostname>
+   
+   Where:
+   - <validity> is the length of time (in days) that the certificate will be valid.
+   - 
+   
+   keytool -keystore standalone.server.keystore.jks -alias localhost -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa -dname {distinguished-name} -ext SAN=DNS:{hostname}
+   
+   
+   
+   ```
 
 
 *Further Reading:*
