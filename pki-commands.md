@@ -1,5 +1,6 @@
 # PKI Commands
 
+
 ## Displaying the contents of certificates, keys and keystores/truststores
 
 * Displaying the contents of certificates using OpenSSL
@@ -208,7 +209,18 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    # For the certificate signing request
    openssl req -noout -modulus -in signing-request.csr
    ```
+6. Since the CA is newly created, you will need to add the CA certificate to the JVM's 
+   ```
+   openssl x509 -in ca-cert -inform pem -out ca-cert.der -outform der
+   
+   keytool -v -printcert -file ca-cert.der
+   
+   sudo keytool -importcert -alias localCA \
+    -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts \
+    -storepass changeit -noprompt \
+    -file ca-cert.der
 
+   ```
 
 *Further Reading:*
 * https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-
