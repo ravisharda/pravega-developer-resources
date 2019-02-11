@@ -110,12 +110,13 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
          -dname <distinguished-name> -ext SAN=DNS:<hostname>
    
    # For example,
-   keytool -keystore standalone.server.keystore.jks \
-      -genkey -keyalg RSA -keysize 2048 -keypass 1111_aaaa \
-      -alias localhost -validity 3650 -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US" \  
+   keytool -keystore standalone.server.keystore.jks\
+      -genkey -keyalg RSA -keysize 2048 -keypass 1111_aaaa\
+      -alias localhost -validity 3650\
+      -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"\
       -storepass 1111_aaaa
       
-   # Optionally, list the truststore's contents to verify everything is in order:
+   Optionally, list the keystore's contents to verify everything is in order: 
    keytool -list -v -keystore standalone.server.keystore.jks
    ```
 2. Create a Certificate Authority (CA). 
@@ -130,6 +131,8 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
         -storepass 1111_aaaa
    
+   Optionally, list the truststore's contents to verify everything is in order:
+   keytool -list -v -keystore standalone.client.truststore.jks
   
    # c) Add the generated CA certificate to a new certificate for use by the server components. 
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
