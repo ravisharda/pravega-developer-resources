@@ -170,7 +170,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -list -v -storepass 1111_aaaa -keystore standalone.server.keystore.jks
    ```
  
- 4. Export the server's key from the server keystore.
+4. Export the server's key from the server keystore.
  
    ```
    # a) Convert the .jks file into a pkcs12 file:
@@ -189,7 +189,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl pkcs8 -inform PEM -in key.pem -topk8 -passin pass:1111_aaaa
    ```
      
- 5. Export the server's certificate from the server keystore. Actually, you don't really need to this, as you already have it
+5. Export the server's certificate from the server keystore. Actually, you don't really need to this, as you already have it
     in the form of ``server-cert-signed.pem``. Just rename it to cert.pem. 
     ```
     mv server-cert-signed.pem cert.pem
