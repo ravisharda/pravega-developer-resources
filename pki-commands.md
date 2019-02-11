@@ -177,6 +177,9 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    
    # Check the certificate using:
    keytool -printcert -v -file cert.pem
+   
+   For more info about the certificate:
+   openssl x509 -text -inform DER -in cert.pem
                            
    ```
 
