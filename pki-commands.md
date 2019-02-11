@@ -102,6 +102,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 
 ## Creating PKI Infrastructure for a Cluster
 1. Generate the key and the certificate for each component in the cluster - in this case just the standalone server. Note that the server certificate is used by server and verified by client for server identity. You can export the key from the keystore file later and sign it later with CA.
+
    ```
    # With user prompts
    keytool -keystore standalone.server.keystore.jks -alias localhost -genkey
@@ -118,12 +119,11 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.server.keystore.jks -alias localhost \
       -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa \
       -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"
+      
+   Optionally, list the truststore's contents to verify everything is in order:
+   keytool -list -v -keystore standalone.server.keystore.jks
    ```
-2.  List the truststore's contents to verify everything is in order.
-    ```
-    keytool -list -v -keystore standalone.server.keystore.jks
-    ```
-3. Create a Certificate Authority (CA). 
+2. Create a Certificate Authority (CA). 
    ```
    a) Generate a CA, which in turn is public-private key pair and certificate. The CA will be used to sign other certificates. 
    openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650 \
@@ -139,7 +139,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
        -storepass 1111_aaaa        
    ```
-4.   Now, sign the server's certificates using the generated CA. 
+3. Now, sign the server's certificates using the generated CA. 
    
    ```
    a) Export the certificate from the keystore:
@@ -151,8 +151,11 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
         -days 3650 -CAcreateserial -passin pass:1111_aaaa
         
    c) Import the CA certificate and the server's signed certificate into the server's keystore:     
-   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa
-   keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed
+   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa -noprompt
+   keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed -storepass 1111_aaaa -noprompt
+   
+   Now, check the server keystore to see everything is in order: 
+   keytool -list -v -keystore standalone.server.keystore.jks
    ```
   
 
@@ -191,4 +194,3 @@ openssl s_client -help
   * [Confluent Platform - Encryption and Authentication with SSL](https://docs.confluent.io/current/kafka/authentication_ssl.html)
   * Creating certificates and keys for a omponent: [HortonWorks Data Platform - Create and Set Up an Internal CA OpenSSL](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html)
   * https://stackoverflow.com/questions/47434877/how-to-generate-keystore-and-truststore
-
