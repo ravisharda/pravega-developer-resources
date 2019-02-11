@@ -125,21 +125,35 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
     ```
 3. Create a Certificate Authority (CA). 
    ```
-   1. Generate a CA, which in turn is public-private key pair and certificate. The CA will be used to sign other certificates. 
+   a) Generate a CA, which in turn is public-private key pair and certificate. The CA will be used to sign other certificates. 
    openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650 \
                -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" \
                -passin pass:1111_aaaa -passout pass:1111_aaaa
    
-   2. Add the generated CA to a new truststore for use by the clients.
+   b) Add the generated CA to a new truststore for use by the clients.
    keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
         -storepass 1111_aaaa
    
   
-   3. Add the generated CA certificate to a new certificate for use by the server components. 
+   c) Add the generated CA certificate to a new certificate for use by the server components. 
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
        -storepass 1111_aaaa        
    ```
-4.    
+4.   Now, sign the server's certificates using the generated CA. 
+   
+   ```
+   a) Export the certificate from the keystore:
+   keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file exported-cert-file \
+        -storepass 1111_aaaa
+   
+   b) Sign the exported certificate by the CA.
+   openssl x509 -req -CA ca-cert -CAkey ca-key -in exported-cert-file -out server-cert-signed \
+        -days 3650 -CAcreateserial -passin pass:1111_aaaa
+        
+   c) Import the CA certificate and the server's signed certificate into the server's keystore:     
+   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa
+   keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed
+   ```
   
 
 *Further Reading:*
