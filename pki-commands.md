@@ -127,7 +127,9 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650 \
                -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" \
                -passin pass:1111_aaaa -passout pass:1111_aaaa
-               
+   
+   2. Add the generated CA to a new truststore that the client can use as a trusted CA.
+   keytool -keystore standalone.client.truststore.jks -alias CARoot -import -file ca-cert
                
    ```
 4.    
