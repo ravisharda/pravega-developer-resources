@@ -107,16 +107,16 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.server.keystore.jks -alias localhost -genkey
    
    # Without user prompts
-   keytool -keystore kafka.server.keystore.jks -alias localhost -validity <validity> -genkey -storepass <keystore-pass> -keypass <key-pass> -dname <distinguished-name> -ext SAN=DNS:<hostname>
+   keytool -keystore standalone.server.keystore.jks -alias localhost -validity <validity> -genkey -storepass <keystore-pass> -keypass <key-pass> -dname <distinguished-name> -ext SAN=DNS:<hostname>
    
    Where:
-   - <validity> is the length of time (in days) that the certificate will be valid.
-   - 
+   - <validity> is the length of time (in days) that the certificate will be valid. For example, 3650
    
-   keytool -keystore standalone.server.keystore.jks -alias localhost -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa -dname {distinguished-name} -ext SAN=DNS:{hostname}
+   For example,
+   keytool -keystore standalone.server.keystore.jks -alias localhost -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"
    
-   
-   
+   Open SSL Way: "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" 
+  
    ```
 
 
