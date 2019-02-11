@@ -152,14 +152,19 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
         
    #c) Import the CA certificate and the server's signed certificate into the server's keystore:  
    
-   keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa -noprompt
-   keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed -storepass 1111_aaaa -noprompt
+   //keytool -keystore standalone.server.keystore.jks -alias CARoot \
+     //  -import -file ca-cert -storepass 1111_aaaa -noprompt
+   keytool -delete -alias localhost -keystore standalone.server.keystore.jks
+   
+   keytool -keystore standalone.server.keystore.jks -alias localhost -import \
+        -file server-cert-signed -storepass 1111_aaaa -noprompt
    
    # Now, check the server keystore to see everything is in order: 
-   keytool -list -v -keystore standalone.server.keystore.jks
+   keytool -list -v -storepass 1111_aaaa -keystore standalone.server.keystore.jks
    ```
  
  4. Export the server's key from the server keystore.
+ 
    ```
    # a) Convert the .jks file into a pkcs12 file:
    keytool -importkeystore -srckeystore standalone.server.keystore.jks  \
@@ -174,14 +179,18 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -nodes
    
    # Check the key using: 
-   openssl pkcs8 -inform PEM -in key.pem -topk8
+   openssl pkcs8 -inform PEM -in key.pem -topk8 -passin pass:1111_aaaa
      
-   # c) Export the server's certificate from the server keystore. 
-   
-   Maybe do this:
-   keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file cert.pem \
+ 5. Export the server's certificate from the server keystore. 
+    
+    openssl pkcs12 -in standalone.server.keystore.p12 -nokeys -out cert.pem -passin pass:1111_aaaa
+  
+    (Alternative way:
+
+     Maybe do this:
+     keytool -keystore standalone.server.keystore.jks -alias localhost -file cert.pem \
         -storepass 1111_aaaa
-   
+        
    # Note: .crt or .cer files are DER formatted file.
    openssl x509 -outform der -in key.pem -out cert.crt -passin pass:1111_aaaa
    
@@ -189,11 +198,25 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    
    # Convert the der file into a pem file
    openssl x509 -inform der -in cert.crt -out cert.pem
+   )
    
    # Check the certificate using:
    keytool -printcert -v -file cert.pem
                           
    ```
+6. Do a final verification. Run the following commands and compare the modulus, which should be the same value. 
+
+   ```
+   # For the key:
+   openssl rsa -noout -modulus -in key.pem
+   
+   # For the certificate:
+   openssl x509 -noout -modulus -in cert.pem
+   
+   # For the certificate signing request
+   openssl req -noout -modulus -in exported-cert-file
+   ```
+
 
 *Further Reading:*
 * https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-
@@ -221,8 +244,6 @@ openssl s_client -help
 ## General OpenSSL Commands
 
 * Checking OpenSSL Version: ``openssl version -a``
-* 
-
 
 ## Further Reading
 * [Most Common OpenSSL Commands by SSL Shopper](https://www.sslshopper.com/article-most-common-openssl-commands.html)
