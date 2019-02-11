@@ -104,23 +104,18 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 1. Generate the key and the certificate for each component in the cluster - in this case just the standalone server. Note that the server certificate is used by server and verified by client for server identity. You can export the key from the keystore file later and sign it later with CA.
 
    ```
-   # With user prompts
-   keytool -keystore standalone.server.keystore.jks -alias localhost -genkey
-   
    # Without user prompts
    keytool -keystore standalone.server.keystore.jks -alias localhost -validity <validity> -genkey \ 
          -storepass <keystore-pass> -keypass <key-pass> \
          -dname <distinguished-name> -ext SAN=DNS:<hostname>
    
-   Where:
-   - <validity> is the length of time (in days) that the certificate will be valid. For example, 3650
-   
-   For example,
-   keytool -keystore standalone.server.keystore.jks -alias localhost \
-      -validity 3650 -genkey -storepass 1111_aaaa -keypass 1111_aaaa \
-      -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"
+   # For example,
+   keytool -keystore standalone.server.keystore.jks \
+      -genkey -keyalg RSA -keysize 2048 -keypass 1111_aaaa \
+      -alias localhost -validity 3650 -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US" \  
+      -storepass 1111_aaaa
       
-   Optionally, list the truststore's contents to verify everything is in order:
+   # Optionally, list the truststore's contents to verify everything is in order:
    keytool -list -v -keystore standalone.server.keystore.jks
    ```
 2. Create a Certificate Authority (CA). 
@@ -178,7 +173,10 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl pkcs8 -inform PEM -in key.pem -topk8
      
    # c) Export the server's certificate from the server keystore. 
-   openssl x509 -outform der -in key_protected.pem -out cert.pem -passin pass:1111_aaaa
+   openssl x509 -outform der -in key.pem -out cert.pem -passin pass:1111_aaaa
+   
+   # Check the certificate using:
+   keytool -printcert -v -file cert.pem
                            
    ```
 
