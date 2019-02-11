@@ -168,12 +168,17 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
                            -srcstoretype jks -deststoretype pkcs12 \
                            -srcstorepass 1111_aaaa -deststorepass 1111_aaaa
                            
-   # b) Export the Private Key into a key.pem PEM file.     
-   # openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -passout pass:1111_aaaa
-   openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa
+   # b) Export the Private Key into a key.pem PEM file. Here we are creating a pem file with no password   
+   # If you use "openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -passout pass:1111_aaaa",
+   # the key.pem file will have a pem password as well apart from key encryption password. We use -nodes flag to avoid that. 
+
+   openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -nodes
    
+   # Check the key using: 
+   openssl pkcs8 -inform PEM -in key.pem -topk8
+     
    # c) Export the server's certificate from the server keystore. 
-   openssl x509 -outform der -in key.pem -out cert.pem -passin pass:1111_aaaa
+   openssl x509 -outform der -in key_protected.pem -out cert.pem -passin pass:1111_aaaa
                            
    ```
 
