@@ -87,7 +87,7 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 
 * Delete an entry with a given alias: ``keytool -delete -alias caroot -keystore standalone.keystore.jks``
 * Checking which certificates are in Java Keystore: ``keytool -list -v -keystore bookie.truststore.jks``
-* Check a particular keystore entry using an alias: ``keytool -list -v -keystore bookie.truststore.jks -alias caroot``
+* Check a particular keystore entry using an alias: ``keytool -list -v -keystore bookie.truststore.jks -alias caroothjhhj
 * List trusted CA Certs: 
   ```
   keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
@@ -173,14 +173,17 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    openssl pkcs8 -inform PEM -in key.pem -topk8
      
    # c) Export the server's certificate from the server keystore. 
-   openssl x509 -outform der -in key.pem -out cert.pem -passin pass:1111_aaaa
+   # Note: .crt or .cer files are DER formatted file.
+   openssl x509 -outform der -in key.pem -out cert.crt -passin pass:1111_aaaa
+   
+   Optionally verify the certificate using: openssl x509 -text -inform DER -in cert.pem
+   
+   # Convert the der file into a pem file
+   openssl x509 -inform der -in cert.crt -out cert.pem
    
    # Check the certificate using:
    keytool -printcert -v -file cert.pem
-   
-   For more info about the certificate:
-   openssl x509 -text -inform DER -in cert.pem
-                           
+                          
    ```
 
 *Further Reading:*
