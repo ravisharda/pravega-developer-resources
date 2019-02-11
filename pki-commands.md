@@ -160,7 +160,22 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -list -v -keystore standalone.server.keystore.jks
    ```
  
- 4. Export the server's key from the 
+ 4. Export the server's key from the server keystore.
+   ```
+   # a) Convert the .jks file into a pkcs12 file:
+   keytool -importkeystore -srckeystore standalone.server.keystore.jks  \
+                           -destkeystore standalone.server.keystore.p12 \
+                           -srcstoretype jks -deststoretype pkcs12 \
+                           -srcstorepass 1111_aaaa -deststorepass 1111_aaaa
+                           
+   # b) Export the Private Key into a key.pem PEM file.     
+   # openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa -passout pass:1111_aaaa
+   openssl pkcs12 -in standalone.server.keystore.p12 -out key.pem -passin pass:1111_aaaa
+   
+   # c) Export the server's certificate from the server keystore. 
+   openssl x509 -outform der -in key.pem -out cert.pem -passin pass:1111_aaaa
+                           
+   ```
 
 *Further Reading:*
 * https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-
