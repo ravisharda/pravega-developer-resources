@@ -114,12 +114,9 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
       
    # Add "-ext SAN=DNS:<hostname>" if needed.
       
-   # Optionally, list the keystore's contents to verify everything is in order: 
+   # Optionally, list the keystore's contents to verify everything is in order. 
+   # The outout will show 1 entry in the keystore with - Alias name: localhost, Entry type: PrivateKeyEntry.
    keytool -list -v -keystore standalone.server.keystore.jks -storepass 1111_aaaa
-   # The outout will show 1 entry in the keystore with: 
-   #    - Alias name: localhost
-   #    - Entry type: PrivateKeyEntry
-
    ```
 2. Create a Certificate Authority (CA). 
    ```
@@ -133,14 +130,16 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
         -storepass 1111_aaaa
    
-   # Optionally, list the truststore's contents to verify everything is in order:
+   # Optionally, list the truststore's contents to verify everything is in order. Expected 1 entry with
+   # Alias name=caroot, entry type: trustedCertEntry
    keytool -list -v -keystore standalone.client.truststore.jks -storepass 1111_aaaa
   
    # c) Add the generated CA certificate to a new certificate for use by the server components. 
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
        -storepass 1111_aaaa    
        
-   # Optionally, list the truststore's contents to verify everything is in order:
+   # Optionally, list the truststore's contents to verify everything is in order.  Expected 1 entry with
+   # Alias name=caroot, entry type: trustedCertEntry
    keytool -list -v -keystore standalone.server.truststore.jks -storepass 1111_aaaa
    ```
 3. Now, sign the server's certificates using the generated CA. 
@@ -159,16 +158,12 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
         
    #c) Import the CA certificate and the server's signed certificate into the server's keystore:  
    
-   //keytool -keystore standalone.server.keystore.jks -alias CARoot \
-     //  -import -file ca-cert -storepass 1111_aaaa -noprompt
-   keytool -delete -alias localhost -keystore standalone.server.keystore.jks
+   keytool -keystore standalone.server.keystore.jks -alias CARoot -noprompt -import -file ca-cert -storepass 1111_aaaa
+   keytool -keystore standalone.server.keystore.jks -alias localhost -noprompt -import -file server-cert-signed.pem -storepass 1111_aaaa
    
-   keytool -list -v -keystore standalone.server.truststore.jks -storepass 1111_aaaa
-   
-   keytool -keystore standalone.server.keystore.jks -alias localhost -import \
-        -file server-cert-signed.pem -storepass 1111_aaaa -noprompt
-   
-   # Now, check the server keystore to see everything is in order: 
+   # Now, check the server keystore to see everything is in order. Expect two entries at this point: 
+   #     1) Alias name = caroot, entry type = trustedCertEntry
+   #     2) Alias name = localhost, entry type = PrivateKeyEntry
    keytool -list -v -storepass 1111_aaaa -keystore standalone.server.keystore.jks
    ```
  
