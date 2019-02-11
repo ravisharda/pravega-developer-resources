@@ -125,42 +125,47 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
    ```
 2. Create a Certificate Authority (CA). 
    ```
-   a) Generate a CA, which in turn is public-private key pair and certificate. The CA will be used to sign other certificates. 
+   # a) Generate a CA, which in turn is public-private key pair and certificate. The CA will be used 
+   # to sign other certificates. 
    openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650 \
                -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" \
                -passin pass:1111_aaaa -passout pass:1111_aaaa
    
-   b) Add the generated CA to a new truststore for use by the clients.
+   # b) Add the generated CA to a new truststore for use by the clients.
    keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
         -storepass 1111_aaaa
    
   
-   c) Add the generated CA certificate to a new certificate for use by the server components. 
+   # c) Add the generated CA certificate to a new certificate for use by the server components. 
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
        -storepass 1111_aaaa        
    ```
 3. Now, sign the server's certificates using the generated CA. 
    
    ```
-   a) Export the certificate from the keystore:
+   # a) Export the certificate from the keystore:
    keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file exported-cert-file \
         -storepass 1111_aaaa
    
-   b) Sign the exported certificate by the CA.
+   # b) Sign the exported certificate by the CA.
    openssl x509 -req -CA ca-cert -CAkey ca-key -in exported-cert-file -out server-cert-signed \
         -days 3650 -CAcreateserial -passin pass:1111_aaaa
         
-   c) Import the CA certificate and the server's signed certificate into the server's keystore:     
+   #c) Import the CA certificate and the server's signed certificate into the server's keystore:     
    keytool -keystore standalone.server.keystore.jks -alias CARoot -import -file ca-cert -storepass 1111_aaaa -noprompt
+   
    keytool -keystore standalone.server.keystore.jks -alias localhost -import -file server-cert-signed -storepass 1111_aaaa -noprompt
    
-   Now, check the server keystore to see everything is in order: 
+   # Now, check the server keystore to see everything is in order: 
    keytool -list -v -keystore standalone.server.keystore.jks
    ```
-  
+ 
+ 4. Export the server's key from the 
 
 *Further Reading:*
-* https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-keys-certs
+* https://docs.confluent.io/current/tutorials/security_tutorial.html#generating-
+
+s-certs
 * https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/configuring-wire-encryption/content/create_and_set_up_an_internal_ca_openssl.html
 
 ## Hitting a TLS-Protected Service using cURL or OpenSSL
