@@ -101,53 +101,60 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
 * https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
 
 ## Creating PKI Infrastructure for a Cluster
-1. Generate the key and the certificate for each component in the cluster - in this case just the standalone server. Note that the server certificate is used by server and verified by client for server identity. You can export the key from the keystore file later and sign it later with CA.
+1. Generate the key and the certificate for each component in the cluster - in this case just the standalone server. 
+   
+   Note that the server certificate is used by server and verified by client for server identity. You can export the key from the keystore file later and sign it later with CA.
 
    ```
-   # Without user prompts
-   keytool -keystore standalone.server.keystore.jks -alias localhost -validity <validity> -genkey \ 
-         -storepass <keystore-pass> -keypass <key-pass> \
-         -dname <distinguished-name> -ext SAN=DNS:<hostname>
-   
-   # For example,
    keytool -keystore standalone.server.keystore.jks\
       -genkey -keyalg RSA -keysize 2048 -keypass 1111_aaaa\
       -alias localhost -validity 3650\
       -dname "CN=localhost, OU=standalone, O=Pravega, L=Seattle, S=Washington, C=US"\
       -storepass 1111_aaaa
       
-   Optionally, list the keystore's contents to verify everything is in order: 
-   keytool -list -v -keystore standalone.server.keystore.jks
+   # Add "-ext SAN=DNS:<hostname>" if needed.
+      
+   # Optionally, list the keystore's contents to verify everything is in order: 
+   keytool -list -v -keystore standalone.server.keystore.jks -storepass 1111_aaaa
+   # The outout will show 1 entry in the keystore with: 
+   #    - Alias name: localhost
+   #    - Entry type: PrivateKeyEntry
+
    ```
 2. Create a Certificate Authority (CA). 
    ```
    # a) Generate a CA, which in turn is public-private key pair and certificate. The CA will be used 
    # to sign other certificates. 
    openssl req -new -x509 -keyout ca-key -out ca-cert -days 3650 \
-               -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=standalone/CN=localhost" \
+               -subj "/C=US/ST=Washington/L=Seattle/O=Pravega/OU=CA/CN=CA" \
                -passin pass:1111_aaaa -passout pass:1111_aaaa
    
    # b) Add the generated CA to a new truststore for use by the clients.
    keytool -keystore standalone.client.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
         -storepass 1111_aaaa
    
-   Optionally, list the truststore's contents to verify everything is in order:
-   keytool -list -v -keystore standalone.client.truststore.jks
+   # Optionally, list the truststore's contents to verify everything is in order:
+   keytool -list -v -keystore standalone.client.truststore.jks -storepass 1111_aaaa
   
    # c) Add the generated CA certificate to a new certificate for use by the server components. 
    keytool -keystore standalone.server.truststore.jks -noprompt -alias CARoot -import -file ca-cert \
-       -storepass 1111_aaaa        
+       -storepass 1111_aaaa    
+       
+   # Optionally, list the truststore's contents to verify everything is in order:
+   keytool -list -v -keystore standalone.server.truststore.jks -storepass 1111_aaaa
    ```
 3. Now, sign the server's certificates using the generated CA. 
    
    ```
    # a) Export the certificate from the keystore:
-   keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file exported-cert-file \
+   keytool -keystore standalone.server.keystore.jks -alias localhost -certreq -file signing-request.csr \
         -storepass 1111_aaaa
-   Optionally, to view the contents of the generated file, execute: 
+        
+   # Optionally, to view the contents of the generated file, execute: 
+   openssl req -in signing-request.csr -noout -text
    
    # b) Sign the exported certificate by the CA.
-   openssl x509 -req -CA ca-cert -CAkey ca-key -in exported-cert-file -out server-cert-signed \
+   openssl x509 -req -CA ca-cert -CAkey ca-key -in signing-request.csr -out server-cert-signed.pem \
         -days 3650 -CAcreateserial -passin pass:1111_aaaa
         
    #c) Import the CA certificate and the server's signed certificate into the server's keystore:  
@@ -156,8 +163,10 @@ Assumption: the key is in a password-protected ``key.pem`` file and the certific
      //  -import -file ca-cert -storepass 1111_aaaa -noprompt
    keytool -delete -alias localhost -keystore standalone.server.keystore.jks
    
+   keytool -list -v -keystore standalone.server.truststore.jks -storepass 1111_aaaa
+   
    keytool -keystore standalone.server.keystore.jks -alias localhost -import \
-        -file server-cert-signed -storepass 1111_aaaa -noprompt
+        -file server-cert-signed.pem -storepass 1111_aaaa -noprompt
    
    # Now, check the server keystore to see everything is in order: 
    keytool -list -v -storepass 1111_aaaa -keystore standalone.server.keystore.jks
