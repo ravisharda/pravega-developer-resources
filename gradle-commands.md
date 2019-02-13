@@ -5,15 +5,15 @@
 * Install jars into local repo:``./gradlew install``
 * Generate a distribution:``./gradlew distribution -x test``
 * ``./gradlew clean javadocs``
-* Running checkstyle for tests of standalone module: ``./gradlew :standalone:checkstyleTest``
+* Running checkstyle for tests of standalone module: ````
 * Examples of common Gradle tasks
 
 | Tasks | Standalone | Controller |
 |:------:|:----------| :----------|
-|Checkstyle|./gradlew :standalone:checkstyleMain|./gradlew :controller:checkstyleMain|
-|Compile| ./gradlew :standalone:compileJava| ./gradlew :controller:compileJava |
-|Tests|./gradlew :standalone:test|./gradlew :controller:test  |
-|Builds|./gradlew :standalone:build|./gradlew :controller:build |
+|Checkstyle|``./gradlew :standalone:checkstyleMain``, ``./gradlew :standalone:checkstyleTest``|``./gradlew :controller:checkstyleMain``|
+|Compile|``./gradlew :standalone:compileJava``|``./gradlew :controller:compileJava``|
+|Tests|``./gradlew :standalone:test``|``./gradlew :controller:test ``|
+|Builds|``./gradlew :standalone:build``|``./gradlew :controller:build``|
 * Running a specific test in a module:
 ```
 ./gradlew :module:tas; --tests "nameoftest"
