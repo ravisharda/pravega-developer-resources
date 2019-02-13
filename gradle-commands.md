@@ -5,11 +5,12 @@
 * Install jars into local repo:``./gradlew install``
 * Generate a distribution:``./gradlew distribution -x test``
 * ``./gradlew clean javadocs``
+* Running checkstyle for tests of standalone module: ``./gradlew :standalone:checkstyleTest``
 * Examples of common Gradle tasks
 
 | Tasks | Standalone | Controller |
 |:------:|:----------| :----------|
-|Checkstyle| ./gradlew :standalone:checkstyleMain|./gradlew :controller:checkstyleMain|
+|Checkstyle|./gradlew :standalone:checkstyleMain|./gradlew :controller:checkstyleMain|
 |Compile| ./gradlew :standalone:compileJava| ./gradlew :controller:compileJava |
 |Tests|./gradlew :standalone:test|./gradlew :controller:test  |
 |Builds|./gradlew :standalone:build|./gradlew :controller:build |
@@ -19,6 +20,7 @@
 Example:
 ./gradlew :controller:test --tests "io.pravega.controller.server.rpc.auth.PravegaAuthManagerTest"
 ```
+
 
 * Local repo: 
   * Gradle: ``~/.gradle/caches/modules-2/files-2.1``
