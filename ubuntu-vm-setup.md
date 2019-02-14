@@ -19,6 +19,11 @@
   ```
 * Installing IntelliJ Idea
   * https://websiteforstudents.com/install-intellij-idea-ide-on-ubuntu-16-04-17-10-18-04/
+  * Using Snapd
+    ```
+    sudo apt install snapd
+    sudo snap install intellij-idea-community --classic
+    ```
 
 ## From Server on Azure
 * Update apt-get: ``sudo apt-get update``
