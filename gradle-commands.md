@@ -37,7 +37,7 @@ Steps:
 
 *Dependency tree for all projects*
 * Checking dependencies of a specific project:
-```
+```groovy
 ./gradlew <project>:dependencies`` 
 for example: ``./gradlew :controller:dependencies``
 ```
@@ -47,7 +47,7 @@ for example: ``./gradlew :controller:dependencies``
 
 * Add ``apply plugin: 'project-report'`` to allProjects
   * Add the following to allProjects
-      ```
+      ```groovy
       htmlDependencyReport {
         projects = project.allprojects
       }
@@ -60,14 +60,13 @@ for example: ``./gradlew :controller:dependencies``
 * See additional ways [here](https://stackoverflow.com/questions/21645071/using-gradle-to-find-dependency-tree/44725823). 
 
 
-
 ## Dependency checker for all projects:
 
 *OWASP Dependency Checker:*
 (Read more about it [here](https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html).)
 
 1. Add the following highlighted lines:
-    ```
+    ```groovy
     buildscript {
        ....
        dependencies {
@@ -79,3 +78,15 @@ for example: ``./gradlew :controller:dependencies``
     ```
 2. Now, execute ``./gradlew dependencyCheckAggregate``.
 3. Look for the output at build/reports/dependency-check-report.html
+
+## How to DOs
+
+### Outputting stdout to a file, as well as to the console
+
+Add the following to the task (say, to startStandalone task):
+```groovy
+doFirst {
+     standardOutput = new org.apache.tools.ant.util.TeeOutputStream(
+     new FileOutputStream("consoleLogs/someFile.out"), System.out);
+}
+```
