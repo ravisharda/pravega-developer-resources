@@ -21,9 +21,10 @@
 ## From Server on Azure
 * Update apt-get: ``sudo apt-get update``
 * Install Ubuntu desktop: ``sudo apt-get install ubuntu-desktop``
+  * See complete steps to install and connect via RDP to a Azure-hosted Ubunutu server [here](https://buildazure.com/2018/02/28/how-to-setup-an-ubuntu-linux-vm-in-azure-with-remote-desktop-rdp-access/)
 * Installing Open JDK 11: 
   * See https://www.linuxuprising.com/2019/01/how-to-install-openjdk-11-in-ubuntu.html
-  * 
+ 
 
 ## General
 * Checking Ubuntu version: ``lsb_release -a``
