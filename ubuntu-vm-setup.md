@@ -21,3 +21,9 @@
 ## From Server on Azure
 * Update apt-get: ``sudo apt-get update``
 * Install Ubuntu desktop: ``sudo apt-get install ubuntu-desktop``
+* Installing Open JDK 11: 
+  * See https://www.linuxuprising.com/2019/01/how-to-install-openjdk-11-in-ubuntu.html
+  * 
+
+## General
+* Checking Ubuntu version: ``lsb_release -a``
