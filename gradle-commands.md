@@ -10,7 +10,7 @@
 
 | Tasks | Standalone | Controller |
 |:------:|:----------| :----------|
-|Checkstyle|``./gradlew :standalone:checkstyleMain``, ``./gradlew :standalone:checkstyleTest``|``./gradlew :controller:checkstyleMain``|
+|Checkstyle|For src/main: ``./gradlew :standalone:checkstyleMain``, for src/test ``./gradlew :standalone:checkstyleTest``|``./gradlew :controller:checkstyleMain``|
 |Compile|``./gradlew :standalone:compileJava``|``./gradlew :controller:compileJava``|
 |Tests|``./gradlew :standalone:test``|``./gradlew :controller:test ``|
 |Builds|``./gradlew :standalone:build``|``./gradlew :controller:build``|
