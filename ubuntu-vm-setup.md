@@ -17,6 +17,8 @@
   sudo apt-get update
   sudo apt-get install openjdk-8-jdk
   ```
+* Installing IntelliJ Idea
+  * https://websiteforstudents.com/install-intellij-idea-ide-on-ubuntu-16-04-17-10-18-04/
 
 ## From Server on Azure
 * Update apt-get: ``sudo apt-get update``
