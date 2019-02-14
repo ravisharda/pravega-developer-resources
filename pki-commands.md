@@ -1,4 +1,18 @@
-# PKI Commands
+# PKI Commands, Utilities and Debugging
+
+## Java Tools and Options
+
+### Enabling SSL/TLS debug when running Pravega standalone
+
+Add the following line inside the startStandalone Gradle task in build.gradle. 
+```
+systemProperty "javax.net.debug", "ssl,handshake"
+```
+If you need more information, ``ssl,handshake,trustmanager`` or even ``all``. Formore options, check out [this](https://stackoverflow.com/questions/23659564/limiting-java-ssl-debug-logging) Stackoverflow discussion. 
+
+**How to interpret the output?**
+* For Java 11, see [Debugging TLS Connections](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-4D421910-C36D-40A2-8BA2-7D42CCBED3C6) in [Java SE 11 - Security Developer's Guide](https://docs.oracle.com/en/java/javase/11/security/index.html).
+* For Java 8, see [JSSE Reference Guide](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-4D421910-C36D-40A2-8BA2-7D42CCBED3C6)
 
 
 ## Displaying the contents of certificates, keys and keystores/truststores
