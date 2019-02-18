@@ -85,11 +85,15 @@ for example: ``./gradlew :controller:dependencies``
 
 Add the following to the task (say, to startStandalone task):
 ```groovy
-doFirst {
-     standardOutput = new org.apache.tools.ant.util.TeeOutputStream(
-     new FileOutputStream("consoleLogs/someFile.out"), System.out);
-}
+      def fileNameTime = (new SimpleDateFormat("ssmmHH_yyyyMMdd")).format(new Date())
+      doFirst {
+            standardOutput = new org.apache.tools.ant.util.TeeOutputStream(
+                    new FileOutputStream("$projectDir/../consoleLogs/${fileNameTime}.out"), System.out);
+      }
 ```
+
+
+
 
 ## Misc
 ```
