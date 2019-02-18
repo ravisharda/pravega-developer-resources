@@ -38,7 +38,7 @@ Steps:
 *Dependency tree for all projects*
 * Checking dependencies of a specific project:
 ```groovy
-./gradlew <project>:dependencies`` 
+./gradlew <project>:dependencies
 for example: ``./gradlew :controller:dependencies``
 ```
 *``./gradle allDeps``
