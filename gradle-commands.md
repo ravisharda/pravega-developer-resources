@@ -90,3 +90,8 @@ doFirst {
      new FileOutputStream("consoleLogs/someFile.out"), System.out);
 }
 ```
+
+## Misc
+```
+systemProperties 'singlenode.configurationFile' : new File("$projectDir/../config/standalone-config.properties").absolutePath
+```
