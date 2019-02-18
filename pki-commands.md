@@ -259,6 +259,9 @@ openssl s_client -showcerts -connect localhost:9091
 openssl s_client -help
 ```
 
+## Upgrading OpenSSL to 1.1.1 (Which Supports TLS 1.3)
+* https://askubuntu.com/questions/1102803/upgrade-openssl-1-1-0-to-1-1-1-in-ubuntu-18-04
+
 ## General OpenSSL Commands
 
 * Checking OpenSSL Version: ``openssl version -a``
