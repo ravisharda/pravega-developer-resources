@@ -10,11 +10,23 @@ Assumptions:
 * Remote `origin` is youracount/pravega.git
 
 ## Downloading a newly created branch on your fork
+
+**Pravega:**
+
 ```
 git clone https://github.com/ravisharda/pravega.git
 cd pravega
 git branch
 git checkout -b <branch-name>
+git branch
+```
+
+**Pravega Sampels:**
+```
+git clone https://github.com/ravisharda/pravega-samples.git
+cd pravega-samples
+git branch
+git checkout -b issue-181-security-samples
 git branch
 ```
 
