@@ -87,7 +87,7 @@ CMD ["mongod.exe"]
 Instruction/Command | Example | Description
 ------------|---------|------------
 FROM | `FROM microsoft/windowsserverimage` | Specifies the base image. 
-MAINTAINER | `MAINTAINER Ravi Sharda <ravi.sharda@rsa.com>`| Specifies the contact information for the file's author
+MAINTAINER | `MAINTAINER Ravi Sharda <ravi.sharda@gmail.com>`| Specifies the contact information for the file's author
 LABEL | - | -
 USER | `USER root` | By default, Docker runs all processes as root within the container. Rhis intruction sets a user. 
 ENV | `ENV MONGODB_VERSION 3.4.2` | Allows you to set shell variables to be used furing the build process. Then use as %MONGODB_VERSION% inside of dos commands or $env:MONGODB_VERSION in Powershell command.
