@@ -10,3 +10,5 @@
   ps -ef | grep java
   ```
   
+## Links
+* Installing Minikube: https://kubernetes.io/docs/tasks/tools/install-minikube/
