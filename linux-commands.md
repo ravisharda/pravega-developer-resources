@@ -11,4 +11,6 @@
   ```
   
 ## Links
-* Installing Minikube: https://kubernetes.io/docs/tasks/tools/install-minikube/
+* Installing Minikube: 
+  * https://kubernetes.io/docs/tasks/tools/install-minikube/
+  * I used steps mentioned [here](https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-18-04/).
