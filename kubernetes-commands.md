@@ -12,6 +12,8 @@
   * ``VM-->Settings--->Processor-->Enable "Virtualize Intel VT-x/EPT "...``
   * Now, try again.
   
+  Minikube also supports a --vm-driver=none option that runs the Kubernetes components on the host and not in a VM. Using this driver requires Docker and a Linux environment but not a hypervisor: ``minikube --vm-driver=none start``
+  
 * Stopping: ``minikube stop``
 * Minikube config
   * Note that Minikube configuration file is located under: ``~/.minikube/machines/minikube/config.json``
