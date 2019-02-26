@@ -19,6 +19,7 @@
   * To view config: ``kubectl config view``
 * Deleting a minikube VM: ``minikube delete -p minikube``
 * Access minikube VM using SSH: ``minikube ssh`` ``sudo su -``
+* Config: ``/home/rsharda/.minikube/machines/minikube/config.json``
 * Enable Kubernetes dashboard: 
   * Check that the addon is installed: ``minikube addons list``
   * If dashboard is disabled: ``minikube addons enable dashboard``
