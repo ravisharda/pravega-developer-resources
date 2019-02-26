@@ -21,6 +21,7 @@
 * Access minikube VM using SSH: ``minikube ssh`` ``sudo su -``
 * Enable Kubernetes dashboard: 
   * Check that the addon is installed: ``minikube addons list``
+  * If dashboard is disabled: ``minikube addons enable dashboard``
   * To open directly on your default browser, use: ``minikube dashboard``
   * To get the URL of the dashboard: ``minikube dashboard --url``
 
