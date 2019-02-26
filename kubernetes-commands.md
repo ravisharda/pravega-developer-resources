@@ -13,7 +13,11 @@
   * Now, try again.
   
 * Stopping: ``minikube stop``
+* Minikube config
+  * Note that Minikube configuration file is located under: ``~/.minikube/machines/minikube/config.json``
+  * To view config: ``kubectl config view``
 
 ## Kubectl
 * Version: ``kubectl version -o json``
-* 
+* Checking cluster status: ``kubectl cluster-info``
+
