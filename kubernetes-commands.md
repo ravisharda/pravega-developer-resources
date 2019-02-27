@@ -31,4 +31,13 @@
 * Checking cluster status: ``kubectl cluster-info``
 * To check running nodes: ``kubectl get nodes``
 
+## Creating a Azure Kubernetes Service
+
+You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. 
+
+```
+// Login to Azure. The following launches a URL in the browser where you can log in. 
+az login
+
+```
 
