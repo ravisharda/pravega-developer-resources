@@ -33,7 +33,7 @@
 
 ## Creating a Azure Kubernetes Service
 
-You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. 
+You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. You migth also want to see: [Quickstart: Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) 
 
 ```
 //Launch powershell as admin. 
