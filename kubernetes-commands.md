@@ -90,5 +90,6 @@ As earlier:
 * ``$resourceGroup = "myk8scluster"``
 * ``$clusterName = "ravik8scluster"``
 
-Run: ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
-Run: ``az aks browse -g $resourceGroup -n $clusterName
+Now, run:
+* ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
+* ``az aks browse -g $resourceGroup -n $clusterName``
