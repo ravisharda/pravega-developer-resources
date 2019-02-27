@@ -36,15 +36,26 @@
 You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. 
 
 ```
-//Launch powershell
+//Launch powershell as admin. 
 
 // Login to Azure. The following launches a URL in the browser where you can log in. 
 az login
 
-// Create a resource group
+// Create a variable that holds the resource group name
 $resourceGroup = "myk8scluster"
 
+// Create the resource group
+// You can find all locations using "az account list-locations"
+az group create -n $resourceGroup -l "southindia"
 
+// Create a variable to hold cluster name
+$clusterName = "ravik8scluster"
+
+// Create the AKS cluster, with a starting node count (we'll scale the node count to 3 later). 
+// We are asking to generate SSH keys that we can use to securely manage this cluster.
+az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys
+
+// Now we can use use kubectl command to explore it. 
 
 
 ```
