@@ -36,8 +36,17 @@
 You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. 
 
 ```
+//Launch powershell
+
 // Login to Azure. The following launches a URL in the browser where you can log in. 
 az login
 
+// Create a resource group
+$resourceGroup = "myk8scluster"
+
+
+
+
 ```
 
+See more about Azure CLI in the [documentation](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
