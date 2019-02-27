@@ -80,7 +80,6 @@ kubectl get nodes
 
 Run: ``az group delete --name myk8scluster --yes --no-wait``
 
+### Scaling AKS Cluster to More Nodes
 
-
-
-See more about Azure CLI in the [documentation](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+Run: ``az aks scale -g $resourceGroup -n $clusterName --node-count 3
