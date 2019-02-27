@@ -45,8 +45,9 @@ az login
 $resourceGroup = "myk8scluster"
 
 // Create the resource group
-// You can find all locations using "az account list-locations"
-az group create -n $resourceGroup -l "southindia"
+// You can find all locations using "az account list-locations". Not using "southindia" as using it will
+// throw error: "The VM size of AgentPoolProfile:nodepool1 is not allowed in your subscription in location 'southindia'."
+az group create -n $resourceGroup -l "southeastasia"
 
 // Create a variable to hold cluster name
 $clusterName = "ravik8scluster"
