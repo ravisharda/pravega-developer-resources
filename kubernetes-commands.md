@@ -31,7 +31,9 @@
 * Checking cluster status: ``kubectl cluster-info``
 * To check running nodes: ``kubectl get nodes``
 
-## Creating a Azure Kubernetes Service
+## Azure Kubernetes Service
+
+### Creating a new AKS Cluster using Azure CLI
 
 You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. You migth also want to see: [Quickstart: Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) 
 
@@ -60,6 +62,11 @@ az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-ke
 // Now we can use use kubectl command to explore it. To do so, first we have to install it. 
 az aks install-cli
 
+// Add kubectl to path
+
+// Relaunch Powershell and verify kubecctl is working
+kubectl version --short
+
 // To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. 
 // This command downloads credentials and configures the Kubernetes CLI to use them.
 az aks get-credentials --resource-group $resourceGroup --name $clusterName
@@ -69,5 +76,11 @@ az aks get-credentials --resource-group $resourceGroup --name $clusterName
 kubectl get nodes
 
 ```
+### Deleting an AKS Cluster using Azure CLI
+
+Run: ``az group delete --name myk8scluster --yes --no-wait``
+
+
+
 
 See more about Azure CLI in the [documentation](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
