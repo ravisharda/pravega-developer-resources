@@ -82,4 +82,13 @@ Run: ``az group delete --name myk8scluster --yes --no-wait``
 
 ### Scaling AKS Cluster to More Nodes
 
-Run: ``az aks scale -g $resourceGroup -n $clusterName --node-count 3
+Run: ``az aks scale -g $resourceGroup -n $clusterName --node-count 3``
+
+### Opening the Kernetes Dashboard for K8s cluster running in AKS
+
+As earlier:
+* ``$resourceGroup = "myk8scluster"``
+* ``$clusterName = "ravik8scluster"``
+
+Run: ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
+Run: ``az aks browse -g $resourceGroup -n $clusterName
