@@ -46,7 +46,8 @@ $resourceGroup = "myk8scluster"
 
 // Create the resource group
 // You can find all locations using "az account list-locations". Not using "southindia" as using it will
-// throw error: "The VM size of AgentPoolProfile:nodepool1 is not allowed in your subscription in location 'southindia'."
+// throw error: "The VM size of AgentPoolProfile:nodepool1 is not allowed in your subscription 
+// in location 'southindia'."
 az group create -n $resourceGroup -l "southeastasia"
 
 // Create a variable to hold cluster name
@@ -56,8 +57,16 @@ $clusterName = "ravik8scluster"
 // We are asking to generate SSH keys that we can use to securely manage this cluster.
 az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys
 
-// Now we can use use kubectl command to explore it. 
+// Now we can use use kubectl command to explore it. To do so, first we have to install it. 
+az aks install-cli
 
+// To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. 
+// This command downloads credentials and configures the Kubernetes CLI to use them.
+az aks get-credentials --resource-group $resourceGroup --name $clusterName
+
+// To verify the connection to your cluster, use the kubectl get command to return a list 
+// of the cluster nodes.
+kubectl get nodes
 
 ```
 
