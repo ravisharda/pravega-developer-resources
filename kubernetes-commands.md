@@ -93,3 +93,8 @@ As earlier:
 Now, run:
 * ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
 * ``az aks browse -g $resourceGroup -n $clusterName``
+
+### More about AKS
+
+**Further Reading:**
+* [Azure AKS Cli Commands](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest)
