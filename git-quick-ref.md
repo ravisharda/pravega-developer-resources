@@ -59,6 +59,7 @@ git push origin <branch-name>
 ## Pulling all changes 
 
 * Pulling all changes...
+  * ``git pull``
   * ... in the remote repo to master: ``git pull origin master``
   * ... in the remote repo to a branch: ``git pull origin <branch-name>``
 
@@ -100,5 +101,3 @@ git checkout r0.4
    6. Now, push all the changes you have made to the branch to the master of your forked repo: ``git push --force origin <pull-request-branch-name>``  
    
 In this case your forked repo/branch will be ahead of forked repo/master. Not something you often want to do. It might be useful when you want to forked branch to track a branch on the main repo. 
-
-
