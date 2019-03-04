@@ -20,10 +20,13 @@
   kubectl create serviceaccount --namespace kube-system tiller
   
   kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  ```
+* Initializer Helm and Tiller: 
   
+  ```
   # Initialize helm and tiller. This command only needs to run once per Kubernetes cluster, it will create a tiller 
   # deployment in the kube-system namespace and setup your local helm client.
   helm init --service-account tiller --wait
-  
-  helm version
   ```
+* Verify helm is working: ``helm version``
+  
