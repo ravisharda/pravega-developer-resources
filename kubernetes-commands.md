@@ -97,5 +97,5 @@ Now, run:
 ### More about AKS
 
 **Further Reading:**
-* [Install steps I used](https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-18-04/)
+* [Nicely drafted steps and additional options - Stackify](https://stackify.com/azure-container-service-kubernetes/)
 * [Kubernetes Commands Cheatsheet - Official](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
