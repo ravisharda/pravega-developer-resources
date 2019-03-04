@@ -9,7 +9,7 @@
 
 * See https://github.com/chocolatey/choco/wiki/CommandsList for Chocolatey package manager commands. 
 
-## Installing and getting Helm to work
+### Installing and getting Helm to work
 
 * Install Chocolatey
 * Install Helm using Chocolatey: ``choco install kubernetes-helm``
@@ -29,4 +29,11 @@
   helm init --service-account tiller --wait
   ```
 * Verify helm is working: ``helm version``
-  
+
+**Searching a specific chart:**
+
+* Check the version `helm search stable/nfs-server-provisioner`
+* Install the specific release `helm search stable/nfs-server-provisioner --name `
+
+**See examples here:**
+* https://github.com/dotnet-architecture/eShopOnContainers/wiki/10.-Deploying-to-Kubernetes-(AKS-and-local)-using-Helm-Charts
