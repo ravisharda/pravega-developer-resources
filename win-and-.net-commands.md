@@ -21,6 +21,9 @@
   
   kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
   
-  kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+  # Initialize helm and tiller. This command only needs to run once per Kubernetes cluster, it will create a tiller 
+  # deployment in the kube-system namespace and setup your local helm client.
+  helm init --service-account tiller --wait
   
+  helm version
   ```
