@@ -97,4 +97,5 @@ Now, run:
 ### More about AKS
 
 **Further Reading:**
+* [Install steps I used](https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-18-04/)
 * [Azure AKS Cli Commands](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest)
