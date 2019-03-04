@@ -99,3 +99,4 @@ Now, run:
 **Further Reading:**
 * [Install steps I used](https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-18-04/)
 * [Azure AKS Cli Commands](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest)
+* [Kubernetes Commands Cheatsheet - Official](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
