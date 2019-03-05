@@ -92,13 +92,21 @@ Add the following to the task (say, to startStandalone task):
       }
 ```
 
-
-
-
 ## Misc
 ```
 systemProperties 'singlenode.configurationFile' : new File("$projectDir/../config/standalone-config.properties").absolutePath
 ```
+
+## Maven Equivalents
+
+| Purpose| Maven| Gradle |
+|:--------:|:---|:-------|
+|Find the version|`mvn --version`|`gradle --version`|
+|To create JAR/WAR/EAR|`mvn package`|`gradle assemble`|
+|To run unit tests|`mvn test`|`gradle test`|
+|To skip unit tests|`mvn install -DskipTests`<br/>or `mvn install -Dmaven.test.skip=true`| `gradle -x test install`|
+|To run JUnits and create JAR/WAR/EAR. To compile, tests and assemble.|`mvn test package`|`gradle build`|
+|To clean (delete build directory)| `mvn clean` | `gradle clean`|
 
 ## Further reading
 * [Gradle vs. Maven](https://www.journaldev.com/8396/gradle-vs-maven)
