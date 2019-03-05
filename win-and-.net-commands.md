@@ -20,6 +20,9 @@
   kubectl create serviceaccount --namespace kube-system tiller
   
   kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  
+  # In Powershell, you need to escape
+  kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
   ```
 * Initializer Helm and Tiller: 
   
@@ -37,3 +40,4 @@
 
 **See examples here:**
 * https://github.com/dotnet-architecture/eShopOnContainers/wiki/10.-Deploying-to-Kubernetes-(AKS-and-local)-using-Helm-Charts
+* https://github.com/helm/charts/tree/master/stable/nfs-server-provisioner
