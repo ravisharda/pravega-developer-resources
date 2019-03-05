@@ -153,7 +153,10 @@ This involves two sub-steps:
 * Verifying the cluster is running
   ```
   kubectl get PravegaCluster
+  
   kubectl get all -l pravega_cluster=pravega
+  or
+  kubectl get pods -l pravega_cluster=pravega
   ```
 
 
