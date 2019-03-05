@@ -221,8 +221,19 @@ According to a [discussion](https://stackoverflow.com/questions/51468491/how-kub
 >
 > [Here](https://github.com/lvthillo/explore-minikube/tree/master/deployment/deployment) is also some small port forwarding example to access a database service (clusterip) without exposing it.
 
+### Deleting the deployment
 
+```
+# Uninstalling the Pravega cluster
+kubectl delete -f pravega.yaml
+kubectl delete -f pvc.yaml
 
+# Uninstalling the NFS-provisioner chart
+## First find the name of the chart
+helm list
+## Use the name to delete the chart
+helm delete
+```
 ## Miscellaneous Kubectl Command Examples
 
 * kubectl get all -l app=example
