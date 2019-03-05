@@ -195,7 +195,7 @@ pravega-operator-6c6d9fff4f-cfmwb             1/1     Running   0          17h
 pravega-pravega-segmentstore-0                0/1     Pending   0          52m
 punk-sasquatch-nfs-server-provisioner-0       1/1     Running   0          85m
 zookeeper-operator-6b6657ffdb-qpw92           1/1     Running   0          17h
-``
+```
 
 **Note: What is port forwarding?**
 According to a [discussion](https://stackoverflow.com/questions/51468491/how-kubectl-port-forward-works) in Stackoverflow: 
@@ -226,3 +226,33 @@ According to a [discussion](https://stackoverflow.com/questions/51468491/how-kub
 ## Miscellaneous Kubectl Command Examples
 
 * kubectl get all -l app=example
+
+**Listing pods:**
+```
+# List all pods in ps output format.
+kubectl get pods
+
+# List all pods in ps output format with more information (such as node name).
+kubectl get pods -o wide
+
+# List a single replication controller with specified NAME in ps output format.
+kubectl get replicationcontroller web
+
+# List deployments in JSON output format, in the "v1" version of the "apps" API group:
+kubectl get deployments.v1.apps -o json
+
+# List a single pod in JSON output format.
+kubectl get -o json pod web-pod-13je7
+
+# List a pod identified by type and name specified in "pod.yaml" in JSON output format.
+kubectl get -f pod.yaml -o json
+
+# Return only the phase value of the specified pod.
+kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+
+# List all replication controllers and services together in ps output format.
+kubectl get rc,services
+
+# List one or more resources by their type and names.
+kubectl get rc/web service/frontend pods/web-pod-13je7
+```
