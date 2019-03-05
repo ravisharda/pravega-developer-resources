@@ -231,8 +231,8 @@ kubectl delete -f pvc.yaml
 # Uninstalling the NFS-provisioner chart
 ## First find the name of the chart
 helm list
-## Use the name to delete the chart
-helm delete
+## Use the `name` from the output of the last command to delete the chart
+helm delete <name>
 ```
 ## Miscellaneous Kubectl Command Examples
 
