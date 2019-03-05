@@ -99,3 +99,6 @@ Add the following to the task (say, to startStandalone task):
 ```
 systemProperties 'singlenode.configurationFile' : new File("$projectDir/../config/standalone-config.properties").absolutePath
 ```
+
+## Further reading
+* [Gradle vs. Maven](https://www.journaldev.com/8396/gradle-vs-maven)
