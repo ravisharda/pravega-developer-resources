@@ -236,7 +236,8 @@ helm delete <name>
 ```
 ## Miscellaneous Kubectl Command Examples
 
-* kubectl get all -l app=example
+* `kubectl get all -l app=example`
+* Get info about a pod: `kubectl describe pod <pod_name>`
 
 **Listing pods:**
 ```
