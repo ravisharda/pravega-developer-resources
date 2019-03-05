@@ -84,6 +84,31 @@ For debugging and development you might want to access the Pravega cluster direc
 ```
 kubectl port-forward -n default pravega-pravega-controller-68657d67cd-w5x8b 9090:9090 10080:10080
 ```
+Note that out cluser name is `pravega` and `namespace` is: 
+
+**Note: What is port forwarding?**
+According to a [discussion](https://stackoverflow.com/questions/51468491/how-kubectl-port-forward-works) in Stackoverflow: 
+
+> kubectl port-forward forwards connections to a local port to a port on a pod. Compared to kubectl proxy, kubectl port-forward is more generic as it can forward TCP traffic while kubectl proxy can only forward HTTP traffic.
+>
+> kubectl port-forward is useful for testing/debugging purposes so you can access your service locally without exposing it.
+>
+> Below is the name of the pod and it will forward it's port 6379 to localhost:6379.
+>
+> kubectl port-forward redis-master-765d459796-258hz 6379:6379 
+> which is the same as
+>
+> kubectl port-forward pods/redis-master-765d459796-258hz 6379:6379
+>or
+> kubectl port-forward deployment/redis-master 6379:6379 
+> or
+>
+> kubectl port-forward rs/redis-master 6379:6379 
+> or
+> 
+> kubectl port-forward svc/redis-master 6379:6379
+>
+> [Here](https://github.com/lvthillo/explore-minikube/tree/master/deployment/deployment) is also some small port forwarding example to access a database service (clusterip) without exposing it.
 
 
 
