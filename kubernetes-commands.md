@@ -100,6 +100,126 @@ Now, run:
 * [Nicely drafted steps and additional options - Stackify](https://stackify.com/azure-container-service-kubernetes/)
 * [Kubernetes Commands Cheatsheet - Official](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
+## Deploying a Pravega Kubernetes Cluster
+
+### Step 1: Install Zookeeper using Pravega Zookeeper Operator
+
+See the steps [here](https://github.com/pravega/zookeeper-operator#usage). 
+
+### Step 2: Install Helm 
+
+* Install Chocolatey
+* Install Helm using Chocolatey: ``choco install kubernetes-helm``
+* Initialize Helm: ``helm init``
+* Now, add service accounts: 
+  
+  ```
+  kubectl create serviceaccount --namespace kube-system tiller
+  
+  kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  
+  # In Powershell, you need to escape the double quote characters
+  kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
+  ```
+* Initializer Helm and Tiller: 
+  
+  ```
+  # Initialize helm and tiller. This command only needs to run once per Kubernetes cluster, it will create a tiller 
+  # deployment in the kube-system namespace and setup your local helm client.
+  helm init --service-account tiller --wait
+  ```
+* Verify helm is working: ``helm version``
+
+**Searching a specific chart:**
+
+* Check the version `helm search stable/nfs-server-provisioner`
+* Install the specific release `helm search stable/nfs-server-provisioner --name `
+
+**See examples here:**
+* https://github.com/dotnet-architecture/eShopOnContainers/wiki/10.-Deploying-to-Kubernetes-(AKS-and-local)-using-Helm-Charts
+* https://github.com/helm/charts/tree/master/stable/nfs-server-provisioner
+
+### Step 3: Install the Pravega Operator
+
+See the steps here: https://github.com/pravega/pravega-operator#install-the-operator
+
+### Step 4: Deploy a Pravega Cluster
+
+See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster. When creating the Pravega cluster, you'll need the Zookeeper IP Address. Use this command to fetch it (extract the cluster IP address): `kubectl get all -l app=example`
+
+This involves two sub-steps:
+* Provisioning an NFS volume provisioned by the NFS Server Provisioner helm chart to provide Tier 2 storage. 
+* Creating a Pravega cluster
+* Verifying the cluster is running
+  ```
+  kubectl get PravegaCluster
+  kubectl get all -l pravega_cluster=pravega
+  ```
+
+
+### Step 5: Use the Pravega cluster
+
+See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster
+
+A PravegaCluster instance is only accessible WITHIN the cluster (i.e. no outside access is allowed) using the following endpoint in the PravegaClient.
+```
+tcp://<cluster-name>-pravega-controller.<namespace>:9090
+```
+
+The REST management interface is available at:
+```http://<cluster-name>-pravega-controller.<namespace>:10080/```
+
+**To enable direct access to the cluster:**  
+
+For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as follows:
+```
+kubectl port-forward -n default pravega-pravega-controller-68657d67cd-w5x8b 9090:9090 10080:10080
+```
+Note that out cluser name is `pravega` and `namespace` is: 
+
+Get the name of the pods, using the following command:
+```
+PS C:\Workspace\pravega-operator> kubectl get pods
+NAME                                          READY   STATUS    RESTARTS   AGE
+example-0                                     1/1     Running   0          17h
+example-1                                     1/1     Running   0          17h
+example-2                                     1/1     Running   1          17h
+pravega-bookie-0                              0/1     Pending   0          52m
+pravega-bookie-1                              0/1     Pending   0          52m
+pravega-bookie-2                              0/1     Pending   0          52m
+pravega-operator-6c6d9fff4f-cfmwb             1/1     Running   0          17h
+**pravega-pravega-controller-5d6686cf85-r94x7   1/1     Running   0          52m**
+pravega-pravega-segmentstore-0                0/1     Pending   0          52m
+punk-sasquatch-nfs-server-provisioner-0       1/1     Running   0          85m
+zookeeper-operator-6b6657ffdb-qpw92           1/1     Running   0          17h
+``
+
+**Note: What is port forwarding?**
+According to a [discussion](https://stackoverflow.com/questions/51468491/how-kubectl-port-forward-works) in Stackoverflow: 
+
+> kubectl port-forward forwards connections to a local port to a port on a pod. Compared to kubectl proxy, kubectl port-forward is more generic as it can forward TCP traffic while kubectl proxy can only forward HTTP traffic.
+>
+> kubectl port-forward is useful for testing/debugging purposes so you can access your service locally without exposing it.
+>
+> Below is the name of the pod and it will forward it's port 6379 to localhost:6379.
+>
+> kubectl port-forward redis-master-765d459796-258hz 6379:6379 
+> which is the same as
+>
+> kubectl port-forward pods/redis-master-765d459796-258hz 6379:6379
+>or
+> kubectl port-forward deployment/redis-master 6379:6379 
+> or
+>
+> kubectl port-forward rs/redis-master 6379:6379 
+> or
+> 
+> kubectl port-forward svc/redis-master 6379:6379
+>
+> [Here](https://github.com/lvthillo/explore-minikube/tree/master/deployment/deployment) is also some small port forwarding example to access a database service (clusterip) without exposing it.
+
+
+
 ## Miscellaneous Kubectl Command Examples
 
 * kubectl get all -l app=example
