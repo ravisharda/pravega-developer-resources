@@ -86,6 +86,23 @@ kubectl port-forward -n default pravega-pravega-controller-68657d67cd-w5x8b 9090
 ```
 Note that out cluser name is `pravega` and `namespace` is: 
 
+Get the name of the pods, using the following command:
+```
+PS C:\Workspace\pravega-operator> kubectl get pods
+NAME                                          READY   STATUS    RESTARTS   AGE
+example-0                                     1/1     Running   0          17h
+example-1                                     1/1     Running   0          17h
+example-2                                     1/1     Running   1          17h
+pravega-bookie-0                              0/1     Pending   0          52m
+pravega-bookie-1                              0/1     Pending   0          52m
+pravega-bookie-2                              0/1     Pending   0          52m
+pravega-operator-6c6d9fff4f-cfmwb             1/1     Running   0          17h
+**pravega-pravega-controller-5d6686cf85-r94x7   1/1     Running   0          52m**
+pravega-pravega-segmentstore-0                0/1     Pending   0          52m
+punk-sasquatch-nfs-server-provisioner-0       1/1     Running   0          85m
+zookeeper-operator-6b6657ffdb-qpw92           1/1     Running   0          17h
+``
+
 **Note: What is port forwarding?**
 According to a [discussion](https://stackoverflow.com/questions/51468491/how-kubectl-port-forward-works) in Stackoverflow: 
 
