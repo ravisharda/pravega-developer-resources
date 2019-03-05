@@ -99,3 +99,7 @@ Now, run:
 **Further Reading:**
 * [Nicely drafted steps and additional options - Stackify](https://stackify.com/azure-container-service-kubernetes/)
 * [Kubernetes Commands Cheatsheet - Official](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+## Miscellaneous Kubectl Command Examples
+
+* kubectl get all -l app=example
