@@ -107,6 +107,8 @@ systemProperties 'singlenode.configurationFile' : new File("$projectDir/../confi
 |To skip unit tests|`mvn install -DskipTests`<br/>or `mvn install -Dmaven.test.skip=true`| `gradle -x test install`|
 |To run JUnits and create JAR/WAR/EAR. To compile, tests and assemble.|`mvn test package`|`gradle build`|
 |To clean (delete build directory)| `mvn clean` | `gradle clean`|
+|To Install, i.e. to compile, build and install to local maven repository | `mvn install` | `gradle install`|
+|To deploy application WAR/EAR file into server| `mvn deploy` or to run on Jetty embedded server `mvn jetty:run` | `gradle jettyRun`. See more options [here](https://www.journaldev.com/8396/gradle-vs-maven)|
 
 ## Further reading
 * [Gradle vs. Maven](https://www.journaldev.com/8396/gradle-vs-maven)
