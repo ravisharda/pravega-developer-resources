@@ -1,8 +1,5 @@
 # Git Commands and Tasks
 
-## Commands
-TODO
-
 ## Common Tasks
 
 Assumptions:
