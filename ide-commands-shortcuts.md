@@ -1,8 +1,16 @@
 # IDE Shortcuts & Commands
 
 ## Everyday commands: Intellij, Eclipse & Visual Studio
+
+### Searching, Finding & Navigation
+
 | Action | Intellij | Eclipse | Visual Studio |
 |:------|:--------|:------|:-------|
+|Search everywhere | Double shift | todo | todo |
+|Go to file | Ctrl + Shift + N| todo | todo|
+|Recent files |Ctrl + E  | todo | todo |
+|Go to a line | Ctrl + G | Ctrl + L | Ctrl + G |
+|Navigate to definition (e.g., to a method)	| Ctrl + B |Ctrl + (left) click <br/> F3| F12 |
 
 
 ## IntelliJ Specific
