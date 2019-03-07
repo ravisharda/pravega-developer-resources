@@ -1,6 +1,8 @@
 # IDE Shortcuts & Commands
 
-## Basic - Intellij, Eclipse & Visual Studio
+## Everyday commands: Intellij, Eclipse & Visual Studio
+| Action | Intellij | Eclipse | Visual Studio |
+|:------|:--------|:------|:-------|
 
 
 ## IntelliJ Specific
