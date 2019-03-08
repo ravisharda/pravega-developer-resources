@@ -97,6 +97,7 @@ Now, run:
 ### More about AKS
 
 **Further Reading:**
+* https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
 * [Nicely drafted steps and additional options - Stackify](https://stackify.com/azure-container-service-kubernetes/)
 * [Kubernetes Commands Cheatsheet - Official](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
