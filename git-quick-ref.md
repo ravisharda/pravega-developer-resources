@@ -76,12 +76,24 @@ git push origin issue-3227-auth-logic
 ```
 # git fetch origin pull/ID/head:BRANCHNAME
 # Assumptions:
-# PR no. = 3356, branch in which to test out is: r0.4
+# PR no. = 3356, branch that you want to test out is: r0.4
 #
 git clone https://github.com/pravega/pravega.git
 git fetch origin pull/3356/head:r0.4
 git checkout r0.4
 ```
+See more at https://help.github.com/en/articles/checking-out-pull-requests-locally
+
+Similar experience, when trying out a colleague's PR ([PR 217](https://github.com/pravega/flink-connectors/pull/217) `vijikarthi:issue-pravega-security`):
+```
+Forked the repo
+
+git clone https://github.com/ravisharda/flink-connectors.git
+
+git remote add upstream https://github.com/pravega/flink-connectors.git
+
+git fetch upstream pull/217/head:issue-pravega-security
+``
 
 ## Updating your Branch on Your Fork with Latest Code From Master on Main Repo
 1. Download the forked copy from GitHub: ``git clone https://github.com/ravisharda/pravega.git``
