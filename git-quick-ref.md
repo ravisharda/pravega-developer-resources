@@ -93,7 +93,7 @@ git clone https://github.com/ravisharda/flink-connectors.git
 git remote add upstream https://github.com/pravega/flink-connectors.git
 
 git fetch upstream pull/217/head:issue-pravega-security
-``
+```
 
 ## Updating your Branch on Your Fork with Latest Code From Master on Main Repo
 1. Download the forked copy from GitHub: ``git clone https://github.com/ravisharda/pravega.git``
