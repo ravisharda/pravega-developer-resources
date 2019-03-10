@@ -239,6 +239,9 @@ helm delete <name>
 
 * `kubectl get all -l app=example`
 * Get info about a pod: `kubectl describe pod <pod_name>`
+* Querying deployments: 
+  * See all the Deployments active in your current namespace: `kubectl get deployments`
+  * Get more detailed information on this specific Deployment: `kubectl describe deployments/demo`
 
 **Listing pods:**
 ```
