@@ -242,6 +242,10 @@ helm delete <name>
 * Querying deployments: 
   * See all the Deployments active in your current namespace: `kubectl get deployments`
   * Get more detailed information on this specific Deployment: `kubectl describe deployments/demo`
+* Querying pods:
+  * `kubectl get pods`
+  * To see comprehensive information about an individual Pod (or any other resource), use kubectl describe: `kubectl describe pod/demo-dev-...`
+  
 
 **Listing pods:**
 ```
