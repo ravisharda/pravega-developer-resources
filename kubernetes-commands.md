@@ -238,13 +238,38 @@ helm delete <name>
 ## Miscellaneous Kubectl Command Examples
 
 * `kubectl get all -l app=example`
-* Get info about a pod: `kubectl describe pod <pod_name>`
+* Querying nodes:
+  ```
+  kubectl get nodes
+  
+  kubectl get nodes -o wide
+  ```
 * Querying deployments: 
   * See all the Deployments active in your current namespace: `kubectl get deployments`
   * Get more detailed information on this specific Deployment: `kubectl describe deployments/demo`
 * Querying pods:
-  * `kubectl get pods`
+  * Get info about a pod: 
+  ```
+  kubectl describe pod <pod_name>
+  
+  # See extra info:
+  kubectl describe pod <pod_name> -o wide
+  ```
+  * Get info about pods
+    ```
+    kubectl get pods
+    
+    # While the default output format is plain text, you can also get info in JSON format.     
+    kubectl get pods -n kube-system -o json
+    
+    # Output of JSON format is large. You may want to use jq to filter it. Install jq using "apt install jq"
+    # https://jqplay.org/ is an online playground for jq.
+    kubectl get pods -n kube-system -o json | jq '.items[].metadata.name'
+    kubectl get pods -o json --all-namespaces | jq '.items |
+    ```
   * To see comprehensive information about an individual Pod (or any other resource), use kubectl describe: `kubectl describe pod/demo-dev-...`
+  * Show documentation: `kubectl explain pods`
+  * 
   
 
 **Listing pods:**
