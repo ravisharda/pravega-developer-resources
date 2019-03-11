@@ -95,6 +95,13 @@ git remote add upstream https://github.com/pravega/flink-connectors.git
 git fetch upstream pull/217/head:issue-pravega-security
 ```
 
+Yet another way - actually a much simpler one: 
+```
+# Recursive is necessary for flink-connections project
+git clone --recursive -b issue-pravega-security https://github.com/vijikarthi/flink-connectors
+```
+
+
 ## Updating your Branch on Your Fork with Latest Code From Master on Main Repo
 1. Download the forked copy from GitHub: ``git clone https://github.com/ravisharda/pravega.git``
 2. Add an upstream remote branch, which will facilitate pulling down new commits from the main repo: ``git remote add upstream https://github.com/pravega/pravega.git``. (Verify using ``git remote -v``)
