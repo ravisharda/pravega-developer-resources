@@ -63,6 +63,12 @@ az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-ke
 az vm list-skus --location southeastasia
 //Now create aks cluster
 az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys --node-vm-size Standard_A2_v2
+az aks create --name $clusterName \
+              --resource-group $resourceGroup \
+              --ssh-key-value ssh-key-<CLUSTER-NAME>.pub \
+              --node-count 1 \
+              --node-vm-size Standard_D2s_v3 \
+              --output table
 
 // Now we can use use kubectl command to explore it. To do so, first we have to install it. 
 az aks install-cli
