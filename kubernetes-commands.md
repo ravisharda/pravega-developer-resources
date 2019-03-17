@@ -58,6 +58,11 @@ $clusterName = "ravik8scluster"
 // Create the AKS cluster, with a starting node count (we'll scale the node count to 3 later). 
 // We are asking to generate SSH keys that we can use to securely manage this cluster.
 az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys
+(or)
+// Find the supported VM SKUs or find it https://zimmergren.net/azure-container-services-aks-supported-vm-sizes/
+az vm list-skus --location southeastasia
+//Now create aks cluster
+az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys --node-vm-size Standard_A2_v2
 
 // Now we can use use kubectl command to explore it. To do so, first we have to install it. 
 az aks install-cli
