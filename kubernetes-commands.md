@@ -79,7 +79,8 @@ az aks install-cli
 kubectl version --short
 
 // If you are recreating the cluster, be sure to C:\Users\shardr\.kube\config file. Remove the existing cluster, context, 
-// and user for the given name. You will then be able to run `az aks get-credentials` again.
+// and user for the given name. You will then be able to run `az aks get-credentials` again. Or, may be try this: 
+az aks get-credentials --resource-group $resourceGroup --name $clusterName --overwrite-existing
 
 // To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. 
 // This command downloads credentials and configures the Kubernetes CLI to use them.
