@@ -2,7 +2,9 @@
 
 ## Basic
 * Build without executing tests: ``./gradlew build -x test``
-* Install jars into local repo:``./gradlew install``
+* Install jars into local repo:
+  * Install: ``./gradlew install``
+  * Where to locate the new jars: Example `~/.m2/repository/io/pravega/pravega-client`
 * Generate a distribution:``./gradlew distribution -x test``
 * ``./gradlew clean javadocs``
 * Running checkstyle for tests of standalone module: ````
