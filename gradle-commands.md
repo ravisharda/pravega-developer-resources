@@ -94,6 +94,9 @@ Add the following to the task (say, to startStandalone task):
                     new FileOutputStream("$projectDir/../consoleLogs/${fileNameTime}.out"), System.out);
       }
 ```
+## Using Artifacts from JFrog Repository
+
+If you don't want to use released versions, you can use the [Pravega JFrog repository](https://oss.jfrog.org/artifactory/jfrog-dependencies/io/pravega/).
 
 ## Misc
 ```
