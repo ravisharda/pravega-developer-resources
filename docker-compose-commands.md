@@ -20,6 +20,11 @@ From [1]:
   # To verify that the containers are up
   sudo docker-compose ps
   ```
+* Stopping containers: 
+  * If you started Compose with docker-compose up -d, stop your services once you’ve finished with them: `sudo docker-compose stop`  
+* Deleting containers:
+  * You can bring everything down, removing the containers entirely, with the down command. Pass --volumes to also remove the data volume used by the container. `docker-compose down --volumes`
+  
 * Next Steps
   * Check out the [Compose command-line reference](https://docs.docker.com/compose/reference/) and [user guide](https://docs.docker.com/compose/) for more examples of building and deploying multi-container apps.
   * Try integrating Docker Compose with a Docker Swarm cluster. See [Using Compose with Swarm](https://docs.docker.com/compose/swarm/) for scenarios.
