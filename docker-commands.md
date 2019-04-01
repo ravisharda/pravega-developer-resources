@@ -39,6 +39,11 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
 * Viewing containers
   * All running containers: `docker ps`
   * All containers: `docker ps -a`
+  * Formatting the output: 
+    ```
+    docker ps --format "{{.ID}}: {{.Command}} | {{.Ports}} | {{.Names}}"
+    ```
+    See more options in the [documentation](https://docs.docker.com/engine/reference/commandline/ps/) > formatting).
 * Stopping a container: `docker stop <container id>`
 * Stopping all containers:
   ```
