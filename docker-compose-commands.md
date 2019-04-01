@@ -27,6 +27,7 @@ From [1]:
   
 * Next Steps
   * Check out the [Compose command-line reference](https://docs.docker.com/compose/reference/) and [user guide](https://docs.docker.com/compose/) for more examples of building and deploying multi-container apps.
+  * Checkout Composer File reference at https://docs.docker.com/compose/compose-file/
   * Try integrating Docker Compose with a Docker Swarm cluster. See [Using Compose with Swarm](https://docs.docker.com/compose/swarm/) for scenarios.
     
 
