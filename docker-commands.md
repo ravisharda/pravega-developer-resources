@@ -10,6 +10,7 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
 * Removing container images: 
   * `docker rmi <image id>`
   * Remove forcefully (some have a dependency and don't get removed otherwise): `docker rmi -f <image id>`
+* Removing all images: `docker rmi $(docker images -q)`  
 * Removing dangling images: 
     ```
     # This one worked for me in Windows cmd
@@ -39,8 +40,18 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
   * All running containers: `docker ps`
   * All containers: `docker ps -a`
 * Stopping a container: `docker stop <container id>`
+* Stopping all containers:
+  ```
+  docker kill $(docker ps -q)
+  or,
+  sudo docker kill $(sudo docker ps -q)
+  ```
 * Removing a container: `docker rm <container id>`
-* Deleting all containers: `docker rm -vf $(docker ps -qa)`
+* Deleting all stopped containers: `docker rm -vf $(docker ps -qa)`
+  ```
+  docker rm $(docker ps -a -q)
+  sudo docker rm $(sudo docker ps -a -q)
+  ```
 * Running a command inside a container: `docker exec -it <container name> <command>` (e.g., `docker exec -it mongo_01 powershell`)
 * Inspecting a container: `docker inspect <container id>`
 * Finding the IPv4 address of the container:  `docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' <Container ID>`, where Container ID is the tag or ID of the container. 
