@@ -9,7 +9,10 @@
   
   ps -ef | grep java
   ```
-  
+## Miscellaneous
+
+* Avoid having to type `sudo <command>`: `sudo -s`
+
 ## Links
 * Installing Minikube: 
   * https://kubernetes.io/docs/tasks/tools/install-minikube/
