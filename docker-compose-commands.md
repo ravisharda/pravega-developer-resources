@@ -12,6 +12,7 @@ From [1]:
 
 * Install Compose
   * `sudo apt install docker-compose`
+* Checking Compose version: `docker-compose version`
 * Starting the containers with Compose: From [1]: 
   > In the same directory as your `docker-compose.yml` file, run the following command (depending on your environment, you might need to run docker-compose using `sudo`.
   ```
