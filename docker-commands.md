@@ -74,6 +74,17 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
   * Removing a network: `docker network rm <network name>` (e.g., `docker network rm nat`)
   * Finding more information about a network: `docker network inspect <network name>`
  
+## Registry Related
+* To push or pull from your own registry, you need to use registry's location that looks like this: `my.registry.address:port/repositoryname`. See some examples [here](https://blog.docker.com/2013/07/how-to-use-your-own-registry/)
+
+ ```
+ Example: 
+ docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
+ ```
+
+
+**Further Reading:**
+* https://blog.docker.com/2013/07/how-to-use-your-own-registry/
 
 ## Quick Reference: Dockerfile instructions
 
