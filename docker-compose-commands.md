@@ -30,6 +30,14 @@ From [1]:
   * Check out the [Compose command-line reference](https://docs.docker.com/compose/reference/) and [user guide](https://docs.docker.com/compose/) for more examples of building and deploying multi-container apps.
   * Checkout Composer File reference at https://docs.docker.com/compose/compose-file/
   * Try integrating Docker Compose with a Docker Swarm cluster. See [Using Compose with Swarm](https://docs.docker.com/compose/swarm/) for scenarios.
+
+## Miscellaneous
+* Want to use a self-hosted/private registry? 
+  ```
+  docker login devops-repo.isus.emc.com:8116
+  
+  # Then continue to use other commands
+  ```
     
 
 ## References
