@@ -92,6 +92,8 @@ docker-compose rm -v
 ```
 docker exec -it compose_controller_1 sh
 
+docker exec -it compose_segmentstore_1 sh
+
 docker-compose logs
 ```
 
