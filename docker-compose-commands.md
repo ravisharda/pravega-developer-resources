@@ -38,7 +38,67 @@ From [1]:
   
   # Then continue to use other commands
   ```
-    
+# Deploying Pravega Distrubuted Cluster Using Docker Compose
+
+Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standalone HDFS, Zookeeper, BookKeeper, and will run the Segment Store and the Controller in separate processes.
+
+## Prerequisites
+* Linux VM with Git, Docker and Docker Compose Installed
+* Ensure you don't have to use `sudo` everywhere by first executing `sudo -s`
+
+## Steps to Deploy
+1. Clone Pravega repo: `git clone https://github.com/pravega/pravega.git`.
+2. `cd ./pravega/docker/compose`
+3. In this directory, you'll see a `docker-compose.yml` configuration file for the deployment. Now, run the following command to setup the dployment: 
+   
+   ```
+   export HOST_IP=192.168.224.129 && docker-compose up -d
+   
+   # Note: 
+   #  - The -d flag runs it in the background
+   #  - Replace the IP address with the host's IP Address.
+   ```
+4. To verify that the containers are up: `docker-compose ps`
+5. To check the logs: `docker-compose logs` (You'll see all the containers' logs here)
+
+## Steps to Undeploy
+
+Prerequisites: 
+* Ensure you are in ./pravega/docker/compose. 
+* Ensure you don't have to use `sudo` everywhere by first executing `sudo -s`
+
+1. First, stop the running containers: `docker-compose stop`
+2. Second remove the stopped containers: `docker-compose rm -f`
+
+   Note: If you don’t specify -f in the above command, it will prompt you for Y/N before removing it.
+
+
+You can combine the two steps like this: 
+```
+# Since we have “&&”, which will execute the 2nd command only after the 1st command is successful.
+
+docker-compose stop && docker-compose rm -f
+```
+
+Note: 
+* Removing volumes: While removing a stopped containers, it doesn’t remove all the volumes that are attached to the containers. In a typical situation, you don’t want to remove the attached volumes during your regular stop/start/rm process. But, if you decide to remove the attached volumes, you can do that during rm by using -v option as shown below. [3]
+
+```
+docker-compose rm -v
+```
+   
+## Troubleshooting
+
+```
+docker exec -it compose_controller_1 sh
+
+docker-compose logs
+```
+
+## References & Further Reading
+1. https://github.com/pravega/pravega/tree/master/docker/compose
+2. https://hub.docker.com/u/pravega/
+3. https://www.thegeekstuff.com/2016/04/docker-compose-up-stop-rm/comment-page-1/  
 
 ## References
 1. [Azure Docker Compose Quickstart](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart)
