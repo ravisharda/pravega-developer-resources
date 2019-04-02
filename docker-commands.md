@@ -82,6 +82,28 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
  docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
  ```
 
+* Handling bad certificates/self-signed certificate errors
+
+  Say, you run the command `docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e`. You get a Docker error: `X509: certificate signed by unknown authority`.
+  
+  ```
+  $ openssl s_client -showcerts -connect                \
+    devops-repo.isus.emc.com:8116 </dev/null 2>/dev/null | \
+    openssl x509 -outform PEM > devops-repo.crt
+
+  # Add it globally
+  mv devops-repo.crt /usr/local/share/ca-certificates
+ 
+  # update global certificates definitions
+  update-ca-certificates
+  
+  # restart affected services
+  systemctl daemon-reload
+  sudo systemctl restart docker
+  
+  docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
+  ```
+
 
 **Further Reading:**
 * https://blog.docker.com/2013/07/how-to-use-your-own-registry/
