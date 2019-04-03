@@ -77,7 +77,7 @@ You can combine the two steps like this:
 ```
 # Since we have “&&”, which will execute the 2nd command only after the 1st command is successful.
 
-docker-compose stop && docker-compose rm -f
+docker-compose stop && docker-compose rm -f -v
 ```
 
 Note: 
