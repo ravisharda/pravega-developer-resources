@@ -105,13 +105,18 @@ docker volume rm $(docker volume ls -qf dangling=true)
    
 ## Troubleshooting
 
+### Starting a shell inside the container
+
 ```
 # Run a shell inside the Controller container
 docker exec -it compose_controller_1 sh
 
 # Run a shell inside the Segmentstore container
 docker exec -it compose_segmentstore_1 sh
+```
 
+### Checking logs 
+```
 # Check logs for the entire deployment
 docker-compose logs
 
@@ -121,8 +126,34 @@ docker logs compose_controller_1
 docker logs compose_controller_1 --tail 100
 -- See last 100 lines and keep following the logs (tail -100f ...)
 docker logs compose_controller_1 --tail 100 -f
+```
+
+### Error upon stopping 
+
+You might see an error like this, after you execute docker-compose stop. 
+```
+root@server2:~/pravega/docker/compose# docker-compose stop
+Stopping compose_segmentstore_1 ... error
+Stopping compose_bookie1_1      ... error
+Stopping compose_controller_1   ... error
+Stopping compose_bookie2_1      ... error
+Stopping compose_hdfs_1         ... error
+Stopping compose_zookeeper_1    ... error
+
+ERROR: for compose_segmentstore_1  cannot stop container: b465df6cd8e014dc22a01ca14713da6e3e3d0f90fa9be97f943cc0ad7ebaadc5: Cannot kill container b465df6cd8e014dc22a01ca14713da6e3e3d0f90fa9be97f943cc0ad7ebaadc5: unknown error after kill: runc did not terminate sucessfully: container_linux.go:388: signaling init process caused "permission denied"
+: unknown
+
+ERROR: for compose_controller_1  cannot stop container: 4330dc574264187b36ef19376600731bc2f2898a7b391cd20913b594000a8ab8: Cannot kill container 4330dc574264187b36ef19376600731bc2f2898a7b391cd20913b594000a8ab8: unknown error after kill: runc did not terminate sucessfully: container_linux.go:388: signaling init process caused "permission denied"
+: unknown
 
 ```
+
+The solution is (as per [this](https://forums.docker.com/t/can-not-stop-docker-container-permission-denied-error/41142/3) discussion: 
+```
+sudo apt-get purge --auto-remove apparmor
+sudo service docker restart
+docker system prune --all --volumes
+````
 
 ## References & Further Reading
 1. https://github.com/pravega/pravega/tree/master/docker/compose
