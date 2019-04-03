@@ -150,9 +150,13 @@ ERROR: for compose_controller_1  cannot stop container: 4330dc574264187b36ef1937
 
 The solution is (as per [this](https://forums.docker.com/t/can-not-stop-docker-container-permission-denied-error/41142/3) discussion: 
 ```
-sudo apt-get purge --auto-remove apparmor
-sudo service docker restart
-docker system prune --all --volumes
+Check status: sudo aa-status
+
+Shutdown and prevent it from restarting: sudo systemctl disable apparmor.service --now
+Unload AppArmor profiles: sudo service apparmor teardown
+Check status: sudo aa-status
+
+You should now be able to stop/kill containers.
 ````
 
 ## References & Further Reading
