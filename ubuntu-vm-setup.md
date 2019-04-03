@@ -24,6 +24,11 @@
     sudo apt install snapd
     sudo snap install intellij-idea-community --classic
     ```
+## From Server on a Self-Hosted VM With Docker and Docker Compose
+* Download the latest Ubuntu server edition
+* Setup a VM using your favorite hypervisor: VMware Workstation or Oracle VirtualBox
+* 
+
 
 ## From Server on Azure
 * Update apt-get: ``sudo apt-get update``
