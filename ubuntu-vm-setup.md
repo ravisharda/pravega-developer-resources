@@ -27,6 +27,13 @@
 ## From Server on a Self-Hosted VM With Docker and Docker Compose
 * Download the latest Ubuntu server edition
 * Setup a VM using your favorite hypervisor: VMware Workstation or Oracle VirtualBox
+* Install Git
+  ```
+  sudo apt update
+  sudo apt install git
+  git --version
+  ```
+* Install Docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 * 
 
 
