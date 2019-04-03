@@ -58,7 +58,7 @@ Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standa
    docker-compose up -d
    
    This works better:
-   docker-compos up -d --force-recreate
+   docker-compose up -d --force-recreate
    
    # Note: 
    #  - The -d flag runs it in the background
