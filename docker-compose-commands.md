@@ -54,6 +54,12 @@ Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standa
    ```
    export HOST_IP=192.168.224.129 && docker-compose up -d
    
+   Or, if you have already exported HOST_IP:
+   docker-compose up -d
+   
+   This works better:
+   docker-compos up -d --force-recreate
+   
    # Note: 
    #  - The -d flag runs it in the background
    #  - Replace the IP address with the host's IP Address.
