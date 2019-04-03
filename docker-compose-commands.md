@@ -117,6 +117,8 @@ docker-compose logs
 
 # Check logs of a particular container
 docker logs compose_controller_1
+
+docker logs compose_controller_1 --tail 100
 ```
 
 ## References & Further Reading
