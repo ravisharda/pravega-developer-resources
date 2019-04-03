@@ -90,11 +90,17 @@ docker-compose rm -v
 ## Troubleshooting
 
 ```
+# Run a shell inside the Controller container
 docker exec -it compose_controller_1 sh
 
+# Run a shell inside the Segmentstore container
 docker exec -it compose_segmentstore_1 sh
 
+# Check logs for the entire deployment
 docker-compose logs
+
+# Check logs of a particular container
+docker logs compose_controller_1
 ```
 
 ## References & Further Reading
