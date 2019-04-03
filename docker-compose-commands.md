@@ -89,6 +89,12 @@ Note:
 
 ```
 docker-compose rm -v
+
+To Check volumes:
+docker volume ls -qf dangling=true
+
+To remove dangling volumes:
+docker volume rm $(docker volume ls -qf dangling=true)
 ```
    
 ## Troubleshooting
