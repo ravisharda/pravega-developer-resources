@@ -103,7 +103,14 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
   
   docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
   ```
+* Pushing Pravega images to a Docker Hub Repository
 
+  ```
+  1. Make code changes.
+  2. `$ ./gradlew docker` to generate the images.
+  3. Re-tag them: `$ docker tag pravega/pravega:0.5.0.0b54... shardar/pravega:0.5.0.0b54...` (the same for BK)
+  4. Push them to my repo, e.g. `docker push shardar/pravega:0.5.0...` (the same for BK)
+  ```
 
 **Further Reading:**
 * https://blog.docker.com/2013/07/how-to-use-your-own-registry/
