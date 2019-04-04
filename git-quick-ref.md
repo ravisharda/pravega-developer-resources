@@ -18,7 +18,9 @@ git checkout -b <branch-name>
 git branch
 ```
 
-**Pravega Sampels:**
+**Pravega Samples:**
+Note: In Samples, PRs are against develop branch, not against master (please, check https://github.com/pravega/pravega-samples/wiki/How-to-release#about-this-repository). 
+
 ```
 git clone https://github.com/ravisharda/pravega-samples.git
 cd pravega-samples
