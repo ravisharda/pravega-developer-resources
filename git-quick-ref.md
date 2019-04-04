@@ -129,3 +129,13 @@ git clone --recursive -b issue-pravega-security https://github.com/vijikarthi/fl
    6. Now, push all the changes you have made to the branch to the master of your forked repo: ``git push --force origin <pull-request-branch-name>``  
    
 In this case your forked repo/branch will be ahead of forked repo/master. Not something you often want to do. It might be useful when you want to forked branch to track a branch on the main repo. 
+
+## Targeting a PR to a branch other than Master
+
+I used these steps for one of the PRs in pravega-samples repo:
+
+1. `git clone https://github.com/ravisharda/pravega.git`
+2. Creates issue-181-security-samples-dev branch off develop: `git checkout -b issue-181-security-samples-dev develop`
+3. Checkout the new branch: `git checkout issue-181-security-samples`
+4. Made changes. 
+5. Committed and pushed as usual. 
