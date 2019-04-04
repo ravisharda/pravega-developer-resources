@@ -57,15 +57,12 @@ Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standa
    Or, if you have already exported HOST_IP:
    docker-compose up -d
    
-   This works better:
-   docker-compose up -d --force-recreate
-   
    # Note: 
    #  - The -d flag runs it in the background
    #  - Replace the IP address with the host's IP Address.
    ```
 4. To verify that the containers are up: `docker-compose ps`
-5. To check the logs: `docker-compose logs` (You'll see all the containers' logs here)
+5. To check the logs from all the containers: `docker-compose logs` (You'll see all the containers' logs here). To check the logs of a specific container/Docker Compose service: `docker logs compose_controller_1`.
 
 Note:
 Should you want to use a Docker image from a private registry (as opposed to from Docker Hub), modify the service definitions of Bookkeeper, Controller and Segment Store in the .yml file like shown below:
