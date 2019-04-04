@@ -67,6 +67,20 @@ Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standa
 4. To verify that the containers are up: `docker-compose ps`
 5. To check the logs: `docker-compose logs` (You'll see all the containers' logs here)
 
+Note:
+Should you want to use a Docker image from a private registry (as opposed to from Docker Hub), modify the service definitions of Bookkeeper, Controller and Segment Store in the .yml file like shown below:
+
+```yaml
+...
+bookie1:
+   image: devops-repo.example.com:443/context/bookkeeper:0.5.0-2173.52e3656
+   ...
+controller:
+   image: devops-repo.example.com:443/context/pravega:0.5.0-2173.52e3656
+   ...
+...
+```
+
 ## Steps to Undeploy
 
 Prerequisites: 
