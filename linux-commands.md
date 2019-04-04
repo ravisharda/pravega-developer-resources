@@ -9,6 +9,12 @@
   
   ps -ef | grep java
   ```
+
+## Shell Scripts and Environment
+
+**Further Reading:**
+* https://askubuntu.com/questions/481715/why-doesnt-cd-work-in-a-shell-script
+
 ## Miscellaneous
 
 * Avoid having to type `sudo <command>`: `sudo -s`
