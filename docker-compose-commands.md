@@ -11,12 +11,12 @@ From [1]:
 ## Commands
 
 * Install Compose
-  * `sudo apt install docker-compose`
-* Checking Compose version: `docker-compose version`
+  * `$ sudo apt install docker-compose`
+* Checking Compose version: `$ docker-compose version`
 * Starting the containers with Compose: From [1]: 
   > In the same directory as your `docker-compose.yml` file, run the following command (depending on your environment, you might need to run docker-compose using `sudo`.
   ```
-  sudo docker-compose up -d
+  $ sudo docker-compose up -d
   
   # To verify that the containers are up
   sudo docker-compose ps
@@ -44,25 +44,25 @@ Note: Unlike pravega-standalone, a Docker Compose cluster will use a real standa
 
 ## Prerequisites
 * Linux VM with Git, Docker and Docker Compose Installed
-* Ensure you don't have to use `sudo` everywhere by first executing `sudo -s`
+* Ensure you don't have to use `sudo` everywhere by first executing `$ sudo -s`
 
 ## Steps to Deploy
-1. Clone Pravega repo: `git clone https://github.com/pravega/pravega.git`.
-2. `cd ./pravega/docker/compose`
+1. Clone Pravega repo: `$ git clone https://github.com/pravega/pravega.git`.
+2. `$ cd ./pravega/docker/compose`
 3. In this directory, you'll see a `docker-compose.yml` configuration file for the deployment. Now, run the following command to setup the dployment: 
    
    ```
-   export HOST_IP=192.168.224.129 && docker-compose up -d
+   $ export HOST_IP=192.168.224.129 && docker-compose up -d
    
    Or, if you have already exported HOST_IP:
-   docker-compose up -d
+   $ docker-compose up -d
    
    # Note: 
    #  - The -d flag runs it in the background
    #  - Replace the IP address with the host's IP Address.
    ```
-4. To verify that the containers are up: `docker-compose ps`
-5. To check the logs from all the containers: `docker-compose logs` (You'll see all the containers' logs here). To check the logs of a specific container/Docker Compose service: `docker logs compose_controller_1`.
+4. To verify that the containers are up: `$ docker-compose ps`
+5. To check the logs from all the containers: `$ docker-compose logs` (You'll see all the containers' logs here). To check the logs of a specific container/Docker Compose service: `$ docker logs compose_controller_1`.
 
 Note:
 Should you want to use a Docker image from a private registry (as opposed to from Docker Hub), modify the service definitions of Bookkeeper, Controller and Segment Store in the .yml file like shown below:
@@ -82,10 +82,10 @@ controller:
 
 Prerequisites: 
 * Ensure you are in ./pravega/docker/compose. 
-* Ensure you don't have to use `sudo` everywhere by first executing `sudo -s`
+* Ensure you don't have to use `sudo` everywhere by first executing `$ sudo -s`
 
-1. First, stop the running containers: `docker-compose stop`
-2. Second remove the stopped containers: `docker-compose rm -f`
+1. First, stop the running containers: `$ docker-compose stop`
+2. Second remove the stopped containers: `$ docker-compose rm -f`
 
    Note: If you don’t specify -f in the above command, it will prompt you for Y/N before removing it.
 
@@ -94,10 +94,10 @@ You can combine the two steps like this:
 ```
 # Since we have “&&”, which will execute the 2nd command only after the 1st command is successful.
 
-docker-compose stop && docker-compose rm -f -v
+$ docker-compose stop && docker-compose rm -f -v
 
 Or even, just (-s stop if required before removing)
-docker-compose rm -f -s -v
+$ docker-compose rm -f -s -v
 
 ```
 
@@ -105,13 +105,13 @@ Note:
 * Removing volumes: While removing a stopped containers, it doesn’t remove all the volumes that are attached to the containers. In a typical situation, you don’t want to remove the attached volumes during your regular stop/start/rm process. But, if you decide to remove the attached volumes, you can do that during rm by using -v option as shown below. [3]
 
 ```
-docker-compose rm -v
+$ docker-compose rm -v
 
 To Check volumes:
-docker volume ls -qf dangling=true
+$ docker volume ls -qf dangling=true
 
 To remove dangling volumes:
-docker volume rm $(docker volume ls -qf dangling=true)
+$ docker volume rm $(docker volume ls -qf dangling=true)
 ```
    
 ## Troubleshooting
@@ -120,23 +120,23 @@ docker volume rm $(docker volume ls -qf dangling=true)
 
 ```
 # Run a shell inside the Controller container
-docker exec -it compose_controller_1 sh
+$ docker exec -it compose_controller_1 sh
 
 # Run a shell inside the Segmentstore container
-docker exec -it compose_segmentstore_1 sh
+$ docker exec -it compose_segmentstore_1 sh
 ```
 
 ### Checking logs 
 ```
 # Check logs for the entire deployment
-docker-compose logs
+$ docker-compose logs
 
 # Check logs of a particular container
-docker logs compose_controller_1
+$ docker logs compose_controller_1
 -- See last 100 lines
-docker logs compose_controller_1 --tail 100
+$ docker logs compose_controller_1 --tail 100
 -- See last 100 lines and keep following the logs (tail -100f ...)
-docker logs compose_controller_1 --tail 100 -f
+$ docker logs compose_controller_1 --tail 100 -f
 ```
 
 ### Error upon stopping 
@@ -161,11 +161,11 @@ ERROR: for compose_controller_1  cannot stop container: 4330dc574264187b36ef1937
 
 The solution is (as per [this](https://forums.docker.com/t/can-not-stop-docker-container-permission-denied-error/41142/3) discussion: 
 ```
-Check status: sudo aa-status
+Check status: $ sudo aa-status
 
-Shutdown and prevent it from restarting: sudo systemctl disable apparmor.service --now
-Unload AppArmor profiles: sudo service apparmor teardown
-Check status: sudo aa-status
+Shutdown and prevent it from restarting: $ sudo systemctl disable apparmor.service --now
+Unload AppArmor profiles: $ sudo service apparmor teardown
+Check status: $ sudo aa-status
 
 You should now be able to stop/kill containers.
 ````
