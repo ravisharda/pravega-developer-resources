@@ -139,3 +139,9 @@ I used these steps for one of the PRs in pravega-samples repo:
 3. Checkout the new branch: `git checkout issue-181-security-samples`
 4. Made changes. 
 5. Committed and pushed as usual. 
+
+## Undoing changes made to fork's master by mistake
+
+Use git reset approach described [here](https://www.atlassian.com/git/tutorials/undoing-changes).
+
+Then, 
