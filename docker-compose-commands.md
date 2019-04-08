@@ -1,5 +1,14 @@
 # Docker Compose Commands
 
+## Most Often Used Commands 
+   ```
+   # Stop and remove all containers/services
+   $ docker-compose rm -f -s -v
+   
+   $ docker-compose up -d
+   
+   ```
+
 ## Quick Concepts
 
 From [1]:
