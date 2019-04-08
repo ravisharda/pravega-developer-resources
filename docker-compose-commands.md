@@ -7,6 +7,11 @@
    
    $ docker-compose up -d
    
+   # Run a shell inside the Controller container
+   $ docker exec -it compose_controller_1 sh
+
+   # Run a shell inside the Segmentstore container
+   $ docker exec -it compose_segmentstore_1 sh
    ```
 
 ## Quick Concepts
