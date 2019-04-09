@@ -188,6 +188,7 @@ You should now be able to stop/kill containers.
 1. https://github.com/pravega/pravega/tree/master/docker/compose
 2. https://hub.docker.com/u/pravega/
 3. https://www.thegeekstuff.com/2016/04/docker-compose-up-stop-rm/comment-page-1/  
+4. Docker Compose Sample YAML with Comments: https://gist.github.com/ju2wheels/1885539d63dbcfb20729
 
 ## References
 1. [Azure Docker Compose Quickstart](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart)
