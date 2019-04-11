@@ -47,9 +47,15 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
 * Stopping a container: `docker stop <container id>`
 * Stopping all containers:
   ```
-  docker kill $(docker ps -q)
-  or,
-  sudo docker kill $(sudo docker ps -q)
+  # kill all running containers
+  $ docker kill $(docker ps -q)
+  $ sudo docker kill $(sudo docker ps -q)
+  
+  # Delete all stopped containers
+  $ docker rm $(docker ps -a -q)
+  
+  # Delete all images
+  $ docker rmi $(docker images -q)
   ```
 * Removing a container: `docker rm <container id>`
 * Deleting all stopped containers: `docker rm -vf $(docker ps -qa)`
