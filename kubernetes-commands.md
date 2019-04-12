@@ -189,6 +189,14 @@ tcp://<cluster-name>-pravega-controller.<namespace>:9090
 The REST management interface is available at:
 ```http://<cluster-name>-pravega-controller.<namespace>:10080/```
 
+Should you want to open a shell inside a container: 
+
+```
+$ kubectl get pods
+$ kubectl exec -it pravega-operator-64c767dbd4-jkpbl -- sh
+$ kubectl exec -it pravega-pravega-segmentstore-0 -- sh
+```
+
 **To enable direct access to the cluster:**  
 
 For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as follows:
