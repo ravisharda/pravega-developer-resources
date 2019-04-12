@@ -111,12 +111,19 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
   ```
 * Pushing Pravega images to a Docker Hub Repository
 
-  ```
   1. Make code changes.
   2. `$ ./gradlew docker` to generate the images.
-  3. Re-tag them: `$ docker tag pravega/pravega:0.5.0.0b54... shardar/pravega:0.5.0.0b54...` (the same for BK)
-  4. Push them to my repo, e.g. `docker push shardar/pravega:0.5.0...` (the same for BK)
-  ```
+  3. Login to DOcker Hub. `docker login`
+  3. Re-tag the images: 
+     ```
+     docker tag pravega/pravega:0.5.0-2211.938123e-SNAPSHOT shardar/pravega:0.5.0-2211.938123e-SNAPSHOT
+     docker tag pravega/bookkeeper:0.5.0-2211.938123e-SNAPSHOT shardar/bookkeeper:0.5.0-2211.938123e-SNAPSHOT
+     ```
+  4. Push them to my repo.
+     ```
+     docker push shardar/pravega:0.5.0-2211.938123e-SNAPSHOT
+     docker push shardar/bookkeeper:0.5.0-2211.938123e-SNAPSHOT
+     ```
 
 **Further Reading:**
 * https://blog.docker.com/2013/07/how-to-use-your-own-registry/
