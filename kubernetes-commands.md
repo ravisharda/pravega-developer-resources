@@ -176,6 +176,15 @@ This involves two sub-steps:
   kubectl get pods -l pravega_cluster=pravega
   ```
 
+Undeploying the Pravega Cluster:
+
+```
+> kubectl delete -f pravega.yaml
+> kubectl delete -f pvc.yaml
+
+# Uninstalling the pravega operator
+> kubectl delete -f deploy
+```
 
 ### Step 5: Use the Pravega cluster
 
