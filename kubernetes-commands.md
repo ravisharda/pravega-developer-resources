@@ -218,6 +218,13 @@ $ kubectl exec -it pravega-operator-64c767dbd4-jkpbl -- sh
 $ kubectl exec -it pravega-pravega-segmentstore-0 -- sh
 ```
 
+```
+# Fetch the controller IP
+kubectl get all -l pravega_cluster
+
+> curl -v -k -u admin:1111_aaaa https://10.0.30.253:10080/v1/scopes
+```
+
 **To enable direct access to the cluster:**  
 
 For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as follows:
