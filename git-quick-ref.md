@@ -144,7 +144,11 @@ I used these steps for one of the PRs in pravega-samples repo:
 
 Use git reset approach described [here](https://www.atlassian.com/git/tutorials/undoing-changes).
 1. Identify the commit you want to revert to: `git log --oneline`
-1. `git reset --hard d9a15c2b6`
-2. `git push --force`
+2. `git reset --hard d9a15c2b6`
+3. `git push --force`
 
-Then, 
+## Reverting your last change
+git reset HEAD~1 // this undo the last commit
+//git add -u (optionally, add some changes)
+git commit -s 
+git push --force
