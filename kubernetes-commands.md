@@ -158,7 +158,16 @@ See the steps [here](https://github.com/pravega/zookeeper-operator#usage).
 
 ### Step 3: Install the Pravega Operator
 
-See the steps here: https://github.com/pravega/pravega-operator#install-the-operator
+See the steps here: https://github.com/pravega/pravega-operator#install-the-operator. 
+
+```
+# Create a deployment yaml file
+pravega-operator> kubectl create -f pravega.yaml
+
+# Verify that the cluster instances and its components are being created.
+pravega-operator> kubectl get PravegaCluster
+pravega-operator> kubectl get all -l pravega_cluster
+```
 
 ### Step 4: Deploy a Pravega Cluster
 
@@ -181,6 +190,9 @@ Undeploying the Pravega Cluster:
 ```
 > kubectl delete -f pravega.yaml
 > kubectl delete -f pvc.yaml
+
+# Check if the Pravega Controller, Segment Store and Bookkeeper pods have terminated.
+> kubectl get pods
 
 # Uninstalling the pravega operator
 > kubectl delete -f deploy
