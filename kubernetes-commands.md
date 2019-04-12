@@ -44,7 +44,7 @@ You can create the cluster using the Azure portal. Here we'll do so using Azure 
 az login
 
 // Create a variable that holds the resource group name
-$resourceGroup = "myk8scluster"
+$resourceGroup = "Testk8sResourceGroup"
 
 // Create the resource group
 // You can find all locations using "az account list-locations". Not using "southindia" as using it will
@@ -53,7 +53,7 @@ $resourceGroup = "myk8scluster"
 az group create -n $resourceGroup -l "southeastasia"
 
 // Create a variable to hold cluster name
-$clusterName = "ravik8scluster"
+$clusterName = "Testk8scluster"
 
 // Create the AKS cluster, with a starting node count (we'll scale the node count to 3 later). 
 // We are asking to generate SSH keys that we can use to securely manage this cluster.
@@ -94,7 +94,7 @@ kubectl get nodes
 ```
 ### Deleting an AKS Cluster using Azure CLI
 
-Run: ``az group delete --name myk8scluster --yes --no-wait``
+Run: ``az group delete --name $resourceGroup --yes --no-wait``
 
 ### Scaling AKS Cluster to More Nodes
 
@@ -103,8 +103,8 @@ Run: ``az aks scale -g $resourceGroup -n $clusterName --node-count 3``
 ### Opening the Kernetes Dashboard for K8s cluster running in AKS
 
 As earlier:
-* ``$resourceGroup = "myk8scluster"``
-* ``$clusterName = "ravik8scluster"``
+* ``$resourceGroup = "Testk8sResourceGroup"``
+* ``$clusterName = "Testk8scluster"``
 
 Now, run:
 * ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
