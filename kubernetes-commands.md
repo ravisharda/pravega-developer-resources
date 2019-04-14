@@ -188,8 +188,10 @@ This involves two sub-steps:
 Undeploying the Pravega Cluster:
 
 ```
-> kubectl delete -f pravega.yaml
-> kubectl delete -f pvc.yaml
+pravega-operator> kubectl delete -f pravega.yaml
+pravega-operator> kubectl delete -f pvc.yaml
+
+sookeeper-operator> kubectl delete -f zk.yaml
 
 # Check if the Pravega Controller, Segment Store and Bookkeeper pods have terminated.
 > kubectl get pods
