@@ -18,6 +18,7 @@
 ## Miscellaneous
 
 * Avoid having to type `sudo <command>`: `sudo -s`
+* Disk space usage of a directory https://www.ostechnix.com/find-size-directory-linux/
 
 ## Links
 * Installing Minikube: 
