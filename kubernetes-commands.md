@@ -2,7 +2,12 @@
 
 (For K8s related [links](https://github.com/ravisharda/resource-center/blob/master/containers/kubernetes-links.md) @ [my resource center](https://github.com/ravisharda/resource-center/))
 
-## Pravega Deployment in Azure Kubernetes Service (AKS)
+**Table of Contents:**
+* [Kubernetes Cluster in zure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service-aks)
+* [Deploying a Pravega Kubernetes Cluster](#deploying-a-pravega-kubernetes-cluster)
+* 
+
+## Kubernetes Cluster in Azure Kubernetes Service (AKS)
 
 ### Creating a new AKS Cluster using Azure CLI
 
@@ -263,7 +268,7 @@ helm list
 helm delete <name>
 ```
 
-## Minikube related
+## Deploying Minikube
 
 * Version: `minikube version`
 * Starting: ``minikube start``
@@ -287,14 +292,11 @@ helm delete <name>
   * To open directly on your default browser, use: ``minikube dashboard``
   * To get the URL of the dashboard: ``minikube dashboard --url``
 
-## Kubectl
+## Kubectl Command Reference
+
 * Version: ``kubectl version -o json``
 * Checking cluster status: ``kubectl cluster-info``
 * To check running nodes: ``kubectl get nodes``
-
-
-## Miscellaneous Kubectl Command Examples
-
 * `kubectl get all -l app=example`
 * Querying nodes:
   ```
