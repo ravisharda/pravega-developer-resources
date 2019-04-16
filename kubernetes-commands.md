@@ -287,7 +287,7 @@ zookeeper-operator> kubectl delete -f zk.yaml
 # All pods with the given label 
 > kubectl get all -l app=pravega-cluster
 
-# All segment store pods
+# All segment store pods (filtered by label selector pravega-segmentstore)
 > kubectl get all -l component=pravega-segmentstore
 NAME                                 READY   STATUS    RESTARTS   AGE
 pod/pravega-pravega-segmentstore-0   1/1     Running   0          4h
@@ -300,8 +300,11 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
 # Print logs of pods with given label
 > kubectl logs -l app=pravega-cluster
 
-# Stream logs
-> kubectl logs -f -l app=pravega-cluster
+# Open a shell inside the Pod/container
+> kubectl exec -it pravega-pravega-segmentstore-0 -- sh
+> kubectl exec -it pravega-zookeeper-0 -- sh
+
+
 ```
 
 ## Deploying Minikube
