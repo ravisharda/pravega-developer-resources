@@ -30,8 +30,7 @@
 * Version: ``kubectl version -o json``
 * Checking cluster status: ``kubectl cluster-info``
 * To check running nodes: ``kubectl get nodes``
-* Cheatsheets
-  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 
 ## Azure Kubernetes Service
 
@@ -359,3 +358,6 @@ kubectl get rc,services
 # List one or more resources by their type and names.
 kubectl get rc/web service/frontend pods/web-pod-13je7
 ```
+
+**Cheatsheets:**
+  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
