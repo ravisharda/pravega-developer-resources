@@ -16,9 +16,10 @@
     * [Step 4: Deploy a Pravega Cluster](#step-4-deploy-a-pravega-cluster)
     * [Step 5: Use the Pravega cluster](#step-5-use-the-pravega-cluster)
     * [Deleting the deployment](#deleting-the-deployment)
+    * [Troubleshooting](#troubleshooting)
 * [Deploying Minikube](#deploying-minikube)
 * [Kubectl Command Reference](#kubectl-command-reference)
-  * [Troubleshooting]((troubleshooting)
+ 
 
 ## Kubernetes Cluster in Azure Kubernetes Service (AKS)
 
@@ -174,12 +175,6 @@ This involves two sub-steps:
   kubectl get pods -l pravega_cluster=pravega
   ```
 
-Undeploying the Pravega Cluster:
-
-```
-
-```
-
 ### Step 5: Use the Pravega cluster
 
 See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster
@@ -281,6 +276,27 @@ zookeeper-operator> kubectl delete -f zk.yaml
 
 # Uninstalling the Zookeeper operator
 ```
+### Troubleshooting
+
+```
+# Labels attached to a pod
+> kubectl get pod <one of your pods> -o template --template='{{.metadata.labels}}'
+> kubectl get pod pravega-pravega-segmentstore-2 -o template --template='{{.metadata.labels}}'
+'map[app:pravega-cluster component:pravega-segmentstore controller-revision-hash:pravega-pravega-segmentstore-58695f5dc6 pravega_cluster:pravega statefulset.kubernetes.io/pod-name:pravega-pravega-segmentstore-2]'
+
+# All pods with the given label 
+> kubectl get all -l app=pravega-cluster
+
+# All segment store pods
+> kubectl get all -l component=pravega-segmentstore
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod/pravega-pravega-segmentstore-0   1/1     Running   0          4h
+pod/pravega-pravega-segmentstore-1   1/1     Running   0          4h
+pod/pravega-pravega-segmentstore-2   1/1     Running   0          4h
+
+NAME                                            TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)     AGE
+service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none>        12345/TCP   4h
+```
 
 ## Deploying Minikube
 
@@ -375,7 +391,3 @@ zookeeper-operator> kubectl delete -f zk.yaml
     # List one or more resources by their type and names.
     kubectl get rc/web service/frontend pods/web-pod-13je7
     ```
-
-### Troubleshooting
-
-
