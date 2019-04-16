@@ -8,7 +8,14 @@
     * [Deleting an AKS Cluster using Azure CLI](#deleting-an-aks-cluster-using-azure-cli)
     * [Scaling AKS Cluster to More Nodes](#scaling-aks-cluster-to-more-nodes)
     * [Opening the Kernetes Dashboard for K8s cluster running in AKS](#opening-the-kernetes-dashboard-for-k8s-cluster-running-in-aks)
+    * [More About AKS](#more-about-aks)
 * [Deploying a Pravega Kubernetes Cluster](#deploying-a-pravega-kubernetes-cluster)
+    * [Step 1: Install Zookeeper using Pravega Zookeeper Operator](#step-1-install-zookeeper-using-pravega-zookeeper-operator)
+    * [Step 2: Install Helm](#step-2-install-helm)
+    * [Step 3: Install the Pravega Operator](#step-3-install-the-pravega-operator)
+    * [Step 4: Deploy a Pravega Cluster](#step-4-deploy-a-pravega-cluster)
+    * [Step 5: Use the Pravega cluster](#step-5-use-the-pravega-cluster)
+    * [Deleting the deployment](#deleting-the-deployment)
 * [Deploying Minikube](#deploying-minikube)
 * [Kubectl Command Reference](#kubectl-command-reference)
 
@@ -169,16 +176,7 @@ This involves two sub-steps:
 Undeploying the Pravega Cluster:
 
 ```
-pravega-operator> kubectl delete -f pravega.yaml
-pravega-operator> kubectl delete -f pvc.yaml
 
-sookeeper-operator> kubectl delete -f zk.yaml
-
-# Check if the Pravega Controller, Segment Store and Bookkeeper pods have terminated.
-> kubectl get pods
-
-# Uninstalling the pravega operator
-> kubectl delete -f deploy
 ```
 
 ### Step 5: Use the Pravega cluster
@@ -258,19 +256,29 @@ According to a [discussion](https://stackoverflow.com/questions/51468491/how-kub
 > [Here](https://github.com/lvthillo/explore-minikube/tree/master/deployment/deployment) is also some small port forwarding example to access a database service (clusterip) without exposing it.
 
 
-
 ### Deleting the deployment
 
 ```
-# Uninstalling the Pravega cluster
-kubectl delete -f pravega.yaml
-kubectl delete -f pvc.yaml
+# Uninstalling the Pravega Cluster
+pravega-operator> kubectl delete -f pravega.yaml
+pravega-operator> kubectl delete -f pvc.yaml
 
 # Uninstalling the NFS-provisioner chart
 ## First find the name of the chart
 helm list
 ## Use the `name` from the output of the last command to delete the chart
 helm delete <name>
+
+# Uninstaling the Zookeeper cluster
+zookeeper-operator> kubectl delete -f zk.yaml
+
+# Check if the Pravega Controller, Segment Store and Bookkeeper pods have terminated.
+> kubectl get pods
+
+# Uninstalling the pravega operator
+> kubectl delete -f deploy
+
+# Uninstalling the Zookeeper operator
 ```
 
 ## Deploying Minikube
