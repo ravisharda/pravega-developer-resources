@@ -296,6 +296,9 @@ pod/pravega-pravega-segmentstore-2   1/1     Running   0          4h
 
 NAME                                            TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)     AGE
 service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none>        12345/TCP   4h
+
+# Print logs of pods with given label
+> kubectl logs -l app=pravega-cluster
 ```
 
 ## Deploying Minikube
