@@ -307,73 +307,72 @@ zookeeper-operator> kubectl delete -f zk.yaml
 
 ## Kubectl Command Reference
 
-* Version: ``kubectl version -o json``
-* Checking cluster status: ``kubectl cluster-info``
-* To check running nodes: ``kubectl get nodes``
-* `kubectl get all -l app=example`
+**Cheatsheets:**
+  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+* Kubectl Version: ``> kubectl version -o json``
+* Checking cluster status: ``> kubectl cluster-info``
+* To check running nodes: ``> kubectl get nodes``
+* `> kubectl get all -l app=example`
 * Querying nodes:
-  ```
-  kubectl get nodes
   
-  kubectl get nodes -o wide
   ```
+  > kubectl get nodes
+  > kubectl get nodes -o wide
+  ```
+
 * Querying deployments: 
-  * See all the Deployments active in your current namespace: `kubectl get deployments`
-  * Get more detailed information on this specific Deployment: `kubectl describe deployments/demo`
+  * See all the Deployments active in your current namespace: `> kubectl get deployments`
+  * Get more detailed information on this specific Deployment: `> kubectl describe deployments/demo`
+
 * Querying pods:
   * Get info about a pod: 
-  ```
-  kubectl describe pod <pod_name>
-  
-  # See extra info:
-  kubectl describe pod <pod_name> -o wide
-  ```
-  * Get info about pods
+    
     ```
-    kubectl get pods
+    > kubectl describe pod <pod_name>`
+  
+    # See extra info:
+    > kubectl describe pod <pod_name> -o wide
+    ```
+  * Get info about pods
+  
+    ```
+    > kubectl get pods
     
     # While the default output format is plain text, you can also get info in JSON format.     
-    kubectl get pods -n kube-system -o json
+    > kubectl get pods -n kube-system -o json
     
     # Output of JSON format is large. You may want to use jq to filter it. Install jq using "apt install jq"
     # https://jqplay.org/ is an online playground for jq.
-    kubectl get pods -n kube-system -o json | jq '.items[].metadata.name'
-    kubectl get pods -o json --all-namespaces | jq '.items |
+    > kubectl get pods -n kube-system -o json | jq '.items[].metadata.name'
+    > kubectl get pods -o json --all-namespaces | jq '.items |
+
+    # List all pods in ps output format.
+    > kubectl get pods
+
+    # List all pods in ps output format with more information (such as node name).
+    > kubectl get pods -o wide
+
+    # List a single replication controller with specified NAME in ps output format.
+    > kubectl get replicationcontroller web
+
+    # List deployments in JSON output format, in the "v1" version of the "apps" API group:
+    > kubectl get deployments.v1.apps -o json
+
+    # List a single pod in JSON output format.
+    > kubectl get -o json pod web-pod-13je7
+
+    # List a pod identified by type and name specified in "pod.yaml" in JSON output format.
+    > kubectl get -f pod.yaml -o json
+
+    # Return only the phase value of the specified pod.
+    > kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+
+    # List all replication controllers and services together in ps output format.
+    > kubectl get rc,services
+
+    # List one or more resources by their type and names.
+    kubectl get rc/web service/frontend pods/web-pod-13je7
     ```
-  * To see comprehensive information about an individual Pod (or any other resource), use kubectl describe: `kubectl describe pod/demo-dev-...`
-  * Show documentation: `kubectl explain pods`
-  * 
-  
 
-**Listing pods:**
-```
-# List all pods in ps output format.
-kubectl get pods
 
-# List all pods in ps output format with more information (such as node name).
-kubectl get pods -o wide
-
-# List a single replication controller with specified NAME in ps output format.
-kubectl get replicationcontroller web
-
-# List deployments in JSON output format, in the "v1" version of the "apps" API group:
-kubectl get deployments.v1.apps -o json
-
-# List a single pod in JSON output format.
-kubectl get -o json pod web-pod-13je7
-
-# List a pod identified by type and name specified in "pod.yaml" in JSON output format.
-kubectl get -f pod.yaml -o json
-
-# Return only the phase value of the specified pod.
-kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
-
-# List all replication controllers and services together in ps output format.
-kubectl get rc,services
-
-# List one or more resources by their type and names.
-kubectl get rc/web service/frontend pods/web-pod-13je7
-```
-
-**Cheatsheets:**
-  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
