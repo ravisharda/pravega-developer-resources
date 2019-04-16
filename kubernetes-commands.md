@@ -299,6 +299,9 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
 
 # Print logs of pods with given label
 > kubectl logs -l app=pravega-cluster
+
+# Stream logs
+> kubectl logs -f -l app=pravega-cluster
 ```
 
 ## Deploying Minikube
