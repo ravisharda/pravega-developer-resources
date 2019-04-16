@@ -18,6 +18,7 @@
     * [Deleting the deployment](#deleting-the-deployment)
 * [Deploying Minikube](#deploying-minikube)
 * [Kubectl Command Reference](#kubectl-command-reference)
+  * [Troubleshooting]((troubleshooting)
 
 ## Kubernetes Cluster in Azure Kubernetes Service (AKS)
 
@@ -308,7 +309,7 @@ zookeeper-operator> kubectl delete -f zk.yaml
 ## Kubectl Command Reference
 
 **Cheatsheets:**
-  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+* https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 * Kubectl Version: ``> kubectl version -o json``
 * Checking cluster status: ``> kubectl cluster-info``
@@ -374,5 +375,7 @@ zookeeper-operator> kubectl delete -f zk.yaml
     # List one or more resources by their type and names.
     kubectl get rc/web service/frontend pods/web-pod-13je7
     ```
+
+### Troubleshooting
 
 
