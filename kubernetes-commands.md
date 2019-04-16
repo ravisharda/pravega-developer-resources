@@ -4,8 +4,13 @@
 
 **Table of Contents:**
 * [Kubernetes Cluster in zure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service-aks)
+    * [Creating a new AKS Cluster using Azure CLI](#creating-a-new-aks-cluster-using-azure-cli)
+    * [Deleting an AKS Cluster using Azure CLI](#deleting-an-aks-cluster-using-azure-cli)
+    * [Scaling AKS Cluster to More Nodes](#scaling-aks-cluster-to-more-nodes)
+    * [Opening the Kernetes Dashboard for K8s cluster running in AKS](#opening-the-kernetes-dashboard-for-k8s-cluster-running-in-aks)
 * [Deploying a Pravega Kubernetes Cluster](#deploying-a-pravega-kubernetes-cluster)
-* 
+* [Deploying Minikube](#deploying-minikube)
+* [Kubectl Command Reference](#kubectl-command-reference)
 
 ## Kubernetes Cluster in Azure Kubernetes Service (AKS)
 
