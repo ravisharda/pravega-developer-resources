@@ -30,6 +30,8 @@
 * Version: ``kubectl version -o json``
 * Checking cluster status: ``kubectl cluster-info``
 * To check running nodes: ``kubectl get nodes``
+* Cheatsheets
+  * https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 ## Azure Kubernetes Service
 
@@ -275,6 +277,8 @@ According to a [discussion](https://stackoverflow.com/questions/51468491/how-kub
 > kubectl port-forward svc/redis-master 6379:6379
 >
 > [Here](https://github.com/lvthillo/explore-minikube/tree/master/deployment/deployment) is also some small port forwarding example to access a database service (clusterip) without exposing it.
+
+
 
 ### Deleting the deployment
 
