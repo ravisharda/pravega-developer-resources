@@ -1,7 +1,5 @@
 # Kubernetes (K8s) Commands and Utilities
 
-(For K8s related [links](https://github.com/ravisharda/resource-center/blob/master/containers/kubernetes-links.md) @ [my resource center](https://github.com/ravisharda/resource-center/))
-
 **Table of Contents:**
 * [Kubernetes Cluster in zure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service-aks)
     * [Creating a new AKS Cluster using Azure CLI](#creating-a-new-aks-cluster-using-azure-cli)
