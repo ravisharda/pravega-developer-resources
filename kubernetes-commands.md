@@ -159,6 +159,8 @@ pravega-operator> kubectl get all -l pravega_cluster
 
 ### Step 4: Deploy a Pravega Cluster
 
+**Cluster with No External Access:**
+
 See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster. When creating the Pravega cluster, you'll need the Zookeeper IP Address. Use this command to fetch it (extract the cluster IP address): `kubectl get all -l app=example`
 
 This involves two sub-steps:
@@ -172,6 +174,12 @@ This involves two sub-steps:
   or
   kubectl get pods -l pravega_cluster=pravega
   ```
+ 
+ **Cluster with External Access:**
+ 
+ Follow the steps listed [here](https://github.com/pravega/pravega-operator/blob/a204dcaf507d21334a1f40656f5d0306e92db580/doc/external-access.md), before creating the cluster. 
+ 
+ For steps 1,2 and 3 create a temp.yaml file for each and use `kubectl create -f temp.yaml` to create the resource. For step 4, just update the pravega.yaml file. 
 
 ### Step 5: Use the Pravega cluster
 
