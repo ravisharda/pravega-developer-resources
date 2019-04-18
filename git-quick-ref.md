@@ -152,3 +152,13 @@ git reset HEAD~1 // this undo the last commit
 //git add -u (optionally, add some changes)
 git commit -s 
 git push --force
+
+## Using the same Pravega Version as the Hadoop Connector
+
+1. `cd $hadoop-connector/pravega`
+2. `git log` to get the commit point.
+3. Checkout Pravega to that commit point.
+   ```
+   git clone https://github.com/pravega/pravega.git
+   git checkout <COMMIT>
+   ```
