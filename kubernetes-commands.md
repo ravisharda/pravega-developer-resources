@@ -173,7 +173,13 @@ pravega-operator> kubectl get all -l pravega_cluster
 > kubectl get secret controller-pki
 > kubectl describe secret controller-pki
 
->
+> kubectl create secret generic segmentstore-pki `
+        --from-file=tlsCertFile=./segmentstore01.pem `
+	--from-file=cacert=./ca-cert `
+	--from-file=tlsKeyFile=./segmentstore01.key.pem
+
+> kubectl get secret segmentstore-pki
+> kubectl describe secret segmentstore-pki
 
 ### Step 4: Deploy a Pravega Cluster
 
