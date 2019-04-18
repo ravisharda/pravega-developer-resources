@@ -180,6 +180,7 @@ pravega-operator> kubectl get all -l pravega_cluster
 
 > kubectl get secret segmentstore-pki
 > kubectl describe secret segmentstore-pki
+```
 
 ### Step 4: Deploy a Pravega Cluster
 
