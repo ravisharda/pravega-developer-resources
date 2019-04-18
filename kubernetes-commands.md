@@ -157,6 +157,24 @@ pravega-operator> kubectl get PravegaCluster
 pravega-operator> kubectl get all -l pravega_cluster
 ```
 
+### Optionally, create Secrets
+
+```bash
+> cd c:\workspace\pki
+> kubectl create secret generic controller-pki `
+        --from-file=tlsCertFile=./controller01.pem `
+		--from-file=cacert=./ca-cert `
+		--from-file=tlsKeyFile=./controller01.key.pem `
+		--from-file=tlsKeyStoreFile=./controller01.jks `
+		--from-file=passwordfile=./password 
+ secret/controller-pki created
+	
+# Verify the secrets
+> kubectl get secret controller-pki
+> kubectl describe secret controller-pki
+
+>
+
 ### Step 4: Deploy a Pravega Cluster
 
 **Cluster with No External Access:**
