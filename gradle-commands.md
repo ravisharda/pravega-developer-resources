@@ -16,7 +16,7 @@
 |Compile|``./gradlew :standalone:compileJava``|``./gradlew :controller:compileJava``|
 |Tests|``./gradlew :standalone:test``|``./gradlew :controller:test ``|
 |Builds|``./gradlew :standalone:build``|``./gradlew :controller:build``|
-|Spotbugs|-|``./gradlew :controller:spotbugsMain`` <br/>``./gradlew :controller:spotbugsTest``|
+|Spotbugs|``./gradlew :standalone:spotbugsMain`` <br/>``./gradlew :standalone:spotbugsTest``|``./gradlew :controller:spotbugsMain`` <br/>``./gradlew :controller:spotbugsTest``|
 * Running a specific test in a module:
 ```
 ./gradlew :module:tas; --tests "nameoftest"
