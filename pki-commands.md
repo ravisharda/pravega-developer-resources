@@ -28,7 +28,8 @@ $ keytool -list -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cac
 
 ```
 $ keytool -delete -alias local-CA \ 
-        -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -storepass changeit
+        -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -storepass changeit \
+        -alias local-CA
 ```
 
 ## Displaying the contents of certificates, keys and keystores/truststores
