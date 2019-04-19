@@ -21,15 +21,15 @@ $ sudo keytool -importcert -alias local-CA -keystore /path/to/jre/lib/security/c
 (Use the default password `changeit`)
 
 # Verify the certificate is there
-$ keytool -list -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts
+$ keytool -list -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -alias local-CA
 ```
 
 ## Removing a CA or server certificate from the Java system truststore
 
 ```
 $ keytool -delete -alias local-CA \ 
-        -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -storepass changeit \
-        -alias local-CA
+        -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -storepass changeit 
+        
 ```
 
 ## Displaying the contents of certificates, keys and keystores/truststores
