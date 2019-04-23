@@ -1,4 +1,4 @@
-This repo maintains various commands, recipes, snippets and scripts that make my life as a Pravega developer a tad easier. The names of the files are (hopefully) self-explanatory. 
+This repo maintains various commands, recipes, snippets, [links](https://github.com/ravisharda/pravega-developer-resources/blob/master/useful-links.md) and scripts that make my life as a Pravega developer a tad easier. The names of the files are (hopefully) self-explanatory. 
 
 New files are added here occassionally. Existing ones - especially the ones that were added recently - tend to be updated frequently. 
 
