@@ -35,3 +35,25 @@
 * About APIs
   * Client JavaDocs: http://pravega.io/docs/latest/javadoc/clients/index.html
   * REST API (latest): http://pravega.io/docs/latest/rest/restapis/
+
+## Engineering-Facing / Process
+
+* [Wiki page - Design/Pravega Design Proposals(PDPs)](https://github.com/pravega/pravega/wiki/Pravega-Design-Proposals)
+* [Wiki page - Kubernetes-Based System Test Framework](https://github.com/pravega/pravega/wiki/Kubernetes-Based-System-Test-Framework)
+* [Wiki page - Labeling issues](https://github.com/pravega/pravega/wiki/Labelling-issues)
+* [Wiki page - Kubernetes-Based System Test Framework](https://github.com/pravega/pravega/wiki/Kubernetes-Based-System-Test-Framework)
+* Contributing
+  * Home page: https://github.com/pravega/pravega/blob/master/documentation/src/docs/contributing.md
+  * Guidelines: https://github.com/pravega/pravega/wiki/Contributing
+  
+**Locating Issues and Pull Requests:**
+
+* Issues
+  * Open bugs: [Controller](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fcontroller) | [Segment Store](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fserver)  | [Client](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fclient) | [Security](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fsecurity) | [Metrics](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fmetrics) | [Deployment](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fdeployment)
+  * All issues: [Security](https://github.com/pravega/pravega/labels/area%2Fsecurity), etc. 
+  * All bugs: [Security](https://github.com/pravega/pravega/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+label%3Aarea%2Fsecurity), etc.
+* Pull requests
+  * Open pull requests: [Security](https://github.com/pravega/pravega/pulls?q=is%3Aopen+is%3Apr+label%3Aarea%2Fsecurity), etc.
+* My items
+  * [Issues assigned to me](https://github.com/pravega/pravega/issues?utf8=%E2%9C%93&q=assignee%3Aravisharda+)
+  * [My pull requests](https://github.com/pravega/pravega/pulls?utf8=%E2%9C%93&q=is%3Apr+author%3Aravisharda)  
