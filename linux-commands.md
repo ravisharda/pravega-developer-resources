@@ -2,12 +2,10 @@
 
 ## Finding and Searching
 
-* Find a process: 
+* Find a Pravega Java process: 
 
   ```
   pgrep -f logback.configurationFile
-  
-  ps -ef | grep java
   ```
 
 ## Shell Scripts and Environment
