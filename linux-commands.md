@@ -2,7 +2,7 @@
 
 ## Finding and Searching
 
-* Find a Pravega Java process: 
+* Find a Pravega Java process (while avoiding seeing a wall of text shown on `ps -ef | grep java`): 
 
   ```
   pgrep -f logback.configurationFile
