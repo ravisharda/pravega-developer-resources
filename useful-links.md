@@ -38,10 +38,9 @@
 
 ## Engineering-Facing / Process
 
-* [Wiki page - Design/Pravega Design Proposals(PDPs)](https://github.com/pravega/pravega/wiki/Pravega-Design-Proposals)
-* [Wiki page - Kubernetes-Based System Test Framework](https://github.com/pravega/pravega/wiki/Kubernetes-Based-System-Test-Framework)
-* [Wiki page - Labeling issues](https://github.com/pravega/pravega/wiki/Labelling-issues)
-* [Wiki page - Kubernetes-Based System Test Framework](https://github.com/pravega/pravega/wiki/Kubernetes-Based-System-Test-Framework)
+* [Design/Pravega Design Proposals(PDPs)](https://github.com/pravega/pravega/wiki/Pravega-Design-Proposals)
+* [ Kubernetes-Based System Test Framework](https://github.com/pravega/pravega/wiki/Kubernetes-Based-System-Test-Framework)
+* [ Labeling issues](https://github.com/pravega/pravega/wiki/Labelling-issues)
 * Contributing
   * Home page: https://github.com/pravega/pravega/blob/master/documentation/src/docs/contributing.md
   * Guidelines: https://github.com/pravega/pravega/wiki/Contributing
