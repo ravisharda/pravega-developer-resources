@@ -1,4 +1,4 @@
-You will find sample app definition files for distributed mode deployment of Pravega using Docker Compose and Kubernetes. 
+You will find sample app definition/specification files for distributed mode deployment of Pravega using Docker Compose and Kubernetes. 
 
 ## Docker Compose
 
