@@ -1,12 +1,19 @@
-# Git Commands and Tasks
-
-## Common Tasks
+# Git Recipes and Commands
 
 Assumptions:
 * Remote `upstream` is pravega/pravega.git
 * Remote `origin` is youracount/pravega.git
 
-## Downloading a newly created branch on your fork
+## Creating a new branch from command line 
+
+```
+git clone https://github.com/ravisharda/pravega.git
+git checkout -b issue-3227-auth-logic
+(verify using 'git branch')
+git push origin issue-3227-auth-logic
+```
+
+## Downloading a newly created branch of your fork
 
 **Pravega:**
 
@@ -29,7 +36,7 @@ git checkout -b issue-181-security-samples
 git branch
 ```
 
-## Merge commits from main repo master into your fork's master (Syncing a Fork)
+## Syncing a fork: Mergig commits from main repo master into your fork's master 
 
 |S.No.|Command|Description|Verification (if any)|
 |:---:|:------|:----------|- |
@@ -44,7 +51,7 @@ git branch
 
 Source: [GitHub Help - Syncing a Fork](https://help.github.com/articles/syncing-a-fork/#platform-windows)
 
-### Rebasing a branch on your fork to master of your fork
+## Rebasing a branch of your fork to the your fork's master
 
 ```
 git clone https://github.com/<youraccount>/pravega.git
@@ -64,16 +71,7 @@ git push origin <branch-name>
 
 (Will fail if there are merge conflicts)
 
-## Creating a new branch from command line 
-
-```
-git clone https://github.com/ravisharda/pravega.git
-git checkout -b issue-3227-auth-logic
-(verify using 'git branch')
-git push origin issue-3227-auth-logic
-```
-
-## Merging a PR to a branch to test out the changes
+## Merging a PR to a branch locally to test out the changes
 
 ```
 # git fetch origin pull/ID/head:BRANCHNAME
