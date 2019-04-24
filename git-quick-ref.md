@@ -162,3 +162,53 @@ git push --force
    git clone https://github.com/pravega/pravega.git
    git checkout <COMMIT>
    ```
+
+### TODO
+
+**Stashing and Unstashing:**
+Say you were in a branch and had some deltas. Now you want to work in another branch. 
+
+```
+> 3669-tls-material/pravega$ git branch -v
+* issue-3669-improve-default-tls-material fac451837 Use the new PKI/TLS material.
+  master                                  cb253c8c7 Issue #3624: Fix backward compatibility issue with WireCommands. (#3640)
+> 3669-tls-material/pravega$ git remote -v
+origin  https://github.com/ravisharda/pravega.git (fetch)
+origin  https://github.com/ravisharda/pravega.git (push)
+> 3669-tls-material/pravega$ git stash
+Saved working directory and index state WIP on issue-3669-improve-default-tls-material: fac451837 Use the new PKI/TLS material.
+> 3669-tls-material/pravega$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+> 3669-tls-material/pravega$ git remote -v
+origin  https://github.com/ravisharda/pravega.git (fetch)
+origin  https://github.com/ravisharda/pravega.git (push)
+> 3669-tls-material/pravega$ git checkout issue-3669-improve-default-tls-material
+Switched to branch 'issue-3669-improve-default-tls-material'
+> 3669-tls-material/pravega$ git stash pop
+On branch issue-3669-improve-default-tls-material
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   config/logback.xml
+        modified:   standalone/src/main/java/io/pravega/local/LocalPravegaEmulator.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        config/.cleanup_pki.sh.swp
+        config/bak/
+        config/ca-cert.srl
+        config/cleanup_pki.sh
+        config/custom-csr.conf
+        config/junk/
+        config/server.csr
+        config/server.keystore.p12
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (86b7ac7e7689c7d258e899e066a18307d79eb83e)
+> 3669-tls-material/pravega$ 
+
+```
+```
