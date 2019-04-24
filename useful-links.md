@@ -12,9 +12,7 @@
 
 ## Presentations
 
-**Videos:**
-
-**Slides:**
+* http://pravega.io/presentations.html
 
 ## Home Pages
 
