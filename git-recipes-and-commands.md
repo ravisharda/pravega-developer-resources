@@ -7,10 +7,10 @@ Assumptions:
 ## Creating a new branch from command line 
 
 ```
-git clone https://github.com/ravisharda/pravega.git
-git checkout -b issue-3227-auth-logic
+$ git clone https://github.com/ravisharda/pravega.git
+$ git checkout -b issue-3227-auth-logic
 (verify using 'git branch')
-git push origin issue-3227-auth-logic
+$ git push origin issue-3227-auth-logic
 ```
 
 ## Downloading a newly created branch of your fork
@@ -18,22 +18,22 @@ git push origin issue-3227-auth-logic
 **Pravega:**
 
 ```
-git clone https://github.com/ravisharda/pravega.git
-cd pravega
-git branch
-git checkout -b <branch-name>
-git branch
+$ git clone https://github.com/ravisharda/pravega.git
+$ cd pravega
+$ git branch
+$ git checkout -b <branch-name>
+$ git branch
 ```
 
 **Pravega Samples:**
 Note: In Samples, PRs are against develop branch, not against master (please, check https://github.com/pravega/pravega-samples/wiki/How-to-release#about-this-repository). 
 
 ```
-git clone https://github.com/ravisharda/pravega-samples.git
-cd pravega-samples
-git branch
-git checkout -b issue-181-security-samples
-git branch
+$ git clone https://github.com/ravisharda/pravega-samples.git
+$ cd pravega-samples
+$ git branch
+$ git checkout -b issue-181-security-samples
+$ git branch
 ```
 
 ## Syncing a fork: Mergig commits from main repo master into your fork's master 
@@ -54,12 +54,12 @@ Source: [GitHub Help - Syncing a Fork](https://help.github.com/articles/syncing-
 ## Rebasing a branch of your fork to the your fork's master
 
 ```
-git clone https://github.com/<youraccount>/pravega.git
-cd pravega
-git checkout <branch-name>
-git rebase master
-git log
-git push origin <branch-name>
+$ git clone https://github.com/<youraccount>/pravega.git
+$ cd pravega
+$ git checkout <branch-name>
+$ git rebase master
+$ git log
+$ git push origin <branch-name>
 ```
 
 ## Pulling all changes 
@@ -78,27 +78,24 @@ git push origin <branch-name>
 # Assumptions:
 # PR no. = 3356, branch that you want to test out is: r0.4
 #
-git clone https://github.com/pravega/pravega.git
-git fetch origin pull/3356/head:r0.4
-git checkout r0.4
+$ git clone https://github.com/pravega/pravega.git
+$ git fetch origin pull/3356/head:r0.4
+$ git checkout r0.4
 ```
 See more at https://help.github.com/en/articles/checking-out-pull-requests-locally
 
 Similar experience, when trying out a colleague's PR ([PR 217](https://github.com/pravega/flink-connectors/pull/217) `vijikarthi:issue-pravega-security`):
 ```
 Forked the repo
-
-git clone https://github.com/ravisharda/flink-connectors.git
-
-git remote add upstream https://github.com/pravega/flink-connectors.git
-
-git fetch upstream pull/217/head:issue-pravega-security
+$ git clone https://github.com/ravisharda/flink-connectors.git
+$ git remote add upstream https://github.com/pravega/flink-connectors.git
+$ git fetch upstream pull/217/head:issue-pravega-security
 ```
 
 Yet another way - actually a much simpler one: 
 ```
 # Recursive is necessary for flink-connections project
-git clone --recursive -b issue-pravega-security https://github.com/vijikarthi/flink-connectors
+$ git clone --recursive -b issue-pravega-security https://github.com/vijikarthi/flink-connectors
 ```
 ## Updating an Exisiting Branch on Your Fork with Latest Code From Master on Main Repo
 
