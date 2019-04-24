@@ -36,7 +36,7 @@ $ git checkout -b issue-181-security-samples
 $ git branch
 ```
 
-## Syncing a fork: Mergig commits from main repo master into your fork's master 
+## Syncing a fork: Merging commits from main repo master into your fork's master 
 
 |S.No.|Command|Description|Verification (if any)|
 |:---:|:------|:----------|- |
