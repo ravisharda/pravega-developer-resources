@@ -157,6 +157,28 @@ git push --force
    git clone https://github.com/pravega/pravega.git
    git checkout <COMMIT>
    ```
+   
+## Disabling push to upstream 
+
+This'd be useful when you have commit access to main and want to prevent any inadvertant push to main's master:
+
+```
+$ git remote -v
+origin  https://github.com/ravisharda/pravega.git (fetch)
+origin  https://github.com/ravisharda/pravega.git (push)
+upstream        https://github.com/pravega/pravega.git (fetch)
+upstream        https://github.com/pravega/pravega.git (push)
+
+# Update/override the push URL to be something other than the pull URL
+$ git remote set-url --push upstream no-pushing
+
+$ git remote -v
+origin  https://github.com/ravisharda/pravega.git (fetch)
+origin  https://github.com/ravisharda/pravega.git (push)
+upstream        https://github.com/pravega/pravega.git (fetch)
+upstream        no-pushing (push)
+
+```
 
 ### TODO
 
