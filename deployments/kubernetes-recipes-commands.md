@@ -1,23 +1,30 @@
 # Kubernetes (K8s) Recipes and Commands
 
 **Table of Contents:**
-* [Kubernetes Cluster in zure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service-aks)
-    * [Creating a new AKS Cluster using Azure CLI](#creating-a-new-aks-cluster-using-azure-cli)
-    * [Deleting an AKS Cluster using Azure CLI](#deleting-an-aks-cluster-using-azure-cli)
-    * [Scaling AKS Cluster to More Nodes](#scaling-aks-cluster-to-more-nodes)
-    * [Opening the Kernetes Dashboard for K8s cluster running in AKS](#opening-the-kernetes-dashboard-for-k8s-cluster-running-in-aks)
-    * [More About AKS](#more-about-aks)
-* [Deploying a Pravega Kubernetes Cluster](#deploying-a-pravega-kubernetes-cluster)
-    * [Step 1: Install Zookeeper using Pravega Zookeeper Operator](#step-1-install-zookeeper-using-pravega-zookeeper-operator)
-    * [Step 2: Install Helm](#step-2-install-helm)
-    * [Step 3: Install the Pravega Operator](#step-3-install-the-pravega-operator)
-    * [Step 4: Deploy a Pravega Cluster](#step-4-deploy-a-pravega-cluster)
-    * [Step 5: Use the Pravega cluster](#step-5-use-the-pravega-cluster)
-    * [Deleting the deployment](#deleting-the-deployment)
-    * [Troubleshooting](#troubleshooting)
-* [Deploying Minikube](#deploying-minikube)
-* [Kubectl Command Reference](#kubectl-command-reference)
- 
+
+  * [Kubernetes Cluster in Azure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service--aks-)
+    + [Creating a new AKS Cluster using Azure CLI](#creating-a-new-aks-cluster-using-azure-cli)
+    + [Scaling AKS Cluster to More Nodes](#scaling-aks-cluster-to-more-nodes)
+    + [Deleting an AKS Cluster using Azure CLI](#deleting-an-aks-cluster-using-azure-cli)
+    + [Opening the Kernetes Dashboard for K8s cluster running in AKS](#opening-the-kernetes-dashboard-for-k8s-cluster-running-in-aks)
+    + [More about AKS](#more-about-aks)
+  * [Deploying a Pravega Kubernetes Cluster](#deploying-a-pravega-kubernetes-cluster)
+    + [Step 1: Install Zookeeper using Pravega Zookeeper Operator](#step-1--install-zookeeper-using-pravega-zookeeper-operator)
+    + [Step 2: Deploy a Zookeeper Cluster using the Zookeeper Operator](#step-2--deploy-a-zookeeper-cluster-using-the-zookeeper-operator)
+    + [Step 3: Install & Configure Helm](#step-3--install---configure-helm)
+    + [Step 4: Install the Pravega Operator](#step-4--install-the-pravega-operator)
+    + [Step 5: Deploy a Pravega Cluster](#step-5--deploy-a-pravega-cluster)
+      - [Without External Access](#without-external-access)
+      - [With External Access Enabled](#with-external-access-enabled)
+      - [With External Access and TLS Enabled](#with-external-access-and-tls-enabled)
+    + [Step 6: Using the Pravega cluster](#step-6--using-the-pravega-cluster)
+      - [Port forwarding to access the cluster](#port-forwarding-to-access-the-cluster)
+    + [Deleting the deployment](#deleting-the-deployment)
+    + [Troubleshooting](#troubleshooting)
+  * [Deploying Minikube](#deploying-minikube)
+  * [Kubectl Command Reference](#kubectl-command-reference)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Kubernetes Cluster in Azure Kubernetes Service (AKS)
 
@@ -241,7 +248,7 @@ spec:
       storage: 50Gi
 ```
 
-**Without External Access:**
+#### Without External Access
 
 Assuming you have a yaml file specifying the deployment:
 
@@ -255,7 +262,7 @@ PS> kubectl get all -l pravega_cluster
 
 ```
 
-**With External Access Enabled:**
+#### With External Access Enabled
 
 See [this](https://github.com/pravega/pravega-operator/blob/master/doc/external-access.md) Pravega Operator documentation for the latest information.
 
@@ -268,9 +275,9 @@ PS> kubectl create -f rolebinding.yaml
 PS> kubectl create -f pravega.yaml
 ```
 
-**With External Access and TLS Enabled:**
+#### With External Access and TLS Enabled
 
-Create the service accounts, roles and role bindings. 
+1. Create the service accounts, roles and role bindings. 
 
 ```powershell
 # The three yaml files have content as described in the external access documentation referenced above. 
@@ -279,7 +286,7 @@ PS> kubectl create -f roles.yaml
 PS> kubectl create -f rolebinding.yaml
 ```
 
-Now, create the secrets:
+2. Now, create the secrets:
 
 ```powershell
 ```bash
@@ -305,7 +312,9 @@ Now, create the secrets:
 > kubectl describe secret segmentstore-pki
 ```
 
-Deploy Pravega:
+3. Deploy Pravega:
+
+(I use a a yaml file that looks like the one [here](https://github.com/ravisharda/pravega-developer-resources/blob/master/deployments/yaml-examples/k8s-external-access-tls-auth.md)
 
 ```
 pravega-operator> kubectl create -f pravega.yaml
@@ -315,11 +324,9 @@ pravega-operator> kubectl get PravegaCluster
 pravega-operator> kubectl get all -l pravega_cluster
 ```
 
-### Step 5: Use the Pravega cluster
+### Step 6: Using the Pravega cluster
 
-See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster
-
-A PravegaCluster instance is only accessible WITHIN the cluster (i.e. no outside access is allowed) using the following endpoint in the PravegaClient.
+A PravegaCluster instance which doesn't have the external access enabled, is only accessible within the cluster (i.e. no outside access is allowed) using the following endpoint in the PravegaClient.
 ```
 tcp://<cluster-name>-pravega-controller.<namespace>:9090
 ```
@@ -342,7 +349,7 @@ kubectl get all -l pravega_cluster
 > curl -v -k -u admin:1111_aaaa https://10.0.30.253:10080/v1/scopes
 ```
 
-### Port forwarding to access the cluster
+#### Port forwarding to access the cluster
 
 For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as shown below. Do keep in mind though that you might really be able to access only the controller (an dnot the segment stores). So, it is useful only for using the Controller REST endpoint. 
 
@@ -428,9 +435,6 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
 > kubectl exec -it pravega-zookeeper-0 -- sh
 
 ```
-
-### Sample Pravega Cluster Specification files
-
 
 ## Deploying Minikube
 
