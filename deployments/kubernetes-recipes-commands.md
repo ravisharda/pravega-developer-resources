@@ -1,5 +1,10 @@
 # Kubernetes (K8s) Recipes and Commands
 
+NOTE:
+* The steps shown here show use paths, endpoint addresses, etc. that work on one particular environment. They may not work you: be sure to replace them. 
+* The source of truth for many of the steps - especially the ones related to Pravega operator - is really the documentation under the corresponding repo. I've reproduced them here for quick reference. Be sure to confirm the steps are current and applicable to the version you use. 
+* The container images used may not be the one that you seeking to work with. Replace the versions as needed. 
+
 **Table of Contents:**
 
   * [Kubernetes Cluster in Azure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service--aks-)
@@ -250,7 +255,7 @@ spec:
 
 #### Without External Access
 
-Assuming you have a yaml file specifying the deployment:
+Assuming I have a [yaml file](https://github.com/ravisharda/pravega-developer-resources/blob/master/deployments/yaml-examples/k8s-internal-access-only.md) specifying the deployment, I deploy a cluster using these steps:
 
 ```powershell
 # Deploy the cluster
