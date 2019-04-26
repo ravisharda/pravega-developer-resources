@@ -207,7 +207,7 @@ PS> kubectl get deploy
 
 See the steps [here](https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster). 
 
-Example command sequence:
+1. Provision tier2 storage. 
 
 ```
 # First, we need to provision Tier 2 storage. We'll use an NFS volume provisioned by the 
@@ -221,12 +221,9 @@ PS> kubectl get storageclass
 # See an example file below.
 PS> kubectl create -f pvc.yaml
 
-
-
-
 ```
 
-Yaml files I use:
+Yaml file I use:
 
 `pvc.yaml`: 
 
@@ -244,29 +241,47 @@ spec:
       storage: 50Gi
 ```
 
-
 **Without External Access:**
+
+Assuming you have a yaml file specifying the deployment:
+
+```powershell
+# Deploy the cluster
+PS> kubectl create -f pravega.yaml
+
+# Verify that the cluster instances and its components are being created.
+PS> kubectl get PravegaCluster
+PS> kubectl get all -l pravega_cluster
+
+```
 
 **With External Access Enabled:**
 
+See [this](https://github.com/pravega/pravega-operator/blob/master/doc/external-access.md) Pravega Operator documentation for the latest information.
+
+```powershell
+# The three yaml files have content as described in the external access documentation referenced above. 
+PS> kubectl create -f serviceacct.yaml
+PS> kubectl create -f roles.yaml
+PS> kubectl create -f rolebinding.yaml
+
+PS> kubectl create -f pravega.yaml
+```
+
 **With External Access and TLS Enabled:**
 
+Create the service accounts, roles and role bindings. 
 
-
-
-
-
-```
-# Create a deployment yaml file
-pravega-operator> kubectl create -f pravega.yaml
-
-# Verify that the cluster instances and its components are being created.
-pravega-operator> kubectl get PravegaCluster
-pravega-operator> kubectl get all -l pravega_cluster
+```powershell
+# The three yaml files have content as described in the external access documentation referenced above. 
+PS> kubectl create -f serviceacct.yaml
+PS> kubectl create -f roles.yaml
+PS> kubectl create -f rolebinding.yaml
 ```
 
-### Optionally, create Secrets
+Now, create the secrets:
 
+```powershell
 ```bash
 > cd c:\workspace\pki
 > kubectl create secret generic controller-pki `
@@ -290,29 +305,15 @@ pravega-operator> kubectl get all -l pravega_cluster
 > kubectl describe secret segmentstore-pki
 ```
 
-### Step 4: Deploy a Pravega Cluster
+Deploy Pravega:
 
-**Cluster with No External Access:**
+```
+pravega-operator> kubectl create -f pravega.yaml
 
-See the steps here: https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster. When creating the Pravega cluster, you'll need the Zookeeper IP Address. Use this command to fetch it (extract the cluster IP address): `kubectl get all -l app=example`
-
-This involves two sub-steps:
-* Provisioning an NFS volume provisioned by the NFS Server Provisioner helm chart to provide Tier 2 storage. 
-* Creating a Pravega cluster
-* Verifying the cluster is running
-  ```
-  kubectl get PravegaCluster
-  
-  kubectl get all -l pravega_cluster=pravega
-  or
-  kubectl get pods -l pravega_cluster=pravega
-  ```
- 
- **Cluster with External Access:**
- 
- Follow the steps listed [here](https://github.com/pravega/pravega-operator/blob/a204dcaf507d21334a1f40656f5d0306e92db580/doc/external-access.md), before creating the cluster. 
- 
- For steps 1,2 and 3 create a temp.yaml file for each and use `kubectl create -f temp.yaml` to create the resource. For step 4, just update the pravega.yaml file. 
+# Verify that the cluster instances and its components are being created.
+pravega-operator> kubectl get PravegaCluster
+pravega-operator> kubectl get all -l pravega_cluster
+```
 
 ### Step 5: Use the Pravega cluster
 
@@ -341,29 +342,12 @@ kubectl get all -l pravega_cluster
 > curl -v -k -u admin:1111_aaaa https://10.0.30.253:10080/v1/scopes
 ```
 
-**To enable direct access to the cluster:**  
+### Port forwarding to access the cluster
 
-For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as follows:
+For debugging and development you might want to access the Pravega cluster directly. For example, if you created the cluster with name pravega in the default namespace you can forward ports of the Pravega controller pod with name pravega-pravega-controller-68657d67cd-w5x8b as shown below. Do keep in mind though that you might really be able to access only the controller (an dnot the segment stores). So, it is useful only for using the Controller REST endpoint. 
+
 ```
 kubectl port-forward -n default pravega-pravega-controller-68657d67cd-w5x8b 9090:9090 10080:10080
-```
-Note that out cluser name is `pravega` and `namespace` is: 
-
-Get the name of the pods, using the following command:
-```
-PS C:\Workspace\pravega-operator> kubectl get pods
-NAME                                          READY   STATUS    RESTARTS   AGE
-example-0                                     1/1     Running   0          17h
-example-1                                     1/1     Running   0          17h
-example-2                                     1/1     Running   1          17h
-pravega-bookie-0                              0/1     Pending   0          52m
-pravega-bookie-1                              0/1     Pending   0          52m
-pravega-bookie-2                              0/1     Pending   0          52m
-pravega-operator-6c6d9fff4f-cfmwb             1/1     Running   0          17h
-**pravega-pravega-controller-5d6686cf85-r94x7   1/1     Running   0          52m**
-pravega-pravega-segmentstore-0                0/1     Pending   0          52m
-punk-sasquatch-nfs-server-provisioner-0       1/1     Running   0          85m
-zookeeper-operator-6b6657ffdb-qpw92           1/1     Running   0          17h
 ```
 
 **Note: What is port forwarding?**
@@ -443,8 +427,10 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
 > kubectl exec -it pravega-pravega-segmentstore-0 -- sh
 > kubectl exec -it pravega-zookeeper-0 -- sh
 
-
 ```
+
+### Sample Pravega Cluster Specification files
+
 
 ## Deploying Minikube
 
