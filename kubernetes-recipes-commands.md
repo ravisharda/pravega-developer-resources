@@ -122,7 +122,6 @@ kubectl create -f deploy/all_ns/operator.yaml
 
 # Verify that the Kubernetes Operator is running
 PS> kubectl get deploy
-
 ```
 
 ### Step 2: Deploy a Zookeeper Cluster using the Zookeeper Operator
@@ -152,12 +151,12 @@ spec:
 
 ### Step 3: Install & Configure Helm 
 
-These tasks are to be done only once per client host. 
+These tasks are to be done only **once** per client host. 
 
 * Install Chocolatey
 * Install Helm using Chocolatey: ``choco install kubernetes-helm``
 
-The following tasks are done on a per-Kubernetes cluster basis:
+The following tasks are done on a **per-Kubernetes cluster** basis:
 
 * Initialize Helm: ``PS> helm init``
 * Now, add service accounts: 
@@ -170,14 +169,14 @@ The following tasks are done on a per-Kubernetes cluster basis:
   # In Powershell, you need to escape the double quote characters
   PS> kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
   ```
-* Initializer Helm and Tiller: 
+* Initialize Helm and Tiller: 
   
   ```
   # Initialize helm and tiller. This command only needs to run once per Kubernetes cluster, it will create a tiller 
   # deployment in the kube-system namespace and setup your local helm client.
   PS> helm init --service-account tiller --wait
   ```
-* Verify helm is working: ``helm version``
+* Verify helm is working: ``PS> helm version``
 
 **Searching a specific chart:**
 
@@ -188,9 +187,44 @@ The following tasks are done on a per-Kubernetes cluster basis:
 * https://github.com/dotnet-architecture/eShopOnContainers/wiki/10.-Deploying-to-Kubernetes-(AKS-and-local)-using-Helm-Charts
 * https://github.com/helm/charts/tree/master/stable/nfs-server-provisioner
 
-### Step 3: Install the Pravega Operator
+### Step 4: Install the Pravega Operator
 
 See the steps here: https://github.com/pravega/pravega-operator#install-the-operator. 
+
+The current steps I use are:
+```
+PS> cd C:\workspace\pravega-operator
+
+# Run the following command to install the PravegaCluster custom resource definition (CRD), 
+# create the pravega-operator service account, roles, bindings, and the deploy the Operator.
+PS> kubectl create -f deploy
+
+# Verify that the Pravega Operator is running.
+PS> kubectl get deploy
+```
+
+### Step 5: Deploy a Pravega Cluster
+
+See the steps [here](https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster). 
+
+Example command sequence:
+```
+# First, we need to provision Tier 2 storage. 
+PS> 
+
+```
+
+
+**Without External Access:**
+
+**With External Access Enabled:**
+
+**With External Access and TLS Enabled:**
+
+
+
+
+
 
 ```
 # Create a deployment yaml file
