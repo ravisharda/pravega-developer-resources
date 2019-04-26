@@ -208,10 +208,40 @@ PS> kubectl get deploy
 See the steps [here](https://github.com/pravega/pravega-operator#deploy-a-sample-pravega-cluster). 
 
 Example command sequence:
-```
-# First, we need to provision Tier 2 storage. 
-PS> 
 
+```
+# First, we need to provision Tier 2 storage. We'll use an NFS volume provisioned by the 
+# NFS Server Provisioner helm chart to provide Tier 2 storage.
+PS> helm install stable/nfs-server-provisioner
+
+# Verify that the nfs storage class is now available.
+PS> kubectl get storageclass
+
+# Now, create a PersistentVolumeClaim that will be used as Tier 2 for Pravega.
+# See an example file below.
+PS> kubectl create -f pvc.yaml
+
+
+
+
+```
+
+Yaml files I use:
+
+`pvc.yaml`: 
+
+```yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pravega-tier2
+spec:
+  storageClassName: "nfs"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
 ```
 
 
