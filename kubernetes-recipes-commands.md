@@ -25,58 +25,54 @@
 
 You can create the cluster using the Azure portal. Here we'll do so using Azure CLI. You migth also want to see: [Quickstart: Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) 
 
-```
-//Launch powershell as admin. 
+```powershell
+# Launch powershell as admin. 
 
-// Login to Azure. The following launches a URL in the browser where you can log in. 
-az login
+# Login to Azure. The following launches a URL in the browser where you can log in. 
+PS> az login
 
-// Create a variable that holds the resource group name
-$resourceGroup = "Testk8sResourceGroup"
+# Create a variable that holds the resource group name
+PS> $resourceGroup = "Testk8sResourceGroup"
 
-// Create the resource group
-// You can find all locations using "az account list-locations". Not using "southindia" as using it will
-// throw error: "The VM size of AgentPoolProfile:nodepool1 is not allowed in your subscription 
-// in location 'southindia'."
-az group create -n $resourceGroup -l "southeastasia"
+# Create the resource group:
+# You can find all locations using "az account list-locations". Not using "southindia" as using it will
+# throw error: "The VM size of AgentPoolProfile:nodepool1 is not allowed in your subscription 
+# in location 'southindia'."
+PS> az group create -n $resourceGroup -l "southeastasia"
 
-// Create a variable to hold cluster name
-$clusterName = "Testk8scluster"
+# Create a variable to hold cluster name
+PS> $clusterName = "Testk8scluster"
 
-// Create the AKS cluster, with a starting node count (we'll scale the node count to 3 later). 
-// We are asking to generate SSH keys that we can use to securely manage this cluster.
-az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys
-(or)
-// Find the supported VM SKUs or find it https://zimmergren.net/azure-container-services-aks-supported-vm-sizes/
-az vm list-skus --location southeastasia
-//Now create aks cluster
-az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys --node-vm-size Standard_A2_v2
-az aks create --name $clusterName \
-              --resource-group $resourceGroup \
-              --ssh-key-value ssh-key-<CLUSTER-NAME>.pub \
-              --node-count 1 \
-              --node-vm-size Standard_D2s_v3 \
-              --output table
+# Create the AKS cluster, with a starting node count (we'll scale the node count to 3 later). 
+# We are asking to generate SSH keys that we can use to securely manage this cluster.
+PS> az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys
+# Alternatively, Find the supported VM SKUs and create the cluster 
+PS> az vm list-skus --location southeastasia
+PS> az aks create -g $resourceGroup -n $clusterName --node-count 1 --generate-ssh-keys --node-vm-size Standard_A2_v2
+# Or:
+PS> az aks create --name $clusterName `
+              --resource-group $resourceGroup `
+              --ssh-key-value ssh-key-<CLUSTER-NAME>.pub `
+              --node-count 1 `
+              --node-vm-size Standard_D2s_v3 `
+              --output table`
 
-// Now we can use use kubectl command to explore it. To do so, first we have to install it. 
-az aks install-cli
+# Now we can use use kubectl command to explore it. To do so, first we have to install it. 
+# If you already have this installed, you can skip this step. 
+PS> az aks install-cli
+# Add kubectl to path
+# Relaunch Powershell and verify kubecctl is working
+PS> kubectl version --short
 
-// Add kubectl to path
+# If you are recreating the cluster, be sure to C:\Users\shardr\.kube\config file. Remove the existing cluster, context, 
+# and user for the given name. You will then be able to run `az aks get-credentials` again. Or, may be try this: 
+PS> az aks get-credentials --resource-group $resourceGroup --name $clusterName --overwrite-existing
+# Doing it for the first time? To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. 
+# This command downloads credentials and configures the Kubernetes CLI to use them.
+PS> az aks get-credentials --resource-group $resourceGroup --name $clusterName
 
-// Relaunch Powershell and verify kubecctl is working
-kubectl version --short
-
-// If you are recreating the cluster, be sure to C:\Users\shardr\.kube\config file. Remove the existing cluster, context, 
-// and user for the given name. You will then be able to run `az aks get-credentials` again. Or, may be try this: 
-az aks get-credentials --resource-group $resourceGroup --name $clusterName --overwrite-existing
-
-// To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. 
-// This command downloads credentials and configures the Kubernetes CLI to use them.
-az aks get-credentials --resource-group $resourceGroup --name $clusterName
-
-
-// To verify the connection to your cluster, use the kubectl get command to return a list 
-// of the cluster nodes.
+# To verify the connection to your cluster, use the kubectl get command to return a list 
+# of the cluster nodes.
 kubectl get nodes
 
 ```
