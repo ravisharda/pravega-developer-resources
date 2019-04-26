@@ -78,11 +78,11 @@ kubectl get nodes
 ```
 ### Deleting an AKS Cluster using Azure CLI
 
-Run: ``az group delete --name $resourceGroup --yes --no-wait``
+``PS> az group delete --name $resourceGroup --yes --no-wait``
 
 ### Scaling AKS Cluster to More Nodes
 
-Run: ``az aks scale -g $resourceGroup -n $clusterName --node-count 3``
+``PS> az aks scale -g $resourceGroup -n $clusterName --node-count 3``
 
 ### Opening the Kernetes Dashboard for K8s cluster running in AKS
 
@@ -91,8 +91,8 @@ As earlier:
 * ``$clusterName = "Testk8scluster"``
 
 Now, run:
-* ``kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
-* ``az aks browse -g $resourceGroup -n $clusterName``
+* ``PS> kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard``
+* ``PS> az aks browse -g $resourceGroup -n $clusterName``
 
 ### More about AKS
 
@@ -107,27 +107,32 @@ Now, run:
 
 See the steps [here](https://github.com/pravega/zookeeper-operator#usage). 
 
-### Step 2: Install Helm 
+### Step 2: Install & Configure Helm 
+
+These tasks are to be done only once per client host. 
 
 * Install Chocolatey
 * Install Helm using Chocolatey: ``choco install kubernetes-helm``
-* Initialize Helm: ``helm init``
+
+The following tasks are done on a per-Kubernetes cluster basis:
+
+* Initialize Helm: ``PS> helm init``
 * Now, add service accounts: 
   
   ```
-  kubectl create serviceaccount --namespace kube-system tiller
+  PS> kubectl create serviceaccount --namespace kube-system tiller
   
-  kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  PS> kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
   
   # In Powershell, you need to escape the double quote characters
-  kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
+  PS> kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
   ```
 * Initializer Helm and Tiller: 
   
   ```
   # Initialize helm and tiller. This command only needs to run once per Kubernetes cluster, it will create a tiller 
   # deployment in the kube-system namespace and setup your local helm client.
-  helm init --service-account tiller --wait
+  PS> helm init --service-account tiller --wait
   ```
 * Verify helm is working: ``helm version``
 
