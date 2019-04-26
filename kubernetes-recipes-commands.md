@@ -1,4 +1,4 @@
-# Kubernetes (K8s) Commands and Utilities
+# Kubernetes (K8s) Recipes and Commands
 
 **Table of Contents:**
 * [Kubernetes Cluster in zure Kubernetes Service (AKS)](#kubernetes-cluster-in-azure-kubernetes-service-aks)
@@ -76,13 +76,13 @@ PS> az aks get-credentials --resource-group $resourceGroup --name $clusterName
 kubectl get nodes
 
 ```
-### Deleting an AKS Cluster using Azure CLI
-
-``PS> az group delete --name $resourceGroup --yes --no-wait``
-
 ### Scaling AKS Cluster to More Nodes
 
 ``PS> az aks scale -g $resourceGroup -n $clusterName --node-count 3``
+
+### Deleting an AKS Cluster using Azure CLI
+
+``PS> az group delete --name $resourceGroup --yes --no-wait``
 
 ### Opening the Kernetes Dashboard for K8s cluster running in AKS
 
@@ -107,7 +107,50 @@ Now, run:
 
 See the steps [here](https://github.com/pravega/zookeeper-operator#usage). 
 
-### Step 2: Install & Configure Helm 
+Here are the current steps I use:
+```powershell
+PS> cd C:\Workspace\zookeeper-operator-master
+
+# Register the ZookeeperCluster custom resource definition (CRD).
+PS> kubectl create -f deploy/crds/zookeeper_v1beta1_zookeepercluster_crd.yaml
+
+# Create the operator role and role binding for all namespaces
+PS> kubectl create -f deploy/all_ns/rbac.yaml
+
+# Deploy the Zookeeper operator.
+kubectl create -f deploy/all_ns/operator.yaml
+
+# Verify that the Kubernetes Operator is running
+PS> kubectl get deploy
+
+```
+
+### Step 2: Deploy a Zookeeper Cluster using the Zookeeper Operator
+
+See the steps [here](https://github.com/pravega/zookeeper-operator#deploy-a-sample-zookeeper-cluster)
+
+Here are the current steps I use:
+
+```powershell
+# Deploy a Zookeeper cluster
+PS> kubectl create -f zk.yaml
+
+# Wait for ZK cluster instances to be running. Also, note the IP address of the Zookeeper instance.
+PS> kubectl get zk
+```
+
+Here's how my zk.yaml file looks:
+
+```yaml
+apiVersion: "zookeeper.pravega.io/v1beta1"
+kind: "ZookeeperCluster"
+metadata:
+  name: "pravega-zookeeper"
+spec:
+  size: 3
+```
+
+### Step 3: Install & Configure Helm 
 
 These tasks are to be done only once per client host. 
 
