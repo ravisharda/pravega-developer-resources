@@ -296,12 +296,15 @@ PS> kubectl create -f rolebinding.yaml
 ```powershell
 ```bash
 > cd c:\workspace\pki
-> kubectl create secret generic controller-pki `
-        --from-file=tlsCertFile=./controller01.pem `
-		--from-file=cacert=./ca-cert `
-		--from-file=tlsKeyFile=./controller01.key.pem `
-		--from-file=tlsKeyStoreFile=./controller01.jks `
+> kubectl create secret generic pravega-pki `
+        --from-file=controllerTlsCertFile=./controller01.pem `
+		--from-file=controllerCacert=./ca-cert `
+		--from-file=controllerTlsKeyFile=./controller01.key.pem `
+		--from-file=controllerTlsKeyStoreFile=./controller01.jks `
 		--from-file=passwordfile=./password 
+		--from-file=segmentstoreTlsCertFile=./segmentstore01.pem `
+	        --from-file=segmentstoreCacert=./ca-cert `
+	        --from-file=segmentstoreTlsKeyFile=./segmentstore01.key.pem
  secret/controller-pki created
 	
 # Verify the secrets
