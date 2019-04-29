@@ -7,7 +7,7 @@ metadata:
   name: "pravega"
 spec:
   version: "0.5.0-2203.a816009-SNAPSHOT"
-  zookeeperUri: 10.0.84.20:2181
+  zookeeperUri: pravega-zookeeper-client:2181
   externalAccess:
     enabled: true
     type: LoadBalancer
@@ -59,28 +59,29 @@ spec:
           claimName: pravega-tier2
     options:
         controller.auth.tlsEnabled: "true"
-        controller.auth.tlsCertFile: "/etc/secret-volume/controller01.pem"
-        controller.auth.tlsTrustStore: "/etc/secret-volume/ca-cert"
-        controller.auth.tlsKeyFile: "/etc/secret-volume/controller01.key.pem"
+        controller.auth.tlsCertFile: "/etc/secret-volume/controllerTlsCertFile"
+        controller.auth.tlsTrustStore: "/etc/secret-volume/controllerCacert"
+        controller.auth.tlsKeyFile: "/etc/secret-volume/controllerTlsKeyFile"
         controller.zk.secureConnection: "false"
         controller.zk.tlsTrustStoreFile: "empty"
         controller.zk.tlsTrustStorePasswordFile: "empty"
-        controller.rest.tlsKeyStoreFile: "/etc/secret-volume/controller01.jks"
-        controller.rest.tlsKeyStorePasswordFile: "/opt/pravega/conf/standalone.keystore.jks.passwd"
+        controller.rest.tlsKeyStoreFile: "/etc/secret-volume/controllerTlsKeyStoreFile"
+        controller.rest.tlsKeyStorePasswordFile: "/etc/secret-volume/passwordfile"
         controller.auth.enabled: "true"
         controller.auth.userPasswordFile: "/opt/pravega/conf/passwd"
         controller.auth.tokenSigningKey: "secret"
         pravegaservice.enableTls: "true"
-        pravegaservice.certFile: "/etc/secret-volume/segmentStore01.pem"
-        pravegaservice.keyFile: "/etc/secret-volume/segmentStore01.key.pem"
+        pravegaservice.certFile: "/etc/secret-volume/segmentstoreTlsCertFile"
+        pravegaservice.keyFile: "/etc/secret-volume/segmentstoreTlsKeyFile"
         pravegaservice.secureZK: "false"
         pravegaservice.zkTrustStore: "empty"
         pravegaservice.zkTrustStorePasswordPath: "empty"
         autoScale.tlsEnabled: "true"
-        autoScale.tlsCertFile: "/etc/secret-volume/segmentStore01.pem"
+        autoScale.tlsCertFile: "/etc/secret-volume/segmentstoreTlsCertFile"
         autoScale.validateHostName: "false"
         autoScale.authEnabled: "true"
         autoScale.tokenSigningKey: "secret"
         bookkeeper.tlsEnabled: "false"
         bookkeeper.tlsTrustStorePath: "empty"
+
 ```
