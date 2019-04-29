@@ -294,30 +294,33 @@ PS> kubectl create -f rolebinding.yaml
 2. Now, create the secrets:
 
 ```powershell
-```bash
 > cd c:\workspace\pki
-> kubectl create secret generic pravega-pki `
+> kubectl create secret generic controller-tls `
         --from-file=controllerTlsCertFile=./controller01.pem `
-		--from-file=controllerCacert=./ca-cert `
-		--from-file=controllerTlsKeyFile=./controller01.key.pem `
-		--from-file=controllerTlsKeyStoreFile=./controller01.jks `
-		--from-file=passwordfile=./password 
-		--from-file=segmentstoreTlsCertFile=./segmentstore01.pem `
-	        --from-file=segmentstoreCacert=./ca-cert `
-	        --from-file=segmentstoreTlsKeyFile=./segmentstore01.key.pem
- secret/controller-pki created
+	--from-file=controllerCacert=./ca-cert `
+	--from-file=controllerTlsKeyFile=./controller01.key.pem `
+	--from-file=controllerTlsKeyStoreFile=./controller01.jks `
+	--from-file=passwordfile=./password 
+ secret/controller-tls created
 	
 # Verify the secrets
-> kubectl get secret controller-pki
-> kubectl describe secret controller-pki
+> kubectl get secret controller-tls
+> kubectl describe secret controller-tls
 
-> kubectl create secret generic segmentstore-pki `
-        --from-file=tlsCertFile=./segmentstore01.pem `
-	--from-file=cacert=./ca-cert `
-	--from-file=tlsKeyFile=./segmentstore01.key.pem
+kubectl create secret generic segmentstore-tls `
+      --from-file=segmentstoreTlsCertFile=./segmentstore01.pem `
+      --from-file=segmentstoreCacert=./ca-cert `
+      --from-file=segmentstoreTlsKeyFile=./segmentstore01.key.pem
 
-> kubectl get secret segmentstore-pki
-> kubectl describe secret segmentstore-pki
+> kubectl get secret segmentstore-tls
+> kubectl describe secret segmentstore-tls
+```
+
+Deleting a secrets:
+
+```
+kubectl delete secret pravega-pki
+kubectl delete secret controller-tls
 ```
 
 3. Deploy Pravega:
