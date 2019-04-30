@@ -505,6 +505,12 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
     ```
     > kubectl get pods
     
+    # Watching
+    > kubectl get pods -w
+    
+    # Sort by status
+    > kubectl get pods --sort-by=.status.phase
+    
     # While the default output format is plain text, you can also get info in JSON format.     
     > kubectl get pods -n kube-system -o json
     
