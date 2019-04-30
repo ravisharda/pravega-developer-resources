@@ -85,16 +85,16 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
 
  ```
  Example: 
- docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
+ docker pull devops-repo.myorg.com/context/pravega:0.5.0-2134.4701d0e
  ```
 
 * Handling bad certificates/self-signed certificate errors
 
-  Say, you run the command `docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e`. You get a Docker error: `X509: certificate signed by unknown authority`.
+  Say, you run the command `docker pull devops-repo.myorg/context/pravega:0.5.0-2134.4701d0e`. You get a Docker error: `X509: certificate signed by unknown authority`.
   
   ```
   $ openssl s_client -showcerts -connect                \
-    devops-repo.isus.emc.com:8116 </dev/null 2>/dev/null | \
+    devops-repo.myorg:8112 </dev/null 2>/dev/null | \
     openssl x509 -outform PEM > devops-repo.crt
 
   # Add it globally
@@ -107,7 +107,7 @@ Note: See more/detailed information at [Docker CLI Commandline Documentation](ht
   systemctl daemon-reload
   sudo systemctl restart docker
   
-  docker pull devops-repo.isus.emc.com:8116/nautilus/pravega:0.5.0-2134.4701d0e
+  docker pull devops-repo.myorg.com/context/pravega:0.5.0-2134.4701d0e
   ```
 * Pushing Pravega images to a Docker Hub Repository
 
