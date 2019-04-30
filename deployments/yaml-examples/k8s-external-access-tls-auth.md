@@ -83,5 +83,4 @@ spec:
         autoScale.tokenSigningKey: "secret"
         bookkeeper.tlsEnabled: "false"
         bookkeeper.tlsTrustStorePath: "empty"
-
 ```
