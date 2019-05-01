@@ -17,6 +17,6 @@
     $ curl -v -k -u whatadmin:whoever https://$HOST_IP:10080/v1/scopes
     ```
     
-3. Run a reader/writer client program. The one I'm using for basic verification can be found here: 
+3. Run a client application that writes events to a stream and reads them back. You may use the following example for basic verification: 
 
    https://github.com/ravisharda/pravega-examples/blob/6b2ff2a5f0373d67dee1133eb829b40d62ab69f4/src/main/java/org/example/pravega/client/basicreadwrite/ReaderWriterExamples.java#L28
