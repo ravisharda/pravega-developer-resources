@@ -7,8 +7,8 @@
 | Action | Intellij | Eclipse | Visual Studio |
 |:------|:--------|:------|:-------|
 |Search everywhere | Double shift |  |  |
-|Go to file | Ctrl + Shift + N| todo | todo|
-|Recent files |Ctrl + E  | todo | todo |
+|Go to file | Ctrl + Shift + N|  | |
+|Recent files |Ctrl + E  |  |  |
 |Go to a line | Ctrl + G | Ctrl + L | Ctrl + G |
 |Navigate to definition (e.g., to a method)	| Ctrl + B |Ctrl + (left) click <br/> F3| F12 |
 |Navigate to implementation | Ctrl + Alt + B |  | Ctrl + F12 (Opens impl, if its an interface) |
@@ -21,7 +21,10 @@
 
 | Action | Intellij | Eclipse | Visual Studio |
 |:------|:--------|:------|:-------|
-|Delete a line | Ctrl + Y | Ctrl + D | Ctrl + L |
+|Delete a line | Ctrl + Y | Ctrl + D | Ctrl + L | 
+|Toggle line comments | ctrl + / | Ctrl + / |  |
+|Rename | Shift + F6 |   |  |
+|Format code | Ctrl + Alt + l (l for line) | | |
 
 
 ## IntelliJ Specific
