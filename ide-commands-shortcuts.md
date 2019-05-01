@@ -13,10 +13,13 @@
 |Navigate to definition (e.g., to a method)	| Ctrl + B |Ctrl + (left) click <br/> F3| F12 |
 |Navigate to implementation | Ctrl + Alt + B |  | Ctrl + F12 (Opens impl, if its an interface) |
 |Peek definition |  |  | Alt + F12 |
-|Search and navigate to current class method | Ctrl + F12 (then type and select method) | Ctrl + O | Ctrl + ,  |
+|Search and navigate to current class method | Ctrl + F12 (then type and select method) | Ctrl + O (then type method name) | Ctrl + , (then type method name)  |
 |Go to last edit location | Ctrl + Shift + backspace |  |  |
 |Quick info (about a variable or type) | Ctrl + Q | Place cursor over a variable |  |
-
+|Show suggestions to fix a problem| | Ctrl + 1 | Alt + Shift + F10 / Ctrl + . |
+|Add packages/namespaces |  | 
+|Search files containing a given string| Ctrl + Shift + f |  |  |
+|Search for a file with a given name | Ctrl + Shift + n |  |  |
 ### Editing
 
 | Action | Intellij | Eclipse | Visual Studio |
