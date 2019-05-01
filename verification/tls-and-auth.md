@@ -19,4 +19,4 @@
     
 3. Run a reader/writer client program. The one I'm using can be found here: 
 
-   https://github.com/ravisharda/pravega-examples/blob/b1b75c62ebed5a03da58fea59dcf3866796155ca/src/main/java/org/example/pravega/client/basicreadwrite/ReaderWriterExamples.java#L28
+   https://github.com/ravisharda/pravega-examples/blob/6b2ff2a5f0373d67dee1133eb829b40d62ab69f4/src/main/java/org/example/pravega/client/basicreadwrite/ReaderWriterExamples.java#L28
