@@ -36,6 +36,7 @@
 
 ## IntelliJ 
 * Showing outline/structure of a class: ``Alt+7``
+* Changing display and view modes: `Alt+\``
 * [Cheatsheet](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 
 ## Atom
