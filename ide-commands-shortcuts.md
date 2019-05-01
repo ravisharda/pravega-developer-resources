@@ -31,10 +31,10 @@
 |Rename | Shift + F6 |   |  |
 |Format code | Ctrl + Alt + l (l for line) | Ctrl + Shift + f| |
 |Generate getters/setters| Alt + Insert | Alt + Shift + s |  |
-|
+|Show suggestions for fixing a problem| Alt + Enter | Ctrl + 1 |  |
 
 
-## IntelliJ Specific
+## IntelliJ 
 * Showing outline/structure of a class: ``Alt+7``
 * [Cheatsheet](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 
