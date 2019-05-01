@@ -1,5 +1,24 @@
 # Git Recipes and Commands
 
+- [Git Recipes and Commands](#git-recipes-and-commands)
+  * [Creating a new branch from command line](#creating-a-new-branch-from-command-line)
+  * [Downloading a newly created branch of your fork](#downloading-a-newly-created-branch-of-your-fork)
+  * [Syncing a fork: Merging commits from main repo master into your fork's master](#syncing-a-fork--merging-commits-from-main-repo-master-into-your-fork-s-master)
+  * [Rebasing a branch of your fork to the your fork's master](#rebasing-a-branch-of-your-fork-to-the-your-fork-s-master)
+  * [Pulling all changes](#pulling-all-changes)
+  * [Merging a PR to a branch locally to test out the changes](#merging-a-pr-to-a-branch-locally-to-test-out-the-changes)
+  * [Updating an Exisiting Branch on Your Fork with Latest Code From Master on Main Repo](#updating-an-exisiting-branch-on-your-fork-with-latest-code-from-master-on-main-repo)
+  * [Updating a New Branch on Your Fork with Latest Code From Master on Main Repo](#updating-a-new-branch-on-your-fork-with-latest-code-from-master-on-main-repo)
+  * [Targeting a PR to a branch other than Master](#targeting-a-pr-to-a-branch-other-than-master)
+  * [Undoing changes made to fork's master by mistake](#undoing-changes-made-to-fork-s-master-by-mistake)
+  * [Reverting your last change](#reverting-your-last-change)
+  * [Using the same Pravega Version as the Hadoop Connector](#using-the-same-pravega-version-as-the-hadoop-connector)
+  * [Disabling push to upstream](#disabling-push-to-upstream)
+  * [TODO](#todo)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 Assumptions:
 * Remote `upstream` is pravega/pravega.git
 * Remote `origin` is youracount/pravega.git
