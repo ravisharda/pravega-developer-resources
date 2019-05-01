@@ -6,11 +6,22 @@
 
 | Action | Intellij | Eclipse | Visual Studio |
 |:------|:--------|:------|:-------|
-|Search everywhere | Double shift | todo | todo |
+|Search everywhere | Double shift |  |  |
 |Go to file | Ctrl + Shift + N| todo | todo|
 |Recent files |Ctrl + E  | todo | todo |
 |Go to a line | Ctrl + G | Ctrl + L | Ctrl + G |
 |Navigate to definition (e.g., to a method)	| Ctrl + B |Ctrl + (left) click <br/> F3| F12 |
+|Navigate to implementation | Ctrl + Alt + B |  | Ctrl + F12 (Opens impl, if its an interface) |
+|Peek definition |  |  | Alt + F12 |
+|Search and navigate to current class method | Ctrl + F12 (then type and select method) | Ctrl + O | Ctrl + ,  |
+|Go to last edit location | Ctrl + Shift + backspace |  |  |
+|Quick info (about a variable or type) | Ctrl + Q | Place cursor over a variable |  |
+
+### Editing
+
+| Action | Intellij | Eclipse | Visual Studio |
+|:------|:--------|:------|:-------|
+|Delete a line | Ctrl + Y | Ctrl + D | Ctrl + L |
 
 
 ## IntelliJ Specific
