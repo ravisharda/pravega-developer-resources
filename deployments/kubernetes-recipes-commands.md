@@ -420,6 +420,10 @@ zookeeper-operator> kubectl delete -f zk.yaml
 ### Troubleshooting
 
 ```
+# Suppose a pod gets hung in container creating status. Logs are not available. You want to find out
+# why the pod failed to run and get ready.
+> kubectl describe pod/pravega-pravega-segmentstore-0
+
 # Labels attached to a pod
 > kubectl get pod <one of your pods> -o template --template='{{.metadata.labels}}'
 > kubectl get pod pravega-pravega-segmentstore-2 -o template --template='{{.metadata.labels}}'
