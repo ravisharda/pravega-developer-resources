@@ -7,6 +7,22 @@
   ```
   pgrep -f logback.configurationFile
   ```
+## VI and VIM
+
+**VIM:**
+
+* Copying file contents
+  * Yank the whole file:
+    ```bash
+    $ ggVGy
+    
+    # Or alternatively: 
+    $ gg"*yG
+    # gg - gets the cursor to the first character
+    # "*y - Start the yank command to the register * from the first line
+    # G - end of the file
+    ```
+
 
 ## Shell Scripts and Environment
 
