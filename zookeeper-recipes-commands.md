@@ -3,6 +3,7 @@
 ## Building Zookeeper
 
 ```bash
+# Replace branch name with the branch you want to build.
 $ git clone -b branch-3.5.5 https://github.com/apache/zookeeper
 $ cd zookeeper
 $ mvn package -DskipTests
