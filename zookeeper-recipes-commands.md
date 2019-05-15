@@ -40,7 +40,7 @@ $ mvn install -DskipTests
    ```
 6. Execute `$ source client_envs.sh` on the client side.
 
-### Starting/Stopping the Server and the CLI
+### Starting/Stopping the Server and the CLI client
 
 ```bash
 $ bin/zkServer.sh start
