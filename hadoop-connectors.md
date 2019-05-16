@@ -13,3 +13,19 @@
    usePravegaVersionSubModule=false
    ```
 6. Build the Haddop connectors project again: `./gradlew clean build`.
+
+## Using Hadoop Connectors
+
+### Verifying whether Auth works
+
+1. Enable Auth by setting `enableAuth` flag as true in `io.pravega.connectors.hadoop.utils.SetupUtils` class.
+2. Ensure that the code is recompiled: `./gradlew clean build -x test`. 
+3. Run a subset of tests by interactively running tests in `io.pravega.connectors.hadoop.PravegaConnectorLocalJobITCase` class. 
+
+Alternatively, run all tests in step 2 itself, by executing `./gradlew clean build` instead.
+
+### Running tests with it pointing to a separate Pravega Deployment
+
+```
+./gradlew clean test -Dpravega.uri=tls://localhost:9090
+```
