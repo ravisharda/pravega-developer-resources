@@ -1,4 +1,4 @@
-# Hadoop Connector 
+# Hadoop Connectors Recipes 
 
 ## Building the project with a specifed Pravega Version (Instead of with the Pravega Sub-module)
 
