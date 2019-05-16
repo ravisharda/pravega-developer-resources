@@ -12,7 +12,7 @@
    pravegaVersion=0.6.0-2259.b80b233-SNAPSHOT
    usePravegaVersionSubModule=false
    ```
-6. Build the Haddop connectors project again: `./gradlew clean build`.
+6. Build the Hadoop connectors project again: `./gradlew clean build`.
 
 ## Using Hadoop Connectors
 
