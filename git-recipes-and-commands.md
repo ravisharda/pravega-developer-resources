@@ -211,7 +211,7 @@ When working on a recent PR, I encountered an issue where my branch had merge co
    upstream        no-pushing (push)
    ```
 2. `git fetch upstream`
-3. 
+3. Perform the merge.
    ```
    $ git branch
    * issue-3728-batch-client-auth
@@ -232,12 +232,43 @@ When working on a recent PR, I encountered an issue where my branch had merge co
    # Merge upstream's master to local master. We are already on local master.
    $ git merge upstream/master
    
+   $ git status
+   n branch master
+   Your branch is ahead of 'origin/master' by 19 commits.
+   (use "git push" to publish your local commits)
+
+   nothing to commit, working tree clean
+
+   $ git checkout issue-3728-batch-client-auth
+   Switched to branch 'issue-3728-batch-client-auth'
    
-
+   $ git merge master
+   Auto-merging controller/src/main/java/io/pravega/controller/server/rpc/grpc/v1/ControllerServiceImpl.java
+   CONFLICT (content): Merge conflict in controller/src/main/java/io/pravega/controller/server/rpc/grpc/v1/ControllerServiceImpl.java
+   Automatic merge failed; fix conflicts and then commit the result.
    
+   # Now, used IntelliJ resolve conflicts feature to perform a merge. 
+   
+   $ git status
+   git status
+   On branch issue-3728-batch-client-auth
+   All conflicts fixed but you are still merging.
+     (use "git commit" to conclude merge)
 
+   Changes to be committed:
 
+        modified:   build.gradle
+        modified:   client/src/main/java/io/praveg..
+        ...
+   
+   $ git commit -s
+   [issue-3728-batch-client-auth b10a1635f] Merge branch 'master' into issue-3728-batch-client-auth
+
+   $ git status
+   On branch issue-3728-batch-client-auth
+   nothing to commit, working tree clean
    ```
+4. Push the changes. I did it via IntelliJ.
 
 ### TODO
 
