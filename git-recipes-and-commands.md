@@ -62,11 +62,12 @@ $ git branch
 |1|``git clone https://github.com/ravisharda/pravega.git``|Download the forked copy from Github|- |
 |2|``cd pravega``|-|- |
 |3|``git remote add upstream https://github.com/pravega/pravega.git``|Add an upstream remote branch, which will facilitate pulling down new commits from the main repo|``git remote -v`` or ``git remote show upstream``|
-|4|``git fetch upstream``|Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, upstream/master.|-|
-|5|``git checkout master``|Check out your fork's local master branch|``git branch``|
-|6|``git merge upstream/master``|Merge the changes from upstream/master into your local master branch. This brings your fork's master branch into sync with the upstream repository, without losing your local changes.|-|
-|7|``git push origin master``|Syncing your fork only updates your local copy of the repository. To update your fork on GitHub, you must push your changes.|-|
-|8| Go to ``https://github.com/ravisharda/pravega/`` and inspect the message|Verify that your fork's master is even with upstream.|
+|5|`git remote set-url --push upstream no-pushing`| Prevent pushes to upstream | - |
+|6|``git fetch upstream``|Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, upstream/master.|-|
+|7|``git checkout master``|Check out your fork's local master branch|``git branch``|
+|8|``git merge upstream/master``|Merge the changes from upstream/master into your local master branch. This brings your fork's master branch into sync with the upstream repository, without losing your local changes.|-|
+|9|``git push origin master``|Syncing your fork only updates your local copy of the repository. To update your fork on GitHub, you must push your changes.|-|
+|10| Go to ``https://github.com/ravisharda/pravega/`` and inspect the message|Verify that your fork's master is even with upstream.|
 
 Source: [GitHub Help - Syncing a Fork](https://help.github.com/articles/syncing-a-fork/#platform-windows)
 
