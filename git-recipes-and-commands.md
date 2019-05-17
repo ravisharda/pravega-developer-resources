@@ -1,6 +1,5 @@
 # Git Recipes and Commands
 
-- [Git Recipes and Commands](#git-recipes-and-commands)
   * [Creating a new branch from command line](#creating-a-new-branch-from-command-line)
   * [Downloading a newly created branch of your fork](#downloading-a-newly-created-branch-of-your-fork)
   * [Syncing a fork: Merging commits from main repo master into your fork's master](#syncing-a-fork--merging-commits-from-main-repo-master-into-your-fork-s-master)
@@ -14,7 +13,8 @@
   * [Reverting your last change](#reverting-your-last-change)
   * [Using the same Pravega Version as the Hadoop Connector](#using-the-same-pravega-version-as-the-hadoop-connector)
   * [Disabling push to upstream](#disabling-push-to-upstream)
-  * [TODO](#todo)
+  * [Resolving Merge Conflicts on a Branch of Your Fork](#resolving-merge-conflicts-on-a-branch-of-your-fork)
+    + [TODO](#todo)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
