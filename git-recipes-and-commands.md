@@ -199,6 +199,46 @@ upstream        no-pushing (push)
 
 ```
 
+## Resolving Merge Conflicts on a Branch of Your Fork
+
+When working on a recent PR, I encountered an issue where my branch had merge conflicts. Here are the steps I followed to resolve them:
+
+1. Ensure remote upstream for fetch operation is set. Check it is by running: `git remote -v`. Expect to see an output like the following:
+   ```
+   origin  https://github.com/ravisharda/pravega.git (fetch)
+   origin  https://github.com/ravisharda/pravega.git (push)
+   upstream        https://github.com/pravega/pravega.git (fetch)
+   upstream        no-pushing (push)
+   ```
+2. `git fetch upstream`
+3. 
+   ```
+   $ git branch
+   * issue-3728-batch-client-auth
+   master
+   
+   $ git stash
+   
+   $ git checkout master
+   Switched to branch 'master'
+   Your branch is up to date with 'origin/master'.
+   
+   $ git status
+   on branch master
+   Your branch is up to date with 'origin/master'.
+
+   nothing to commit, working tree clean
+   
+   # Merge upstream's master to local master. We are already on local master.
+   $ git merge upstream/master
+   
+   
+
+   
+
+
+   ```
+
 ### TODO
 
 **Stashing and Unstashing:**
