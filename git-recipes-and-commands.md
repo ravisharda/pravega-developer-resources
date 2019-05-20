@@ -57,6 +57,8 @@ Assumptions:
  
   ```
 
+**Further Reading:**
+* https://guide.freecodecamp.org/git
 
 
 # Recipes
