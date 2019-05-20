@@ -23,6 +23,42 @@ Assumptions:
 * Remote `upstream` is pravega/pravega.git
 * Remote `origin` is youracount/pravega.git
 
+# Commands
+
+* Display commit logs
+  
+  ```bash
+  $ git log
+  $ git log --oneline
+  
+  # See more options at https://git-scm.com/docs/git-log
+  ```
+  
+* Checkout
+
+  ```bash
+  # git checkout <commit-id>
+  
+  # Revert changes since last commit
+  $ git checkout .
+  
+  # Revert changes since last commit on a file
+  $ git checkout <file-name>
+  
+  # Checkout an existing branch
+  $ git checkout <branch-name>
+  
+  # Create a new branch and and check it out 
+  $ git checkout -b <branch-name>
+  
+  # See more options here: https://guide.freecodecamp.org/git/git-checkout/
+ 
+  ```
+
+
+
+# Recipes
+
 ## Creating a new branch from command line 
 
 ```
@@ -271,9 +307,8 @@ When working on a recent PR, I encountered an issue where my branch had merge co
    ```
 4. Push the changes. I did it via IntelliJ.
 
-### TODO
+## Stashing and Unstashing
 
-**Stashing and Unstashing:**
 Say you were in a branch and had some deltas. Now you want to work in another branch. 
 
 ```
@@ -319,4 +354,4 @@ Dropped refs/stash@{0} (86b7ac7e7689c7d258e899e066a18307d79eb83e)
 > 3669-tls-material/pravega$ 
 
 ```
-```
+
