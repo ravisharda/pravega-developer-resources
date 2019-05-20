@@ -22,10 +22,18 @@
 2. Ensure that the code is recompiled: `./gradlew clean build -x test`. 
 3. Run a subset of tests by interactively running tests in `io.pravega.connectors.hadoop.PravegaConnectorLocalJobITCase` class. 
 
+You'll need to pass credentials via command line: 
+`-Dpravega.client.auth.method=Basic -Dpravega.client.auth.token=YWRtaW46MTExMV9hYWFh`
+
 Alternatively, run all tests in step 2 itself, by executing `./gradlew clean build` instead.
 
 ### Running tests with it pointing to a separate Pravega Deployment
 
 ```
+# Without auth
 ./gradlew clean test -Dpravega.uri=tls://localhost:9090
+
+# With auth 
+./gradlew clean test -Dpravega.uri=tls://localhost:9090 \
+     -Dpravega.client.auth.method=Basic -Dpravega.client.auth.token=YWRtaW46MTExMV9hYWFh
 ```
