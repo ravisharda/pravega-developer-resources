@@ -30,10 +30,15 @@ Alternatively, run all tests in step 2 itself, by executing `./gradlew clean bui
 ### Running tests with it pointing to a separate Pravega Deployment
 
 ```
-# Without auth
-./gradlew clean test -Dpravega.uri=tls://localhost:9090
+# Run all tests, without auth
+$ ./gradlew clean test -Dpravega.uri=tls://localhost:9090
 
-# With auth 
-./gradlew clean test -Dpravega.uri=tls://localhost:9090 \
+# Run all tests, with auth 
+$ ./gradlew clean test -Dpravega.uri=tls://localhost:9090 \
+     -Dpravega.client.auth.method=Basic -Dpravega.client.auth.token=YWRtaW46MTExMV9hYWFh
+     
+# Run tests in a specific class, with auth enabled.
+$ ./gradlew clean test -Dpravega.uri=tls://localhost:9090 \
+     --tests "io.pravega.connectors.hadoop.PravegaConnectorLocalJobITCase"
      -Dpravega.client.auth.method=Basic -Dpravega.client.auth.token=YWRtaW46MTExMV9hYWFh
 ```
