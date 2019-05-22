@@ -331,19 +331,25 @@ Say you were in a branch and had some deltas. Now you want to work in another br
 > 3669-tls-material/pravega$ git branch -v
 * issue-3669-improve-default-tls-material fac451837 Use the new PKI/TLS material.
   master                                  cb253c8c7 Issue #3624: Fix backward compatibility issue with WireCommands. (#3640)
+
 > 3669-tls-material/pravega$ git remote -v
 origin  https://github.com/ravisharda/pravega.git (fetch)
 origin  https://github.com/ravisharda/pravega.git (push)
+
 > 3669-tls-material/pravega$ git stash
 Saved working directory and index state WIP on issue-3669-improve-default-tls-material: fac451837 Use the new PKI/TLS material.
+
 > 3669-tls-material/pravega$ git checkout master
 Switched to branch 'master'
 Your branch is up to date with 'origin/master'.
+
 > 3669-tls-material/pravega$ git remote -v
 origin  https://github.com/ravisharda/pravega.git (fetch)
 origin  https://github.com/ravisharda/pravega.git (push)
+
 > 3669-tls-material/pravega$ git checkout issue-3669-improve-default-tls-material
 Switched to branch 'issue-3669-improve-default-tls-material'
+
 > 3669-tls-material/pravega$ git stash pop
 On branch issue-3669-improve-default-tls-material
 Changes not staged for commit:
@@ -367,6 +373,7 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 Dropped refs/stash@{0} (86b7ac7e7689c7d258e899e066a18307d79eb83e)
+
 > 3669-tls-material/pravega$ 
 
 ```
