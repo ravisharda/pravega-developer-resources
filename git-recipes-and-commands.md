@@ -160,14 +160,26 @@ $ git clone --recursive -b issue-pravega-security https://github.com/vijikarthi/
 ## Updating an Exisiting Branch on Your Fork with Latest Code From Master on Main Repo
 
 1. Download the branch from your fork: ``git clone -b <branch_name> https://github.com/ravisharda/pravega.git``
-2. Add an upstream remote branch, which will facilitate pulling down new commits from the main repo: ``git remote add upstream https://github.com/pravega/pravega.git``. (Verify using ``git remote -v``)
+2. Add an upstream remote branch, which will facilitate pulling down new commits from the main repo: 
+   ```
+   $ git remote add upstream https://github.com/pravega/pravega.git
+   $ git remote -v
+   $ git remote set-url --push upstream no-pushing
+   $ git remote -v
+   ```
 3. Perform the rebase: 
    1. First make sure you are currently in the feature branch: ``git branch``
    2. Fetch all the new changes from the main repo/upstream: ``git pull --rebase upstream master``
    3. Fix any mrge conflicts that might arise. 
    4. Continue rebasing: ``git rebase --continue``
    5. Verify the code. 
-   6. Now, push all the changes you have made to the branch to the master of your forked repo: ``git push --force origin <pull-request-branch-name>``  
+   6. Now, push all the changes you have made to the branch to the master of your forked repo: 
+      ```
+      $ git push --force origin <pull-request-branch-name>
+      
+      # In some cases you might have to force push.
+      $ git push --force origin <pull-request-branch-name>
+      ```  
 
 ## Updating a New Branch on Your Fork with Latest Code From Master on Main Repo
 1. Download the forked copy from GitHub: ``git clone https://github.com/ravisharda/pravega.git``
