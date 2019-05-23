@@ -1,6 +1,7 @@
 # Gradle Commands
 
 ## Basic
+* Runnable tasks: `./gradle tasks`
 * Build without executing tests: ``./gradlew build -x test``
 * Install jars into local repo:
   * Install: ``./gradlew install``
