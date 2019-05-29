@@ -34,6 +34,11 @@
 * Avoid having to type `sudo <command>`: `sudo -s`
 * Disk space usage of a directory https://www.ostechnix.com/find-size-directory-linux/
 * Remove all directories with name `build`: `rm -rf **/build/`
+* Disk usage: 
+  ```
+  $ du -sh * 
+  $ du -sh <dir>
+  ```
 
 ## Links
 * Installing Minikube: 
