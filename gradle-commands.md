@@ -75,12 +75,12 @@ for example: ``./gradlew :controller:dependencies``
        ....
        dependencies {
           ...
-          classpath 'org.owasp:dependency-check-gradle:4.0.2' // add this line...
+          classpath 'org.owasp:dependency-check-gradle:5.0.0' // add this line...
        }
     }
     apply plugin: 'org.owasp.dependencycheck' // ... and this one
     ```
-2. Now, execute ``./gradlew dependencyCheckAggregate``.
+2. Now, execute ``./gradlew dependencyCheckAggregate``
 3. Look for the output at build/reports/dependency-check-report.html
 
 ## How to DOs
