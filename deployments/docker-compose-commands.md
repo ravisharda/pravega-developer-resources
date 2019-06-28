@@ -66,7 +66,7 @@ From [1]:
 ## Miscellaneous
 * Want to use a self-hosted/private registry? 
   ```
-  docker login devops-repo.isus.emc.com:8116
+  docker login devops-repo.myorg:8080
   
   # Then continue to use other commands
   ```
