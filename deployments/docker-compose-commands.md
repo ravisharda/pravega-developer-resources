@@ -1,5 +1,23 @@
 # Docker Compose Commands
 
+  * [Most frequently used commands](#most-frequently-used-commands)
+  * [Quick Concepts](#quick-concepts)
+  * [Commands](#commands)
+  * [Miscellaneous](#miscellaneous)
+- [Deploying Pravega Distrubuted Cluster Using Docker Compose](#deploying-pravega-distrubuted-cluster-using-docker-compose)
+  * [Prerequisites](#prerequisites)
+  * [Steps to Deploy](#steps-to-deploy)
+  * [Steps to Undeploy](#steps-to-undeploy)
+  * [Troubleshooting](#troubleshooting)
+    + [Starting a shell inside the container](#starting-a-shell-inside-the-container)
+    + [Checking logs](#checking-logs)
+    + [Error upon stopping](#error-upon-stopping)
+  * [Installing/Uninstalling](#installing-uninstalling)
+  * [References & Further Reading](#references---further-reading)
+  * [References](#references)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## Most frequently used commands 
    ```
    # Stop and remove all containers/services
@@ -183,6 +201,15 @@ Check status: $ sudo aa-status
 
 You should now be able to stop/kill containers.
 ````
+## Installing/Uninstalling
+
+```bash
+# If installed older version using apt-get
+sudo apt-get remove docker-compose
+
+# Install the latest version
+curl -L "https://github.com/docker/compose/releases/download/`curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/docker/compose/releases/latest | sed 's#.*tag/##g' && echo`/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+```
 
 ## References & Further Reading
 1. https://github.com/pravega/pravega/tree/master/docker/compose
