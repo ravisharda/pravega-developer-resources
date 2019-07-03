@@ -168,6 +168,15 @@ These tasks are to be done only **once** per client host.
 * Install Chocolatey
 * Install Helm using Chocolatey: ``choco install kubernetes-helm``
 
+On Linux, you can install Helm like this:
+
+```
+# Via Snap
+$ sudo snap install helm --classic
+
+# Alternatively, you may install Helm from binary source
+```
+
 The following tasks are done on a **per-Kubernetes cluster** basis:
 
 * Initialize Helm: ``PS> helm init``
@@ -180,6 +189,9 @@ The following tasks are done on a **per-Kubernetes cluster** basis:
   
   # In Powershell, you need to escape the double quote characters
   PS> kubectl patch deploy --namespace kube-system tiller-deploy -p '{\"spec\":{\"template\":{\"spec\":{\"serviceAccount\":\"tiller\"}}}}'
+  
+  # In Linux
+  $ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
   ```
 * Initialize Helm and Tiller: 
   
