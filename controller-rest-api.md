@@ -27,12 +27,15 @@
     $ curl -v http://localhost:9091/v1/scopes
     ```
 
-## Listing all scopes
+## Listing all scopes (Auth Enabled, TLS Disabled)
 
 ### Sample Request
 
 ```
 GET {{protocol}}://{{hostname}}:{{port}}/v1/scopes
+
+Headers:
+  Authorization: Basic YWRtaW46MTExMV9hYWFh
 
 Ex: GET http://localhost:9091/v1/scopes
 ```
@@ -53,6 +56,11 @@ Response Body:
 ```
 POST {{protocol}}://{{hostname}}:{{port}}/v1/scopes
 Ex: POST http://localhost:9091/v1/scopes
+
+Headers:
+  Authorization: Basic YWRtaW46MTExMV9hYWFh
+  Content-Type: application/json
+  Accept: application/json
 
 Request Body:
 {
@@ -78,6 +86,11 @@ Response Body:
 ```
 POST {{protocol}}://{{hostname}}:{{port}}/v1/scopes/{{myscope}}/streams
 Ex: POST http://localhost:9091/v1/scopes/org.example.myscope/streams
+
+Headers:
+  Authorization: Basic YWRtaW46MTExMV9hYWFh
+  Content-Type: application/json
+  Accept: application/json
 
 Request Body:
 {
@@ -107,5 +120,3 @@ Response Body:
 }
 
 ```
-
-
