@@ -10,6 +10,9 @@
   * [Add a Stream to a Scope](#add-a-stream-to-a-scope)
     + [Sample Request](#sample-request-2)
     + [Sample Response](#sample-response-1)
+  * [Listing Streams of a Scope](#listing-streams-of-a-scope)
+    + [Sample Request](#sample-request-3)
+    + [Sample Response](#sample-response-2)
 
 ## Usage Instructions
 
@@ -129,5 +132,47 @@ Response Body:
         "minSegments": 1
     }
 }
+
+```
+
+## Listing Streams of a Scope
+
+### Sample Request
+
+```
+GET {{protocol}}://{{hostname}}:{{port}}/v1/scopes/{{myscope}}/streams/
+Ex: GET http://localhost:9091/v1/scopes/org.example.myscope/streams
+
+Headers:
+  Authorization: Basic YWRtaW46MTExMV9hYWFh
+
+```
+
+### Sample Response
+
+```
+Status: 200 OK
+
+Response Body:
+
+{
+    "streams": [
+        {
+            "scopeName": "org.example.myscope",
+            "streamName": "mystream2",
+            "scalingPolicy": {
+                "type": "FIXED_NUM_SEGMENTS",
+                "minSegments": 1
+            }
+        },
+        {
+            "scopeName": "org.example.myscope",
+            "streamName": "mystream",
+            "scalingPolicy": {
+                "type": "FIXED_NUM_SEGMENTS",
+                "minSegments": 1
+            }
+        }
+    ]
 
 ```
