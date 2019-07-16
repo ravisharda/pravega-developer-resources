@@ -33,6 +33,8 @@
 
 ```
 GET {{protocol}}://{{hostname}}:{{port}}/v1/scopes
+
+Ex: GET http://localhost:9091/v1/scopes
 ```
 
 ### Sample response
@@ -50,6 +52,7 @@ Response Body:
 
 ```
 POST {{protocol}}://{{hostname}}:{{port}}/v1/scopes
+Ex: POST http://localhost:9091/v1/scopes
 
 Request Body:
 {
@@ -71,5 +74,38 @@ Response Body:
 ## Add a Stream to a Scope
 
 ### Sample Request
+
+```
+POST {{protocol}}://{{hostname}}:{{port}}/v1/scopes/{{myscope}}/streams
+Ex: POST http://localhost:9091/v1/scopes/org.example.myscope/streams
+
+Request Body:
+{
+  "streamName" : "mystream",
+  "scalingPolicy" : {
+    "type" : "FIXED_NUM_SEGMENTS",
+    "targetRate" : 0,
+    "scaleFactor" : 0,
+    "minSegments" : 1
+  }
+}
+```
+
+### Sample Response
+
+```
+Status: 201 Created
+
+Response Body:
+{
+    "scopeName": "org.example.myscope",
+    "streamName": "mystream",
+    "scalingPolicy": {
+        "type": "FIXED_NUM_SEGMENTS",
+        "minSegments": 1
+    }
+}
+
+```
 
 
