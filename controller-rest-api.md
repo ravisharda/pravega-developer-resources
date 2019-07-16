@@ -38,9 +38,38 @@ GET {{protocol}}://{{hostname}}:{{port}}/v1/scopes
 ### Sample response
 
 ```
+Status: 200 OK
+
+Response Body: 
 {"scopes":[{"scopeName":"_system"}]}
 ```
 
-### 
+## Creating a new Scope
+
+### Sample Request
+
+```
+POST {{protocol}}://{{hostname}}:{{port}}/v1/scopes
+
+Request Body:
+{
+    "scopeName": "org.example.myscope"
+}
+```
+
+### Sample Response
+
+```
+Status: 201 Created
+
+Response Body:
+{
+  "scopeName": "org.example.myscope"
+}
+```
+
+## Add a Stream to a Scope
+
+### Sample Request
 
 
