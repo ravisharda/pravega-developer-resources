@@ -26,21 +26,21 @@
     ```
     $ curl -v http://localhost:9091/v1/scopes
     ```
-  
-  
-    
-   
-
-
 
 ## Listing all scopes
 
-### Request
+### Sample Request
 
 ```
 GET {{protocol}}://{{hostname}}:{{port}}/v1/scopes
 ```
 
-### Response
+### Sample response
+
+```
+{"scopes":[{"scopeName":"_system"}]}
+```
+
+### 
 
 
