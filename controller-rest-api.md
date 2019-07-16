@@ -1,5 +1,16 @@
 # REST API Operations Usage Examples
 
+  * [Usage Instructions](#usage-instructions)
+  * [Listing all scopes (Auth Enabled, TLS Disabled)](#listing-all-scopes--auth-enabled--tls-disabled-)
+    + [Sample Request](#sample-request)
+    + [Sample response](#sample-response)
+  * [Creating a new Scope](#creating-a-new-scope)
+    + [Sample Request](#sample-request-1)
+    + [Sample Response](#sample-response)
+  * [Add a Stream to a Scope](#add-a-stream-to-a-scope)
+    + [Sample Request](#sample-request-2)
+    + [Sample Response](#sample-response-1)
+
 ## Usage Instructions
 
 1. Replace parameters contained in brackets (`{{ }}`) with your values applicable to your own environment. For example, for listing all scopes, here's a sample endpoint for a TLS-enabled Controller endpoint.  
