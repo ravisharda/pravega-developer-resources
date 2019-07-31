@@ -519,7 +519,14 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
   * Get info about pods
   
     ```
+    # List pods from the default namespace
     > kubectl get pods
+    
+    # List pods from all namespaces
+    > kubectl get pods --all-namespaces   
+    
+    # List pods from a specific namespace
+    > kubectl get pods -n cert-manager
     
     # Watching
     > kubectl get pods -w
