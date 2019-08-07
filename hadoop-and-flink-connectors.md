@@ -27,6 +27,7 @@ You'll need to pass credentials via command line:
 
 Alternatively, run all tests in step 2 itself, by executing `./gradlew clean build` instead.
 
+
 ### Running tests with it pointing to a separate Pravega Deployment
 
 ```
@@ -42,3 +43,5 @@ $ ./gradlew clean test -Dpravega.uri=tls://localhost:9090 \
      --tests "io.pravega.connectors.hadoop.PravegaConnectorLocalJobITCase"
      -Dpravega.client.auth.method=Basic -Dpravega.client.auth.token=YWRtaW46MTExMV9hYWFh
 ```
+
+# Flink Connectors Recipes 
