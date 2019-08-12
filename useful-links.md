@@ -56,6 +56,6 @@
   * [My pull requests](https://github.com/pravega/pravega/pulls?utf8=%E2%9C%93&q=is%3Apr+author%3Aravisharda)  
   
 ## Docker Images   
-* Apache Bookeeper Image://hub.docker.com/r/apache/bookkeeper
-* Apache Zookeeper Images://hub.docker.com/_/zookeeper
+* Apache Bookeeper Image: https://hub.docker.com/r/apache/bookkeeper
+* Apache Zookeeper Images: https://hub.docker.com/_/zookeeper
 * Pravega Org: https://hub.docker.com/u/pravega
