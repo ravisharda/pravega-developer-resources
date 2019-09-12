@@ -7,12 +7,12 @@ Here are the steps:
 
    ```yaml
 
-  version: "3"
-  services:
-    zookeeper:
-      image: zookeeper:3.5.4-beta
-      ports:
-        - "2181:2181"
+    version: "3"
+    services:
+       zookeeper:
+         image: zookeeper:3.5.4-beta
+         ports:
+           - "2181:2181"
 
     hdfs:
       image: pravega/hdfs:2.7.7
