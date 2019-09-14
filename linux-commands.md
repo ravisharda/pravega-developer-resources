@@ -31,6 +31,7 @@
 
 ## Miscellaneous
 
+* Show IP addresses: `ip addr show`
 * Avoid having to type `sudo <command>`: `sudo -s`
 * Disk space usage of a directory https://www.ostechnix.com/find-size-directory-linux/
 * Remove all directories with name `build`: `find -path "*/build/*" -delete`
