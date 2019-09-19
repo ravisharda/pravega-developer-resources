@@ -1,5 +1,6 @@
 # Git Recipes and Commands
 
+
 - [Commands](#commands)
 - [Recipes](#recipes)
   * [Creating a new branch from command line](#creating-a-new-branch-from-command-line)
