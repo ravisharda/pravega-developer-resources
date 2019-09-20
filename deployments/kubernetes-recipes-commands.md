@@ -92,6 +92,9 @@ kubectl get nodes
 
 ``PS> az aks scale -g $resourceGroup -n $clusterName --node-count 3``
 
+To verify everything is in order: 
+`az aks show -g $resourceGroup -n $clusterName -o table`
+
 ### Deleting an AKS Cluster using Azure CLI
 
 ``PS> az group delete --name $resourceGroup --yes --no-wait``
