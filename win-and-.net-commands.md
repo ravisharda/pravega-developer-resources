@@ -12,6 +12,7 @@
   * Cycle a service: `Restart-Service <service-name>`
 * Performance
   * Find the five processes using the most memory: `ps | sort –p ws | select –last 5`
+* Deleting all log files: `ls *.log -Recurse | foreach {rm $_}`  
 
 ## CMD
 
