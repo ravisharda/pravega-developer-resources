@@ -6,7 +6,7 @@ $ helm list
 $ helm list -all
 
 # Install a release 
-$ helm install <release-name>
+$ helm install RELEASE_NAME
 
 # Delete a release
-$ helm delete <release-name> --purge
+$ helm delete RELEASE_NAME --purge
