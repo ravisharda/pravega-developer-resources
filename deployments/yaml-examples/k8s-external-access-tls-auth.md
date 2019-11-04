@@ -78,9 +78,11 @@ spec:
         pravegaservice.zkTrustStorePasswordPath: "empty"
         autoScale.tlsEnabled: "true"
         autoScale.tlsCertFile: "/etc/secret-volume/segmentstoreTlsCertFile"
+        bookkeeper.tlsEnabled: "false"
+        bookkeeper.tlsTrustStorePath: "empty"
         autoScale.validateHostName: "false"
         autoScale.authEnabled: "true"
         autoScale.tokenSigningKey: "secret"
-        bookkeeper.tlsEnabled: "false"
-        bookkeeper.tlsTrustStorePath: "empty"
+        pravega.client.auth.token: "YWRtaW46MTExMV9hYWFh"
+        pravega.client.auth.method: "Basic"
 ```
