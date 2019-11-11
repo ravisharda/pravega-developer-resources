@@ -1,6 +1,6 @@
 # Git Recipes and Commands
 
-
+- [Git Recipes and Commands](#git-recipes-and-commands)
 - [Commands](#commands)
 - [Recipes](#recipes)
   * [Creating a new branch from command line](#creating-a-new-branch-from-command-line)
@@ -16,11 +16,11 @@
   * [Reverting your last change](#reverting-your-last-change)
   * [Using the same Pravega Version as the Hadoop Connector](#using-the-same-pravega-version-as-the-hadoop-connector)
   * [Disabling push to upstream](#disabling-push-to-upstream)
+  * [Cherry-Picking a PR for merge from master to a branch](#cherry-picking-a-pr-for-merge-from-master-to-a-branch)
   * [Resolving Merge Conflicts on a Branch of Your Fork](#resolving-merge-conflicts-on-a-branch-of-your-fork)
   * [Stashing and Unstashing](#stashing-and-unstashing)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 Assumptions:
 * Remote `upstream` is pravega/pravega.git
