@@ -253,6 +253,44 @@ upstream        no-pushing (push)
 
 ```
 
+## Cherry-Picking a PR for merge from master to a branch
+
+Say, source = master, target = r0.6
+
+```
+# Clone your form. Sync your fork master, if you haven't already done it. 
+
+$ cd pravega
+
+# We are creating the branch in your local repo
+$ git checkout r0.6
+
+# Ensure you are in r0.6 branch
+$ git branch 
+
+$ git status
+
+$ git push origin r0.6
+
+# Create a branch in your repo, say, cherry-pick-PR4336-to-r0.6
+
+# Switch to master
+$ git checkout master
+
+$ git pull?
+
+$ git checkout cherry-pick-PR4336-to-r0.6
+
+# Identify the commit id of the PR that you are trying to cherry pick. Use that one below.
+$ git cherry-pick b01a0810b07da33286ea3a679726231ceca0de1f
+
+$ git status --oneline
+
+$ git push origin
+
+# Now, navigate to Github repo online and create a PR keeping source as `ravisharda/cherry-pick-PR4336-to-r0.6` and target as say, `pravega/r0.6`.
+```
+
 ## Resolving Merge Conflicts on a Branch of Your Fork
 
 When working on a recent PR, I encountered an issue where my branch had merge conflicts. Here are the steps I followed to resolve them:
