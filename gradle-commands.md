@@ -22,9 +22,12 @@
 ```
 ./gradlew :module:tas; --tests "nameoftest"
 Example:
+# Run all tests in a test class
 ./gradlew :controller:test --tests "io.pravega.controller.server.rpc.auth.PravegaAuthManagerTest"
-```
 
+# Run a single test in a test class
+./gradlew :controller:test --tests "io.pravega.controller.server.bucket.WatermarkWorkflowTest.testWatermarkClient"
+```
 
 * Local repo: 
   * Gradle: ``~/.gradle/caches/modules-2/files-2.1``
