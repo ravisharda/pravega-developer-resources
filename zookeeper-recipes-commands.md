@@ -50,5 +50,9 @@ $ bin/zkCli.sh -server localhost:2281
 $ 
 ```
 
+### Links
+* https://issues.apache.org/jira/browse/ZOOKEEPER-2125
+* https://cwiki.apache.org/confluence/display/ZOOKEEPER/ZooKeeper+and+SASL
+* https://cwiki.apache.org/confluence/display/ZOOKEEPER/ZooKeeper+SSL+User+Guide
 
-```
+
