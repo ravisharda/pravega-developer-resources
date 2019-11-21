@@ -20,11 +20,8 @@ $ mvn install -DskipTests
    
 2. `tar -xvzf apache-zookeeper-3.5.5-bin.tar.gz`
 3. `cd apache-zookeeper-3.5.5-bin/`
-
-
-
-1. Rename the config/zoo_sample.cfg to config/zoo.cfg.
-2. Create a server_envs.sh file with the server environment variables containing:
+4. Rename the config/zoo_sample.cfg to config/zoo.cfg.
+5. Create a server_envs.sh file with the server environment variables containing:
 
    ```
    export SERVER_JVMFLAGS="
@@ -34,9 +31,9 @@ $ mvn install -DskipTests
      -Dzookeeper.ssl.trustStore.location=/path/to/pravega/config/client.truststore.jks
      -Dzookeeper.ssl.trustStore.password=1111_aaaa" 
    ```
-3. Execute `$ source server_envs.sh`.
-4. Edit the conf/zoo.cfg by adding secureClientPort=2281
-5. Create a client_envs.sh file containing: 
+6. Execute `$ source server_envs.sh`.
+7. Edit the conf/zoo.cfg by adding secureClientPort=2281
+8. Create a client_envs.sh file containing: 
    
    ```
    export CLIENT_JVMFLAGS="
@@ -47,7 +44,7 @@ $ mvn install -DskipTests
       -Dzookeeper.ssl.trustStore.location=/path/to/pravega/config/client.truststore.jks 
       -Dzookeeper.ssl.trustStore.password=1111_aaaa"
    ```
-6. Execute `$ source client_envs.sh` on the client side.
+9. Execute `$ source client_envs.sh` on the client side.
 
 ### Starting/Stopping the Server and the CLI client
 
