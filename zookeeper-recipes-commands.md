@@ -39,8 +39,10 @@ $ mvn install -DskipTests
       -Dzookeeper.ssl.keyStore.location=/path/to/pravega/config/server.keystore.jks 
       -Dzookeeper.ssl.keyStore.password=1111_aaaa 
       -Dzookeeper.ssl.trustStore.location=/path/to/pravega/config/client.truststore.jks 
-      -Dzookeeper.ssl.trustStore.password=1111_aaaa"
+      -Djavax.net.debug=ssl,handshake -Dzookeeper.ssl.trustStore.password=1111_aaaa"
+      
 9. One one terminal, execute `$ source server_envs.sh`. We'll run the server here. 
+
 10. On another terminal, execure `$ source client_envs.sh`. We'll run the Zookeeper CLI on this terminal. 
 
 ### Starting/Stopping the Server and the CLI client
