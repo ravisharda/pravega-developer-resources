@@ -19,7 +19,7 @@ $ mvn install -DskipTests
 2. `tar -xvzf apache-zookeeper-3.5.5-bin.tar.gz`
 3. `cd apache-zookeeper-3.5.5-bin/`
 4. Rename the config/zoo_sample.cfg to config/zoo.cfg.
-5. Edit the conf/zoo.cfg by adding secureClientPort=2281
+5. Edit the conf/zoo.cfg by adding an entry: `secureClientPort=2281`
 6. Create a server_envs.sh file with the server environment variables containing:
 
    ```
