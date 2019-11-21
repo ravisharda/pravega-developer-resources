@@ -15,13 +15,12 @@ $ mvn install -DskipTests
 ### Enable SSL/TLS 
 
 1. Download the binary: `curl https://archive.apache.org/dist/zookeeper/zookeeper-3.5.5/apache-zookeeper-3.5.5-bin.tar.gz --output apache-zookeeper-3.5.5-bin.tar.gz`
-
-   For other versions, check https://archive.apache.org/dist/zookeeper/. 
-   
+   For other versions, check https://archive.apache.org/dist/zookeeper/.  
 2. `tar -xvzf apache-zookeeper-3.5.5-bin.tar.gz`
 3. `cd apache-zookeeper-3.5.5-bin/`
 4. Rename the config/zoo_sample.cfg to config/zoo.cfg.
-5. Create a server_envs.sh file with the server environment variables containing:
+5. Edit the conf/zoo.cfg by adding secureClientPort=2281
+6. Create a server_envs.sh file with the server environment variables containing:
 
    ```
    export SERVER_JVMFLAGS="
@@ -31,8 +30,6 @@ $ mvn install -DskipTests
      -Dzookeeper.ssl.trustStore.location=/path/to/pravega/config/client.truststore.jks
      -Dzookeeper.ssl.trustStore.password=1111_aaaa" 
    ```
-6. Execute `$ source server_envs.sh`.
-7. Edit the conf/zoo.cfg by adding secureClientPort=2281
 8. Create a client_envs.sh file containing: 
    
    ```
@@ -43,8 +40,8 @@ $ mvn install -DskipTests
       -Dzookeeper.ssl.keyStore.password=1111_aaaa 
       -Dzookeeper.ssl.trustStore.location=/path/to/pravega/config/client.truststore.jks 
       -Dzookeeper.ssl.trustStore.password=1111_aaaa"
-   ```
-9. Execute `$ source client_envs.sh` on the client side.
+9. One one terminal, execute `$ source server_envs.sh`. We'll run the server here. 
+10. On another terminal, execure `$ source client_envs.sh`. We'll run the Zookeeper CLI on this terminal. 
 
 ### Starting/Stopping the Server and the CLI client
 
