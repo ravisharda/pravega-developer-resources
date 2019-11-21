@@ -15,6 +15,9 @@ $ mvn install -DskipTests
 ### Enable SSL/TLS 
 
 1. Download the binary: `curl https://archive.apache.org/dist/zookeeper/zookeeper-3.5.5/apache-zookeeper-3.5.5-bin.tar.gz --output apache-zookeeper-3.5.5-bin.tar.gz`
+
+   For other versions, check https://archive.apache.org/dist/zookeeper/. 
+   
 2. `tar -xvzf apache-zookeeper-3.5.5-bin.tar.gz`
 3. `cd apache-zookeeper-3.5.5-bin/`
 
