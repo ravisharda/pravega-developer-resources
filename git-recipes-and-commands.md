@@ -291,6 +291,41 @@ $ git push origin
 # Now, navigate to Github repo online and create a PR keeping source as `ravisharda/cherry-pick-PR4336-to-r0.6` and target as say, `pravega/r0.6`.
 ```
 
+## Cherry-Picking commits made in fork/branch for a branch based out of another branch
+
+Say, source: ravisharda/src-branch (created out of master), target = ravisharda/target-branch (created based on r0.6)
+
+```
+git clone ...
+
+Create a branch "target-branch" based out of r0.6 branch
+
+git checkout master
+
+git fetch
+
+git checkout target-branch
+
+git status
+
+Note the commits (from... to)
+git cherry-pick d32d46ac4b71d581ea58f53c3a1a36b05e5f619c..86b239c71b4ccfdf7ce527d4239bcae54a07fa7f
+
+If the previous step doesn't work
+git cherry-pick -abort
+
+git cherry-pick commit-id-4
+git cherry-pick commit-id-3
+git cherry-pick commit-id-2
+git cherry-pick commit-id-1
+
+git commit
+
+Push the commits 
+
+```
+
+
 ## Resolving Merge Conflicts on a Branch of Your Fork
 
 When working on a recent PR, I encountered an issue where my branch had merge conflicts. Here are the steps I followed to resolve them:
