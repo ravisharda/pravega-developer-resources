@@ -5,7 +5,7 @@
 - [Recipes](#recipes)
   * [Creating a new branch from command line](#creating-a-new-branch-from-command-line)
   * [Downloading a newly created branch of your fork](#downloading-a-newly-created-branch-of-your-fork)
-  * [Syncing a fork: Merging commits from main repo master into your fork's master](#syncing-a-fork--merging-commits-from-main-repo-master-into-your-fork-s-master)
+  * [Syncing a fork: Merging commits from main repo master into your fork's master](#syncing-a-fork-merging-commits-from-main-repo-master-into-your-fork-s-master)
   * [Rebasing a branch of your fork to the your fork's master](#rebasing-a-branch-of-your-fork-to-the-your-fork-s-master)
   * [Pulling all changes](#pulling-all-changes)
   * [Merging a PR to a branch locally to test out the changes](#merging-a-pr-to-a-branch-locally-to-test-out-the-changes)
