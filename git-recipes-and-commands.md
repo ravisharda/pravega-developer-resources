@@ -98,6 +98,8 @@ $ git branch
 
 ## Syncing a fork: Merging commits from main repo master into your fork's master 
 
+(Alternatively, you can sync a fork's branch from the main repo's branch: just replace master with the branch name in the commands below, and in step 1, do a `git clone -b <branch-name> ...`
+
 |S.No.|Command|Description|Verification (if any)|
 |:---:|:------|:----------|- |
 |1|``git clone https://github.com/ravisharda/pravega.git``|Download the forked copy from Github|- |
