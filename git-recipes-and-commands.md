@@ -259,8 +259,11 @@ upstream        no-pushing (push)
 
 Say, source = master, target = r0.6
 
+First, make sure your target branch is up to date. 
+
 ```
-# Clone your form. Sync your fork master, if you haven't already done it. 
+# Clone your fork. Sync your fork's target branch (say, r0.6), if you haven't already done it. 
+$ git clone https://github.com/ravisharda/pravega.git
 
 $ cd pravega
 
@@ -274,23 +277,28 @@ $ git status
 
 $ git push origin r0.6
 
-# Create a branch in your repo, say, cherry-pick-PR4336-to-r0.6
+```
+Create a branch in your repo, say `issue-3696-cherrypick-pr-4420-to-r0.6`
 
-# Switch to master
-$ git checkout master
+Now, perform the cherry pick. 
 
-$ git pull?
+```
+# git clone https://github.com/ravisharda/pravega.git
 
-$ git checkout cherry-pick-PR4336-to-r0.6
+$ git checkout issue-3696-cherrypick-pr-4420-to-r0.6
+
+# Verify you are on the right branch. 
+$ git branch
+
 
 # Identify the commit id of the PR that you are trying to cherry pick. Use that one below.
-$ git cherry-pick b01a0810b07da33286ea3a679726231ceca0de1f
+$ git cherry-pick b8911f8f4c0b452d18cb34e3d6ce23a13d6eccee
 
 $ git status --oneline
 
 $ git push origin
 
-# Now, navigate to Github repo online and create a PR keeping source as `ravisharda/cherry-pick-PR4336-to-r0.6` and target as say, `pravega/r0.6`.
+# Now, navigate to Github repo online and create a PR keeping source as `ravisharda/issue-3696-cherrypick-pr-4420-to-r0.6` and target as say, `pravega/r0.6`.
 ```
 
 ## Cherry-Picking commits made in fork/branch for a branch based out of another branch
