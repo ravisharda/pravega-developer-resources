@@ -27,6 +27,7 @@ Example:
 
 # Run a single test in a test class
 ./gradlew :controller:test --tests "io.pravega.controller.server.bucket.WatermarkWorkflowTest.testWatermarkClient"
+./gradlew :standalone:test --tests "io.pravega.local.TlsEnabledInProcPravegaClusterTest.testWriteAndReadEventWithValidClientConfig"
 ```
 
 * Local repo: 
