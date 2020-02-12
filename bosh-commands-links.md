@@ -8,4 +8,4 @@
 
 
 ## Commands: 
-* Finding VM types: `bosh cloud-config`
+* Finding VM types, network and availability zones: `bosh cloud-config`
