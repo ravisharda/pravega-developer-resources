@@ -8,4 +8,4 @@
 
 
 ## Commands: 
-* Finding VM types: `bosh cloud-configs`
+* Finding VM types: `bosh cloud-config`
