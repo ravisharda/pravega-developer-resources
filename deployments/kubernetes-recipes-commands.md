@@ -571,4 +571,10 @@ service/pravega-pravega-segmentstore-headless   ClusterIP   None         <none> 
 
     # List one or more resources by their type and names.
     kubectl get rc/web service/frontend pods/web-pod-13je7
+    
+    # Checking IP addresses (private IPs, Cluster IPs and external IPs)
+    kubectl get all --all-namespaces -o wide
+    kubectl get nodes -o wide | awk '{print $1, $6, $7}'
+    kubectl get pods -o wide --all-namespaces | awk '{print $1, $7, $8}'
+    kubectl get services -o wide --all-namespaces | awk '{print $1, $3, $4}'
     ```
