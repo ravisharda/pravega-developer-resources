@@ -9,6 +9,7 @@
 * Generate a distribution:``./gradlew distribution -x test``
 * ``./gradlew clean javadocs``
 * Running checkstyle for tests of standalone module: ````
+* Upgrading Gradle wrapper: `gradle wrapper --gradle-version 5.6.4`
 * Examples of common Gradle tasks
 
 | Tasks | Standalone | Controller |
