@@ -124,3 +124,4 @@ systemProperties 'singlenode.configurationFile' : new File("$projectDir/../confi
 
 ## Further reading
 * [Gradle vs. Maven](https://www.journaldev.com/8396/gradle-vs-maven)
+* Tasks from Gradle Java plugin: https://docs.gradle.org/5.0/userguide/java_plugin.html
