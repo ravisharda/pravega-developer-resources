@@ -50,6 +50,10 @@ Steps:
 ./gradlew <project>:dependencies
 for example: ``./gradlew :controller:dependencies``
 ```
+* checking dependencies of a particular type: 
+  ```
+  ./gradlew :bindings:dependencies --configuration testCompile
+  ```
 *``./gradle allDeps``
 
 *Generating an HTML report (multiproject):*
