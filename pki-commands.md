@@ -14,6 +14,19 @@ If you need more information, ``ssl,handshake,trustmanager`` or even ``all``. Fo
 * For Java 11, see [Debugging TLS Connections](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-4D421910-C36D-40A2-8BA2-7D42CCBED3C6) in [Java SE 11 - Security Developer's Guide](https://docs.oracle.com/en/java/javase/11/security/index.html).
 * For Java 8, see [JSSE Reference Guide](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-4D421910-C36D-40A2-8BA2-7D42CCBED3C6)
 
+### SSL/TLS Otions
+
+```
+# pkcs12 default. Other options inclide jks
+-Djavax.net.ssl.keyStoreType=pkcs12
+-Djavax.net.ssl.keyStore=server.certificate.p12
+-Djavax.net.ssl.keyStorePassword=$KEYSTORE_PASSWORD
+
+-Djavax.net.ssl.trustStoreType=jks
+-Djavax.net.ssl.trustStore=client.truststore.jks
+-Djavax.net.ssl.trustStorePassword=$KEYSTORE_PASSWORD
+```
+
 ## Adding a CA or server certificate to the Java system truststore
 
 ```
