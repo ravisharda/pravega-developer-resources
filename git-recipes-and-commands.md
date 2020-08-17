@@ -259,37 +259,19 @@ upstream        no-pushing (push)
 
 Say, source = master, target = r0.6
 
-First, make sure your target branch is up to date. 
-
-```
-# Clone your fork. Sync your fork's target branch (say, r0.6), if you haven't already done it. 
-$ git clone https://github.com/ravisharda/pravega.git
-
-$ cd pravega
-
-# We are creating the branch in your local repo
-$ git checkout r0.6
-
-# Ensure you are in r0.6 branch
-$ git branch 
-
-$ git status
-
-$ git push origin r0.6
-
-```
-Create a branch in your repo, say `issue-3696-cherrypick-pr-4420-to-r0.6` from the target branch (`r0.6` in this case).
+First, make sure the target branch in your form is up-to-date. Follow the steps mentioned under "Syncing a fork..", replacing the master branch with the target branch.
 
 Now, perform the cherry pick. 
 
 ```
+Create a branch in your form, say `issue-3696-cherrypick-pr-4420-to-r0.6` from the target branch (`r0.6` in this case). 
+
 # git clone https://github.com/ravisharda/pravega.git
 
 $ git checkout issue-3696-cherrypick-pr-4420-to-r0.6
 
 # Verify you are on the right branch. 
 $ git branch
-
 
 # Identify the commit id of the PR that you are trying to cherry pick. Use that one below.
 $ git cherry-pick b8911f8f4c0b452d18cb34e3d6ce23a13d6eccee
