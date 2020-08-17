@@ -278,7 +278,7 @@ $ git status
 $ git push origin r0.6
 
 ```
-Create a branch in your repo, say `issue-3696-cherrypick-pr-4420-to-r0.6`
+Create a branch in your repo, say `issue-3696-cherrypick-pr-4420-to-r0.6` from the target branch (`r0.6` in this case).
 
 Now, perform the cherry pick. 
 
